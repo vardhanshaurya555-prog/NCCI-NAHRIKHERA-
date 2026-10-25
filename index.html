@@ -4,214 +4,284 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071426">
-<meta name="description" content="NCCI — Nahrikhera Cricket Council of India. Player rankings, teams, cricket records, news and fixtures.">
+<meta name="theme-color" content="#080d19">
+<meta name="description" content="NCCI — Nahrikhera Cricket Council of India. Tournament updates, player rankings, fixtures, records and cricket news.">
 <title>NCCI | Nahrikhera Cricket Council of India</title>
 <style>
-:root{--bg:#071426;--panel:#101f33;--panel2:#152740;--red:#e63946;--gold:#f4c76b;--text:#f3f6fc;--muted:#9aabc1;--line:#263950}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
+:root{--bg:#080d19;--panel:#111a2b;--panel2:#172239;--red:#ed2945;--gold:#f5c76a;--text:#f5f7fc;--muted:#9aa8bd;--line:#27334a}
+*{box-sizing:border-box;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
 a{color:inherit;text-decoration:none}
-header{position:sticky;top:0;z-index:10;background:#071426f5;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-.nav{max-width:1200px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:23px;letter-spacing:1px}
-.logo{width:43px;height:43px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:white;font-size:15px}
-.brand small{display:block;font-size:9px;letter-spacing:1px;color:var(--muted)}
-nav{display:flex;gap:17px;flex-wrap:wrap;font-size:12px;color:#c3cede}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.topline{height:4px;background:linear-gradient(90deg,#ed2945,#f5c76a,#ed2945)}
+header{position:sticky;top:0;z-index:10;background:#080d19ed;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:1px}
+.crest{width:43px;height:43px;border:2px solid var(--gold);border-radius:12px;display:grid;place-items:center;color:var(--gold);font-weight:900;background:#191b29}
+.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.7px}
+nav{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;color:#dce4f2}
 nav a:hover{color:var(--gold)}
-.hero{max-width:1200px;margin:auto;padding:76px 22px 65px;display:grid;grid-template-columns:1.4fr .8fr;gap:32px;align-items:center}
-.eyebrow{color:var(--gold);font-size:11px;font-weight:bold;letter-spacing:3px}
-h1{font-size:clamp(38px,6vw,70px);line-height:1.03;letter-spacing:-2px;margin:16px 0}
-h1 span{color:var(--red)}
-.hero p{color:var(--muted);max-width:600px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-.btn{display:inline-block;padding:12px 18px;border-radius:8px;font-weight:bold;font-size:13px;background:var(--red);color:white;border:1px solid var(--red)}
-.btn.secondary{background:transparent;border-color:var(--line)}
-.hero-card{background:linear-gradient(145deg,#162c47,#0d1a2c);border:1px solid #30435b;border-radius:20px;padding:26px;text-align:center}
-.emblem{width:100px;height:100px;border:3px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 16px;font-size:29px;font-weight:900;color:var(--gold)}
-.hero-card h2{margin:8px 0;font-size:21px}
-.hero-card p{font-size:12px;margin:6px auto}
-.stats{max-width:1160px;margin:0 auto 35px;padding:0 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.stat{padding:19px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
-.stat strong{font-size:27px;display:block}
+.menu{display:none;background:var(--panel);border:1px solid var(--line);color:white;border-radius:8px;padding:8px 12px}
+.wrap{max-width:1200px;margin:auto;padding:0 20px}
+.hero{padding:65px 0 38px;background:radial-gradient(ellipse at 80% 10%,#71203150,transparent 40%),linear-gradient(135deg,#0d1424,#080d19 65%)}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:2.2px;color:var(--gold);text-transform:uppercase}
+.hero h1{font-size:clamp(36px,7vw,72px);line-height:1.02;letter-spacing:-2px;margin:16px 0}
+.hero h1 span{color:var(--red)}
+.hero p{max-width:650px;color:#b4bfd0;font-size:16px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-block;padding:12px 18px;border-radius:9px;font-weight:800;font-size:13px;border:1px solid var(--line);background:var(--panel);color:white}
+.btn.primary{background:var(--red);border-color:var(--red)}
+.btn:hover{filter:brightness(1.15)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px;max-width:650px}
+.stat{padding:15px;border:1px solid var(--line);background:#10182a99;border-radius:12px}
+.stat strong{display:block;font-size:24px;color:var(--gold)}
 .stat span{font-size:11px;color:var(--muted)}
-section{max-width:1160px;margin:auto;padding:40px 20px}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:22px}
-h2{margin:0;font-size:27px}
-.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
-select,.search{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:11px;font-size:13px;max-width:100%}
-.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
-table{border-collapse:collapse;width:100%;min-width:600px;font-size:13px}
-th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line)}
-th{background:#162740;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px}
-tr:last-child td{border-bottom:0}
+section{padding:43px 0;scroll-margin-top:75px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
+.section-head h2{font-size:clamp(24px,4vw,34px);line-height:1.15;margin:6px 0}
+.section-head p{color:var(--muted);margin:5px 0;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{background:linear-gradient(145deg,var(--panel),#0d1422);border:1px solid var(--line);border-radius:15px;padding:19px;min-width:0}
+.card:hover{border-color:#596781}
+.card h3{margin:8px 0;font-size:18px}
+.card p{font-size:13px;color:var(--muted);margin:6px 0}
+.pill{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.6px;border-radius:30px;padding:5px 9px;background:#26344b;color:#dbe5f4}
+.pill.red{background:#52202d;color:#ff9bab}
+.pill.gold{background:#43351e;color:var(--gold)}
+.feature{background:linear-gradient(120deg,#3c1422,#17172a 60%,#101a2a);border-color:#633041}
+.feature .trophy{font-size:35px}
+.news-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.news-item{display:flex;gap:13px;padding:17px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.news-no{color:var(--red);font-weight:900;font-size:22px}
+.news-item h3{font-size:15px;margin:0 0 5px}
+.news-item p{font-size:12px;color:var(--muted);margin:0}
+.note{font-size:11px;color:var(--muted);margin-top:12px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px}
+select,input{background:var(--panel);color:white;border:1px solid var(--line);padding:11px 12px;border-radius:9px;min-width:0}
+.controls input{flex:1;min-width:150px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:510px;background:var(--panel);font-size:13px}
+th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line)}
+th{background:#1a2539;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.7px}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#1a2539}
 .rank{color:var(--gold);font-weight:900}
-.player-name{font-weight:bold}
-.sub{display:block;font-size:11px;color:var(--muted);font-weight:normal}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px;min-width:0}
-.card h3{margin:0 0 4px;font-size:17px}
-.card p{margin:4px 0;color:var(--muted);font-size:12px}
-.pill{display:inline-block;border-radius:20px;padding:4px 9px;background:#27364a;color:var(--gold);font-size:10px;margin:7px 3px 0 0}
-.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:15px}
-.mini-stats div{background:#0a192b;border-radius:7px;padding:8px}
-.mini-stats b{display:block;font-size:16px}
-.mini-stats span{font-size:10px;color:var(--muted)}
-.team-mark{color:var(--red);font-size:22px;margin-bottom:8px}
-.notice{border:1px dashed #41536b;border-radius:12px;padding:25px;text-align:center;color:var(--muted);background:#0c1a2b;font-size:13px}
-.record-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.record{background:var(--panel);padding:17px;border-left:3px solid var(--gold);border-radius:8px}
-.record b{display:block;margin-bottom:4px}
-.record p{margin:0;color:var(--muted);font-size:12px}
-footer{border-top:1px solid var(--line);padding:30px 20px;text-align:center;color:var(--muted);font-size:12px}
-footer strong{color:var(--text)}
-@media(max-width:750px){.hero{grid-template-columns:1fr;padding-top:48px}.hero-card{max-width:420px;width:100%;margin:auto}nav{gap:11px}.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:470px){.nav{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}.record-list{grid-template-columns:1fr}h2{font-size:23px}.hero{padding-top:35px}}
+.player-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.player{padding:16px;border:1px solid var(--line);background:var(--panel);border-radius:13px}
+.player-top{display:flex;align-items:center;gap:11px}
+.avatar{width:43px;height:43px;flex-shrink:0;display:grid;place-items:center;border-radius:12px;background:linear-gradient(140deg,#7d1d32,#232a43);font-weight:900;color:white}
+.player h3{font-size:14px;margin:0}
+.player small{color:var(--muted);font-size:11px}
+.player-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:14px}
+.player-stats div{background:#0a1120;padding:8px;border-radius:7px}
+.player-stats b{display:block;font-size:15px}
+.player-stats span{font-size:9px;color:var(--muted)}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.team{padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.team .icon{font-size:25px}
+.team h3{font-size:14px;overflow-wrap:anywhere}
+.team p{font-size:12px;color:var(--muted)}
+.fixture{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;text-align:center;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.fixture strong{font-size:12px;overflow-wrap:anywhere}
+.vs{color:var(--gold);font-size:12px;font-weight:900}
+.record-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.record{padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.record b{display:block;font-size:14px}
+.record span{font-size:12px;color:var(--muted)}
+footer{padding:30px 20px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:12px}
+footer b{color:var(--gold)}
+@media(max-width:800px){
+ nav{display:none;position:absolute;top:68px;left:0;right:0;background:#0b1120;padding:18px;flex-direction:column;border-bottom:1px solid var(--line)}
+ nav.open{display:flex}.menu{display:block}.grid,.player-grid,.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){
+ .wrap{padding:0 14px}.nav{padding:10px 14px}.hero{padding:44px 0 28px}
+ .hero h1{letter-spacing:-1px}.hero-stats{gap:7px}.stat{padding:10px}.stat strong{font-size:20px}
+ .grid,.player-grid,.team-grid,.news-list,.record-grid{grid-template-columns:1fr}
+ .section-head{align-items:start;flex-direction:column}
+}
 </style>
 </head>
 <body>
+<div class="topline"></div>
 <header>
-<div class="nav">
-<a class="brand" href="#home"><span class="logo">NCCI</span><span>NCCI<small>NAHRIKHERA CRICKET COUNCIL OF INDIA</small></span></a>
-<nav>
-<a href="#home">Home</a><a href="#about">Introduction</a><a href="#rankings">Rankings</a><a href="#players">Players</a><a href="#teams">Teams</a><a href="#records">Records</a><a href="#news">News</a><a href="#fixtures">Fixtures</a>
-</nav>
-</div>
+ <div class="nav">
+  <a class="brand" href="#home">
+   <div class="crest">NCCI</div>
+   <div> NCCI <small>NAHRIKHERA CRICKET COUNCIL</small></div>
+  </a>
+  <button class="menu" onclick="document.querySelector('nav').classList.toggle('open')">☰ Menu</button>
+  <nav>
+   <a href="#home">Home</a><a href="#about">About</a><a href="#tournaments">Tournaments</a>
+   <a href="#rankings">Rankings</a><a href="#players">Players</a><a href="#teams">Teams</a>
+   <a href="#fixtures">Fixtures</a><a href="#news">News</a><a href="#records">Records</a>
+  </nav>
+ </div>
 </header>
 
 <main>
-<div class="hero" id="home">
-<div>
-<div class="eyebrow">THE GAME. THE GLORY. THE LEGACY.</div>
-<h1>WELCOME TO <span>NCCI.</span></h1>
-<p>The home of Nahrikhera cricket. Explore player statistics, batting rankings, teams, records and the latest official updates in one place.</p>
-<div class="actions"><a class="btn" href="#rankings">Explore Rankings ↗</a><a class="btn secondary" href="#players">Meet The Players</a></div>
-</div>
-<div class="hero-card">
-<div class="emblem">NCCI</div>
-<div class="eyebrow">CRICKET • COMMUNITY • COMPETITION</div>
-<h2>Nahrikhera Cricket Council of India</h2>
-<p>A dedicated platform for our players, teams and cricketing achievements.</p>
-</div>
-</div>
-
-<div class="stats">
-<div class="stat"><strong>13</strong><span>PLAYER PROFILES</span></div>
-<div class="stat"><strong>6</strong><span>REGISTERED TEAMS</span></div>
-<div class="stat"><strong>3</strong><span>PLAYING FORMATS</span></div>
-<div class="stat"><strong>NCCI</strong><span>OUR CRICKET COMMUNITY</span></div>
-</div>
-
-<section id="about">
-<div class="section-head"><div><div class="eyebrow">OUR STORY</div><h2>About NCCI</h2></div></div>
-<div class="card">
-<h3>Nahrikhera Cricket Council of India</h3>
-<p>NCCI is a cricket platform created to bring together our players, teams, performances and cricket records. This website presents the available player statistics and provides a central place for rankings, points tables, news and fixtures.</p>
-<p>Our motto: <strong>Decades old board of cricket.</strong></p>
-<p>Statistics shown here are based on the information supplied for this website. Missing information is marked N/A rather than guessed.</p>
-</div>
+<section class="hero" id="home">
+ <div class="wrap">
+  <div class="eyebrow">The home of NCCI cricket</div>
+  <h1>ONE BOARD.<br><span>ONE GAME.</span><br>ONE LEGACY.</h1>
+  <p>Welcome to the Nahrikhera Cricket Council of India — follow our players, explore tournaments, discover records and stay updated with every announcement.</p>
+  <div class="actions">
+   <a class="btn primary" href="#tournaments">Explore Tournaments ↗</a>
+   <a class="btn" href="#rankings">View Rankings</a>
+  </div>
+  <div class="hero-stats">
+   <div class="stat"><strong>06</strong><span>TEAMS</span></div>
+   <div class="stat"><strong>13</strong><span>PLAYER PROFILES</span></div>
+   <div class="stat"><strong>NCCI</strong><span>OUR CRICKET BOARD</span></div>
+  </div>
+ </div>
 </section>
 
-<section id="rankings">
-<div class="section-head"><div><div class="eyebrow">PERFORMANCE CENTRE</div><h2>Batting Rankings</h2><p>Ranked by recorded runs in each format.</p></div>
-<select id="format" aria-label="Select ranking format"><option value="odi">ODI Rankings</option><option value="test">Test Rankings</option><option value="t20">T20 Rankings</option><option value="overall">Overall Runs</option></select></div>
-<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Player</th><th>Team</th><th>Matches</th><th>Runs</th><th>Average</th><th>50s</th></tr></thead><tbody id="rankingRows"></tbody></table></div>
-</section>
+<section id="about"><div class="wrap">
+ <div class="section-head"><div><div class="eyebrow">Our identity</div><h2>Welcome to NCCI</h2></div></div>
+ <div class="card">
+  <h3>Decades old board of cricket</h3>
+  <p>NCCI — Nahrikhera Cricket Council of India — celebrates cricket, competition, team spirit and the achievements of its players. This platform brings tournament announcements, player statistics, rankings, team standings and match updates together in one place.</p>
+  <p>Our aim is to give every team and player a place in the NCCI cricket story.</p>
+ </div>
+</div></section>
 
-<section id="players">
-<div class="section-head"><div><div class="eyebrow">MEET THE SQUAD</div><h2>Player Profiles</h2><p>Explore the NCCI player directory.</p></div><input class="search" id="playerSearch" placeholder="Search players..." aria-label="Search players"></div>
-<div class="grid" id="playerGrid"></div>
-</section>
+<section id="tournaments"><div class="wrap">
+ <div class="section-head"><div><div class="eyebrow">Compete for glory</div><h2>Tournaments</h2><p>Explore competitions and their latest status.</p></div></div>
+ <div class="grid">
+  <article class="card feature">
+   <div class="trophy">🏆</div><span class="pill red">FEATURED EVENT</span>
+   <h3>NCCI Champions Trophy 2026</h3>
+   <p>Start date announced by NCCI: 6 November 2026.</p>
+   <p>Participating teams, final venues and match schedule are awaiting official confirmation.</p>
+   <a class="btn primary" href="#news">Read Announcements →</a>
+  </article>
+  <article class="card">
+   <div class="trophy">🏏</div><span class="pill gold">FORMAT: T20</span>
+   <h3>NCCI T20 Championship</h3>
+   <p>A fast-paced format celebrating batting, bowling and team performance.</p>
+   <p><span class="pill">Schedule to be announced</span></p>
+  </article>
+  <article class="card">
+   <div class="trophy">🥇</div><span class="pill">MULTI-FORMAT</span>
+   <h3>NCCI Season League</h3>
+   <p>Follow the six NCCI teams through standings, results and season records.</p>
+   <p><span class="pill">Details to be announced</span></p>
+  </article>
+ </div>
+ <p class="note">Tournament information on this website represents NCCI announcements. Unconfirmed details are labelled accordingly.</p>
+</div></section>
 
-<section id="teams">
-<div class="section-head"><div><div class="eyebrow">CLUB DIRECTORY</div><h2>Our Six Teams</h2><p>Team standings begin when match results are recorded.</p></div></div>
-<div class="grid" id="teamGrid"></div>
-<h2 style="margin:35px 0 16px">Points Table</h2>
-<div class="table-wrap"><table><thead><tr><th>Pos.</th><th>Team</th><th>Played</th><th>Won</th><th>Lost</th><th>Tied/NR</th><th>Points</th><th>NRR</th></tr></thead><tbody id="pointsRows"></tbody></table></div>
-<p style="color:var(--muted);font-size:11px">Points system: Win = 2, Tie/No Result = 1, Loss = 0. Standings and NRR must be updated from actual match results.</p>
-</section>
+<section id="news"><div class="wrap">
+ <div class="section-head"><div><div class="eyebrow">Latest updates</div><h2>NCCI Newsroom</h2><p>Announcements and tournament developments.</p></div></div>
+ <div class="news-list">
+  <article class="news-item"><div class="news-no">01</div><div><span class="pill red">TOURNAMENT</span><h3>Champions Trophy starts 6 November</h3><p>NCCI has announced 6 November 2026 as the planned start date for the Champions Trophy.</p></div></article>
+  <article class="news-item"><div class="news-no">02</div><div><span class="pill gold">PLAYER UPDATE</span><h3>Yuvraj Singh availability under discussion</h3><p>There is a possibility that Yuvraj Singh could miss the tournament. Any replacement will be announced when confirmed.</p></div></article>
+  <article class="news-item"><div class="news-no">03</div><div><span class="pill">VENUES</span><h3>Two proposed grounds</h3><p>Nahrikhera Official Cricket Ground and Nahrikhera Balaji Cricket Ground have been proposed. Final venue confirmation is pending.</p></div></article>
+  <article class="news-item"><div class="news-no">04</div><div><span class="pill">FIXTURES</span><h3>Fixtures expected after tournament begins</h3><p>NCCI has announced that fixtures are intended to be declared within two days of the Champions Trophy commencement.</p></div></article>
+ </div>
+ <p class="note">These are NCCI-provided announcements, not independently verified external cricket news. Update this section when new official information is available.</p>
+</div></section>
 
-<section id="records">
-<div class="section-head"><div><div class="eyebrow">MILESTONES</div><h2>Cricket Records</h2><p>Special achievements reported for the NCCI player group.</p></div></div>
-<div class="record-list" id="recordGrid"></div>
-</section>
+<section id="rankings"><div class="wrap">
+ <div class="section-head"><div><div class="eyebrow">Player performance</div><h2>Player Rankings</h2><p>Ranked by the supplied runs for the selected format.</p></div></div>
+ <div class="controls">
+  <select id="format" aria-label="Select format" onchange="renderRankings()">
+   <option value="odi">ODI Rankings</option><option value="test">Test Rankings</option>
+   <option value="t20">T20 Rankings</option><option value="overall">Overall Runs</option>
+  </select>
+ </div>
+ <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Player</th><th>Role</th><th>Runs</th></tr></thead><tbody id="rankBody"></tbody></table></div>
+ <p class="note">These are NCCI profile statistics supplied for this website, not official international cricket rankings.</p>
+</div></section>
 
-<section id="news">
-<div class="section-head"><div><div class="eyebrow">OFF THE FIELD</div><h2>Latest News</h2></div></div>
-<div class="notice">No official news published yet.<br>Official updates will appear here when added by the NCCI website owner.</div>
-</section>
+<section id="players"><div class="wrap">
+ <div class="section-head"><div><div class="eyebrow">Meet the squad</div><h2>Player Profiles</h2><p>Explore player roles and available career statistics.</p></div></div>
+ <div class="controls"><input id="playerSearch" placeholder="Search players..." oninput="renderPlayers()" aria-label="Search players"><select id="roleFilter" onchange="renderPlayers()" aria-label="Filter by role"><option value="">All roles</option><option>Batsman</option><option>Bowler</option><option>All-rounder</option></select></div>
+ <div class="player-grid" id="playerGrid"></div>
+</div></section>
 
-<section id="fixtures">
-<div class="section-head"><div><div class="eyebrow">UPCOMING ACTION</div><h2>Fixtures & Results</h2></div></div>
-<div class="notice">No fixtures or match results have been published yet.<br>Check back when the official schedule is announced.</div>
-</section>
+<section id="teams"><div class="wrap">
+ <div class="section-head"><div><div class="eyebrow">Team standings</div><h2>NCCI Teams</h2><p>Points update when match results are entered into the website code.</p></div></div>
+ <div class="team-grid" id="teamGrid"></div>
+ <div class="table-wrap" style="margin-top:20px"><table><thead><tr><th>Pos.</th><th>Team</th><th>Played</th><th>Won</th><th>Lost</th><th>Points</th></tr></thead><tbody id="pointsBody"></tbody></table></div>
+ <p class="note">All standings start at zero. Win = 2 points; tie/no result = 1 point; loss = 0 points. No matches are invented.</p>
+</div></section>
+
+<section id="fixtures"><div class="wrap">
+ <div class="section-head"><div><div class="eyebrow">Upcoming matches</div><h2>Fixtures & Venues</h2><p>Match dates and teams will appear here after confirmation.</p></div></div>
+ <div class="grid">
+  <div class="card"><span class="pill gold">PROPOSED VENUE</span><h3>Nahrikhera Official Cricket Ground</h3><p>Proposed venue for the Champions Trophy. Confirmation pending.</p></div>
+  <div class="card"><span class="pill gold">PROPOSED VENUE</span><h3>Nahrikhera Balaji Cricket Ground</h3><p>Proposed venue for the Champions Trophy. Confirmation pending.</p></div>
+  <div class="card"><span class="pill">FIXTURES PENDING</span><h3>Match Schedule</h3><p>Specific match dates, opponents and start times have not yet been provided.</p></div>
+ </div>
+ <div class="fixture" style="margin-top:15px"><strong>Fixtures</strong><span class="vs">COMING SOON</span><strong>Official Announcement</strong></div>
+</div></section>
+
+<section id="records"><div class="wrap">
+ <div class="section-head"><div><div class="eyebrow">Made on the field</div><h2>Records & Highlights</h2><p>Highlights based on supplied NCCI player information.</p></div></div>
+ <div class="record-grid">
+  <div class="record"><b>Shaurya Vardhan Singh Naruka</b><span>2,512 T20 runs listed in the supplied profile.</span></div>
+  <div class="record"><b>Yash Vardhan Singh Naruka</b><span>1,187 ODI runs listed in the supplied profile.</span></div>
+  <div class="record"><b>Ashutosh</b><span>Reported highlight: both fifties came while chasing.</span></div>
+  <div class="record"><b>Yuvraj Singh</b><span>Reported highlight: youngest player to score a fifty in NCCI records; verification pending.</span></div>
+ </div>
+ <p class="note">Records and statistics are based on information supplied for NCCI. Verify match scorecards before presenting them as official records.</p>
+</div></section>
 </main>
 
 <footer>
-<strong>NCCI</strong> — Nahrikhera Cricket Council of India<br>
-A community cricket website · Player statistics supplied for this site<br>
-© <span id="year"></span> NCCI. All rights reserved.
+ <div class="brand" style="justify-content:center;margin-bottom:10px"><div class="crest">NCCI</div><div>Nahrikhera Cricket Council of India</div></div>
+ <p>Cricket • Competition • Community</p>
+ <p>© <span id="year"></span> <b>NCCI</b>. All rights reserved.</p>
+ <p>Independent cricket board website. Not affiliated with the BCCI or ICC.</p>
 </footer>
 
 <script>
-const players = [
-{name:"Shaurya Vardhan Singh Naruka",age:17,role:"Batsman",teams:["SHAURYA'S FIGHTERS","GANGSTERS","HOME"],test:220,odi:670,t20:2512,matches:{test:10,odi:12,t20:122,total:151},avg:24.8,fifties:6,forties:4,hundreds:"N/A",wickets:"N/A",econ:"N/A",best:"N/A",hat:1,record:"Reported hat-trick taker; claim requires verification."},
-{name:"Kishan",age:16,role:"All-rounder",teams:["AWAY","MONSTERS","YASH'S LIONS"],test:10,odi:67,t20:890,avg:17,fifties:5},
-{name:"Ashutosh",age:13,role:"All-rounder",teams:["GANGSTERS","AWAY","SHAURYA'S FIGHTERS"],test:10,odi:51,t20:670,avg:14,fifties:2,matches:{total:103},econ:5,record:"Both recorded fifties came while chasing."},
-{name:"Yuvraj Singh",age:11,role:"All-rounder",teams:["HOME","MONSTERS","YASH'S LIONS"],test:0,odi:0,t20:210,avg:9,fifties:2,matches:{total:41},econ:6,best:"2/6",record:"Reported youngest player to hit 50; verify before official publication."},
-{name:"Piyush",age:14,role:"All-rounder",teams:["AWAY"],test:0,odi:0,t20:121,avg:7,fifties:0,matches:{total:87},wickets:26,econ:5},
-{name:"Yogesh",age:13,role:"Bowler",teams:["AWAY"],test:0,odi:0,t20:48,avg:1,fifties:0,matches:{total:41},wickets:0,econ:4,best:"0",hat:0},
-{name:"Yash Vardhan Singh Naruka",age:17,role:"Batsman",teams:["HOME","MONSTERS","YASH'S LIONS"],test:445,odi:1187,t20:2369,avg:26,fifties:11,hundreds:0,matches:{total:163}},
-{name:"Vishnu",age:19,role:"Batsman",teams:["AWAY"],test:22,odi:354,t20:692,avg:17.6,fifties:1,matches:{total:139},wickets:42},
-{name:"Mahendra Singh",age:19,role:"All-rounder",teams:["AWAY"],test:0,odi:369,t20:607,avg:12,fifties:0,wickets:62,econ:2},
-{name:"Balveer Singh",age:20,role:"Batsman",teams:["AWAY"],test:0,odi:360,t20:459,avg:13,fifties:1,matches:{total:112}},
-{name:"Kuldeep Singh",age:20,role:"Batsman",teams:["AWAY"],test:0,odi:297,t20:553,avg:19.1,fifties:1,matches:{total:110}},
-{name:"Vikas",age:20,role:"All-rounder",teams:["AWAY"],test:0,odi:113,t20:169,avg:10,fifties:0,matches:{total:69},wickets:43},
-{name:"Yogendra Singh Bhati",age:17,role:"All-rounder",teams:["HOME"],test:12,odi:14,t20:212,avg:13,fifties:1,matches:{total:24},wickets:15,econ:4}
+const players=[
+{name:"Shaurya Vardhan Singh Naruka",age:17,role:"Batsman",teams:"SHAURYA'S FIGHTERS, GANGSTERS, HOME",test:220,odi:670,t20:2512,avg:"24.8",fifties:6,matches:151,wickets:"N/A"},
+{name:"Kishan",age:16,role:"All-rounder",teams:"AWAY, MONSTERS, YASH'S LIONS",test:10,odi:67,t20:890,avg:"17",fifties:5,matches:0,wickets:"N/A"},
+{name:"Ashutosh",age:13,role:"All-rounder",teams:"GANGSTERS, AWAY, SHAURYA'S FIGHTERS",test:10,odi:51,t20:670,avg:"14",fifties:2,matches:103,wickets:"N/A"},
+{name:"Yuvraj Singh",age:11,role:"All-rounder",teams:"HOME, MONSTERS, YASH'S LIONS",test:0,odi:0,t20:210,avg:"9",fifties:2,matches:41,wickets: "N/A"},
+{name:"Piyush",age:14,role:"All-rounder",teams:"AWAY",test:0,odi:0,t20:121,avg:"7",fifties:0,matches:87,wickets:26},
+{name:"Yogesh",age:13,role:"Bowler",teams:"AWAY",test:0,odi:0,t20:48,avg:"1",fifties:0,matches:41,wickets:0},
+{name:"Yash Vardhan Singh Naruka",age:17,role:"Batsman",teams:"HOME, MONSTERS, YASH'S LIONS",test:445,odi:1187,t20:2369,avg:"26",fifties:11,matches:163,wickets:"N/A"},
+{name:"Vishnu",age:19,role:"Batsman",teams:"AWAY",test:22,odi:354,t20:692,avg:"17.6",fifties:1,matches:139,wickets:42},
+{name:"Mahendra Singh",age:19,role:"All-rounder",teams:"AWAY",test:0,odi:369,t20:607,avg:"12",fifties:0,matches:0,wickets:62},
+{name:"Balveer Singh",age:20,role:"Batsman",teams:"AWAY",test:0,odi:360,t20:459,avg:"13",fifties:1,matches:112,wickets:"N/A"},
+{name:"Kuldeep Singh",age:20,role:"Batsman",teams:"AWAY",test:0,odi:297,t20:553,avg:"19.1",fifties:1,matches:110,wickets:"N/A"},
+{name:"Vikas",age:20,role:"All-rounder",teams:"AWAY",test:0,odi:113,t20:169,avg:"10",fifties:0,matches:69,wickets:43},
+{name:"Yogendra Singh Bhati",age:17,role:"All-rounder",teams:"HOME",test:12,odi:14,t20:212,avg:"13",fifties:1,matches:24,wickets:15}
 ];
 const teams=["HOME","GANGSTERS","AWAY","MONSTERS","SHAURYA'S FIGHTERS","YASH'S LIONS"];
-const records=[
-["Highest recorded Test runs","Yash Vardhan Singh Naruka — 445"],
-["Highest recorded ODI runs","Yash Vardhan Singh Naruka — 1,187"],
-["Highest recorded T20 runs","Shaurya Vardhan Singh Naruka — 2,512"],
-["Most recorded fifties","Yash Vardhan Singh Naruka — 11"],
-["Hat-trick record","Shaurya Vardhan Singh Naruka — 1 reported; verification pending"],
-["Chasing milestone","Ashutosh — both recorded fifties while chasing"],
-["Youngest fifty","Yuvraj Singh — reported record; verification pending"]
-];
-const num=v=>v===undefined||v===null?"N/A":v;
-function matches(p){return p.matches?.total??"N/A"}
-function rankValue(p,f){return f==="overall"?p.test+p.odi+p.t20:p[f]}
+const scores={HOME:{played:0,won:0,lost:0,points:0},GANGSTERS:{played:0,won:0,lost:0,points:0},AWAY:{played:0,won:0,lost:0,points:0},MONSTERS:{played:0,won:0,lost:0,points:0},"SHAURYA'S FIGHTERS":{played:0,won:0,lost:0,points:0},"YASH'S LIONS":{played:0,won:0,lost:0,points:0}};
 function renderRankings(){
-const f=document.getElementById("format").value;
-const sorted=[...players].sort((a,b)=>rankValue(b,f)-rankValue(a,f));
-document.getElementById("rankingRows").innerHTML=sorted.map((p,i)=>`
-<tr><td class="rank">#${i+1}</td><td class="player-name">${p.name}<span class="sub">${p.role}</span></td><td>${p.teams[0]}</td><td>${f==="overall"?matches(p):(p.matches?.[f]??"N/A")}</td><td><strong>${rankValue(p,f).toLocaleString("en-IN")}</strong></td><td>${num(p.avg)}</td><td>${num(p.fifties)}</td></tr>`).join("");
+ const fmt=document.getElementById("format").value;
+ const data=[...players].sort((a,b)=>{
+ const ar=fmt==="overall"?a.test+a.odi+a.t20:a[fmt];
+ const br=fmt==="overall"?b.test+b.odi+b.t20:b[fmt];
+ return br-ar;
+ });
+ document.getElementById("rankBody").innerHTML=data.map((p,i)=>`<tr><td class="rank">${String(i+1).padStart(2,"0")}</td><td><b>${p.name}</b></td><td>${p.role}</td><td>${fmt==="overall"?p.test+p.odi+p.t20:p[fmt]}</td></tr>`).join("");
 }
 function renderPlayers(){
-const q=document.getElementById("playerSearch").value.toLowerCase();
-const filtered=players.filter(p=>(p.name+" "+p.role+" "+p.teams.join(" ")).toLowerCase().includes(q));
-document.getElementById("playerGrid").innerHTML=filtered.map(p=>`
-<article class="card"><div class="eyebrow">NCCI PLAYER</div><h3>${p.name}</h3><p>Age: ${p.age} · ${p.role}</p>
-<div>${p.teams.map(t=>`<span class="pill">${t}</span>`).join("")}</div>
-<div class="mini-stats"><div><b>${p.test}</b><span>TEST RUNS</span></div><div><b>${p.odi}</b><span>ODI RUNS</span></div><div><b>${p.t20}</b><span>T20 RUNS</span></div></div>
-<p style="margin-top:13px">Average: ${num(p.avg)} · Fifties: ${num(p.fifties)} · Matches: ${matches(p)}</p>
-<p>Wickets: ${num(p.wickets)} · Economy: ${num(p.econ)}</p>
-${p.record?`<p>${p.record}</p>`:""}</article>`).join("")||'<div class="notice">No players found.</div>';
+ const q=document.getElementById("playerSearch").value.toLowerCase();
+ const role=document.getElementById("roleFilter").value;
+ const filtered=players.filter(p=>p.name.toLowerCase().includes(q)&&(!role||p.role===role));
+ document.getElementById("playerGrid").innerHTML=filtered.map(p=>`<article class="player">
+ <div class="player-top"><div class="avatar">${p.name.split(" ").map(x=>x[0]).slice(0,2).join("")}</div><div><h3>${p.name}</h3><small>Age ${p.age} · ${p.role}</small></div></div>
+ <p style="margin-top:12px;font-size:10px">Teams: ${p.teams}</p>
+ <div class="player-stats"><div><b>${p.test}</b><span>TEST RUNS</span></div><div><b>${p.odi}</b><span>ODI RUNS</span></div><div><b>${p.t20}</b><span>T20 RUNS</span></div></div>
+ <p>Average: ${p.avg} · Fifties: ${p.fifties} · Matches: ${p.matches||"Not provided"}</p>
+ </article>`).join("")||"<p>No players found.</p>";
 }
 function renderTeams(){
-document.getElementById("teamGrid").innerHTML=teams.map(t=>`<article class="card"><div class="team-mark">◆</div><h3>${t}</h3><p>${players.filter(p=>p.teams.includes(t)).length} listed player associations</p><span class="pill">NCCI TEAM</span></article>`).join("");
-document.getElementById("pointsRows").innerHTML=teams.map((t,i)=>`<tr><td>${i+1}</td><td><strong>${t}</strong></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>N/A</td></tr>`).join("");
+ document.getElementById("teamGrid").innerHTML=teams.map((t,i)=>`<article class="team"><div class="icon">${["🏏","🔥","🛡️","⚡","🏆","👑"][i]}</div><h3>${t}</h3><p>Matches and points updated from recorded results.</p><span class="pill">0 points</span></article>`).join("");
+ document.getElementById("pointsBody").innerHTML=teams.map((t,i)=>`<tr><td>${i+1}</td><td><b>${t}</b></td><td>${scores[t].played}</td><td>${scores[t].won}</td><td>${scores[t].lost}</td><td class="rank">${scores[t].points}</td></tr>`).join("");
 }
-function renderRecords(){
-document.getElementById("recordGrid").innerHTML=records.map(r=>`<div class="record"><b>${r[0]}</b><p>${r[1]}</p></div>`).join("");
-}
-document.getElementById("format").addEventListener("change",renderRankings);
-document.getElementById("playerSearch").addEventListener("input",renderPlayers);
 document.getElementById("year").textContent=new Date().getFullYear();
-renderRankings();renderPlayers();renderTeams();renderRecords();
+renderRankings();renderPlayers();renderTeams();
 </script>
 </body>
 </html>
-
