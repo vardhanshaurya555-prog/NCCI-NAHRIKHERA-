@@ -349,7 +349,7 @@ footer b{color:var(--gold)}
   <article class="card feature">
    <div class="trophy">🏆</div><span class="pill red">FEATURED EVENT</span>
    <h3>NCCI Champions Trophy 2026</h3>
-   <p>Start date announced by NCCI: 6 November 2026.</p>
+   <p>Start date announced by NCCI: 6 December 2026.</p>
    <p>Participating teams, final venues and match schedule are awaiting official confirmation.</p>
    <a class="btn primary" href="#news">Read Announcements →</a>
   </article>
@@ -856,5 +856,64 @@ function renderTeams(){
 document.getElementById("year").textContent=new Date().getFullYear();
 renderRankings();renderPlayers();renderTeams();
 </script>
+  
+<style>
+/* NCCI SWIPEABLE SCREENS */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: calc(100dvh - 80px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
+main > style {
+  display: none;
+}
+
+main > section {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 800px) {
+  main {
+    height: calc(100dvh - 80px);
+  }
+}
+</style>
+
 </body>
 </html>
