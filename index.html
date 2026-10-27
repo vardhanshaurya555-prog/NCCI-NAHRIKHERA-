@@ -915,5 +915,102 @@ main > section {
 }
 </style>
 
+<!-- NCCI: FOUR-TEAM TOURNAMENT -->
+<section id="ncci-league" class="ncci-league">
+  <div class="ncci-heading">
+    <span class="ncci-eyebrow">NCCI • TOURNAMENT CENTRE</span>
+    <h2>Championship League</h2>
+    <p>Four Teams. One Trophy.</p>
+  </div>
+
+  <!-- UPCOMING FIXTURES -->
+  <div class="ncci-panel">
+    <div class="ncci-section-title">
+      <div>
+        <span class="ncci-eyebrow">MATCH CENTRE</span>
+        <h3>Upcoming Fixtures</h3>
+      </div>
+      <span class="ncci-live-label">FIXTURES</span>
+    </div>
+
+    <div id="ncci-fixtures" class="ncci-fixture-list"></div>
+  </div>
+
+  <!-- FOUR-TEAM POINTS TABLE -->
+  <div class="ncci-panel">
+    <div class="ncci-section-title">
+      <div>
+        <span class="ncci-eyebrow">LEAGUE STAGE</span>
+        <h3>Points Table</h3>
+      </div>
+      <span class="ncci-live-label">4 TEAMS</span>
+    </div>
+
+    <div class="ncci-table-scroll">
+      <table class="ncci-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Team</th>
+            <th>P</th>
+            <th>W</th>
+            <th>L</th>
+            <th>Pts</th>
+          </tr>
+        </thead>
+        <tbody id="ncci-points-body"></tbody>
+      </table>
+    </div>
+    <p class="ncci-note">
+      P = Played • W = Won • L = Lost • Pts = Points.
+      Win = 2 points; loss = 0 points.
+    </p>
+  </div>
+
+  <!-- PLAYOFFS -->
+  <div class="ncci-panel">
+    <div class="ncci-section-title">
+      <div>
+        <span class="ncci-eyebrow">ROAD TO THE TROPHY</span>
+        <h3>Playoffs</h3>
+      </div>
+    </div>
+
+    <div class="ncci-playoff-grid">
+      <article class="ncci-playoff-card">
+        <span class="ncci-round">QUALIFIER 1</span>
+        <div id="ncci-q1" class="ncci-playoff-match">
+          1st Place <span>VS</span> 2nd Place
+        </div>
+        <p>Winner advances to the Final.</p>
+      </article>
+
+      <article class="ncci-playoff-card">
+        <span class="ncci-round">ELIMINATOR</span>
+        <div id="ncci-eliminator" class="ncci-playoff-match">
+          3rd Place <span>VS</span> 4th Place
+        </div>
+        <p>Winner advances to Qualifier 2.</p>
+      </article>
+
+      <article class="ncci-playoff-card">
+        <span class="ncci-round">QUALIFIER 2</span>
+        <div id="ncci-q2" class="ncci-playoff-match">
+          Eliminator Winner <span>VS</span> Qualifier 1 Loser
+        </div>
+        <p>Winner advances to the Final.</p>
+      </article>
+
+      <article class="ncci-playoff-card ncci-final-card">
+        <span class="ncci-round">GRAND FINAL</span>
+        <div id="ncci-final" class="ncci-playoff-match">
+          Qualifier 1 Winner <span>VS</span> Qualifier 2 Winner
+        </div>
+        <p>The winner becomes champion.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
