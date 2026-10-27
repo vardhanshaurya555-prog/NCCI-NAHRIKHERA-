@@ -1296,5 +1296,197 @@ main > section {
   </div>
 </section>
 
+/* NCCI FOUR-TEAM LEAGUE DATA */
+const NCCI_TEAMS = {
+  NKR: {
+    name: "Nahrikhera Knight Riders",
+    logo: "assets/nkr.jpg"
+  },
+  NSC: {
+    name: "Nahrikhera Super Chargers",
+    logo: "assets/nsc.jpg"
+  },
+  NPP: {
+    name: "Nahrikhera Pink Panthers",
+    logo: "assets/npp.jpg"
+  },
+  NRK: {
+    name: "Nahrikhera Royal Kings",
+    logo: "assets/nrk.jpg"
+  }
+};
+
+/* Leave winner as null until the match is completed.
+   To enter a result, change null to the winning team code:
+   winner: "NPP"  OR  winner: "NSC"
+*/
+const NCCI_MATCHES = [
+  {
+    id: 1, a: "NPP", b: "NSC",
+    date: "5–6 Nov 2026",
+    winner: null
+  },
+  {
+    id: 2, a: "NRK", b: "NKR",
+    date: "5–6 Nov 2026",
+    winner: null
+  },
+  {
+    id: 3, a: "NRK", b: "NSC",
+    date: "6–7 Nov 2026",
+    winner: null
+  },
+  {
+    id: 4, a: "NPP", b: "NKR",
+    date: "7–8 Nov 2026",
+    winner: null
+  }
+];
+
+function ncciTeamLogo(code, className) {
+  const team = NCCI_TEAMS[code];
+
+  return `
+    <img
+      class="${className}"
+      src="${team.logo}"
+      alt="${team.name} logo"
+      loading="lazy"
+    >
+  `;
+}
+
+function ncciTeamName(code) {
+  return NCCI_TEAMS[code].name;
+}
+
+/* FIXTURES */
+function renderNCCIFixtures() {
+  const container = document.getElementById("ncci-fixtures");
+
+  container.innerHTML = NCCI_MATCHES.map(match => {
+    const completed = Boolean(match.winner);
+
+    return `
+      <article class="ncci-fixture">
+        <div class="ncci-fixture-team">
+          ${ncciTeamLogo(match.a, "ncci-team-logo")}
+          <span>${match.a}</span>
+        </div>
+
+        <span class="ncci-vs">VS</span>
+
+        <div class="ncci-fixture-team">
+          <span>${match.b}</span>
+          ${ncciTeamLogo(match.b, "ncci-team-logo")}
+        </div>
+
+        <div class="ncci-fixture-info">
+          <span>${match.date}</span>
+          <span class="ncci-fixture-status">
+            ${completed
+              ? "Winner: " + match.winner
+              : "Upcoming"}
+          </span>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+/* POINTS TABLE */
+function getNCCIStandings() {
+  const standings = Object.keys(NCCI_TEAMS).map(code => ({
+    code,
+    played: 0,
+    won: 0,
+    lost: 0,
+    points: 0
+  }));
+
+  NCCI_MATCHES.forEach(match => {
+    if (!match.winner) return;
+
+    const a = standings.find(t => t.code === match.a);
+    const b = standings.find(t => t.code === match.b);
+
+    if (!a || !b) return;
+    if (match.winner !== match.a &&
+        match.winner !== match.b) return;
+
+    a.played++;
+    b.played++;
+
+    if (match.winner === a.code) {
+      a.won++;
+      b.lost++;
+      a.points += 2;
+    } else {
+      b.won++;
+      a.lost++;
+      b.points += 2;
+    }
+  });
+
+  return standings.sort((a, b) =>
+    b.points - a.points ||
+    b.won - a.won ||
+    a.code.localeCompare(b.code)
+  );
+}
+
+function renderNCCIPointsTable() {
+  const body = document.getElementById("ncci-points-body");
+  const standings = getNCCIStandings();
+
+  body.innerHTML = standings.map((team, index) => `
+    <tr>
+      <td>${index + 1}</td>
+      <td>
+        <div class="ncci-table-team">
+          ${ncciTeamLogo(team.code, "ncci-table-logo")}
+          <span>${team.code}</span>
+        </div>
+      </td>
+      <td>${team.played}</td>
+      <td>${team.won}</td>
+      <td>${team.lost}</td>
+      <td><strong>${team.points}</strong></td>
+    </tr>
+  `).join("");
+}
+
+/* PLAYOFF BRACKET */
+function renderNCCIPlayoffs() {
+  const standings = getNCCIStandings();
+
+  const name = (position) =>
+    standings[position - 1]
+      ? standings[position - 1].code + " — " +
+        ncciTeamName(standings[position - 1].code)
+      : position + "th Place";
+
+  document.getElementById("ncci-q1").innerHTML =
+    `${name(1)} <span>VS</span> ${name(2)}`;
+
+  document.getElementById("ncci-eliminator").innerHTML =
+    `${name(3)} <span>VS</span> ${name(4)}`;
+
+  document.getElementById("ncci-q2").innerHTML =
+    `Eliminator Winner <span>VS</span> Qualifier 1 Loser`;
+
+  document.getElementById("ncci-final").innerHTML =
+    `Qualifier 1 Winner <span>VS</span> Qualifier 2 Winner`;
+}
+
+/* INITIAL RENDER */
+function renderNCCILeague() {
+  renderNCCIFixtures();
+  renderNCCIPointsTable();
+  renderNCCIPlayoffs();
+}
+
+renderNCCILeague();
+
 </body>
 </html>
