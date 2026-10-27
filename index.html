@@ -913,6 +913,290 @@ main > section {
     height: calc(100dvh - 80px);
   }
 }
+ 
+/* NCCI FOUR-TEAM LEAGUE */
+.ncci-league {
+  --navy: #07162f;
+  --navy2: #10284a;
+  --ice: #9bdcff;
+  --sky: #52b8f5;
+  --line: rgba(155, 220, 255, .18);
+  color: #eef7ff;
+  padding: 28px 14px;
+  background:
+    radial-gradient(ellipse at 10% 0%,
+      rgba(82,184,245,.12), transparent 45%),
+    linear-gradient(145deg, #061329, #0a1d3b 65%, #07162f);
+  border-radius: 18px;
+  font-family: Arial, sans-serif;
+}
+
+.ncci-heading {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.ncci-eyebrow {
+  color: var(--ice);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.ncci-heading h2 {
+  font-size: clamp(25px, 5vw, 36px);
+  margin: 8px 0;
+  color: #fff;
+}
+
+.ncci-heading p {
+  color: #a8c4df;
+  font-size: 13px;
+  margin: 0;
+}
+
+.ncci-panel {
+  background: linear-gradient(145deg,
+    rgba(16,40,74,.94), rgba(7,22,47,.98));
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 15px;
+  margin: 14px 0;
+  box-shadow: 0 8px 25px rgba(0,0,0,.15);
+}
+
+.ncci-section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 13px;
+}
+
+.ncci-section-title h3 {
+  margin: 5px 0 0;
+  font-size: 19px;
+  color: white;
+}
+
+.ncci-live-label {
+  border: 1px solid rgba(155,220,255,.3);
+  border-radius: 5px;
+  padding: 5px 7px;
+  color: var(--ice);
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.ncci-fixture-list {
+  display: grid;
+  gap: 8px;
+}
+
+.ncci-fixture {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 7px;
+  min-height: 65px;
+  padding: 9px;
+  border: 1px solid rgba(155,220,255,.12);
+  border-radius: 9px;
+  background: rgba(4,15,34,.48);
+}
+
+.ncci-fixture-team {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ncci-fixture-team:last-child {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.ncci-team-logo {
+  width: 35px;
+  height: 35px;
+  flex: 0 0 35px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid rgba(155,220,255,.35);
+}
+
+.ncci-vs {
+  color: var(--ice);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.ncci-fixture-info {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(155,220,255,.1);
+  padding-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #a9c5df;
+  font-size: 10px;
+}
+
+.ncci-fixture-status {
+  color: var(--ice);
+  font-weight: 700;
+}
+
+.ncci-table-scroll {
+  overflow-x: auto;
+}
+
+.ncci-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.ncci-table th {
+  background: rgba(82,184,245,.12);
+  color: var(--ice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+.ncci-table th,
+.ncci-table td {
+  padding: 11px 7px;
+  text-align: center;
+  border-bottom: 1px solid rgba(155,220,255,.1);
+}
+
+.ncci-table th:nth-child(2),
+.ncci-table td:nth-child(2) {
+  text-align: left;
+}
+
+.ncci-table tr:first-child td:first-child {
+  color: var(--ice);
+  font-weight: 900;
+}
+
+.ncci-table-team {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 700;
+}
+
+.ncci-table-logo {
+  width: 27px;
+  height: 27px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: white;
+}
+
+.ncci-note {
+  color: #9cb6d1;
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 12px 0 0;
+}
+
+.ncci-playoff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.ncci-playoff-card {
+  padding: 12px 9px;
+  background: rgba(4,15,34,.5);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  min-width: 0;
+}
+
+.ncci-round {
+  color: var(--ice);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.ncci-playoff-match {
+  margin: 11px 0 8px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.ncci-playoff-match span {
+  display: inline-block;
+  margin: 0 4px;
+  color: var(--sky);
+  font-size: 9px;
+}
+
+.ncci-playoff-card p {
+  color: #9cb6d1;
+  font-size: 10px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ncci-final-card {
+  border-color: rgba(155,220,255,.5);
+  background: linear-gradient(135deg,
+    rgba(28,75,120,.45), rgba(4,15,34,.7));
+}
+
+@media (min-width: 650px) {
+  .ncci-league {
+    padding: 32px;
+  }
+
+  .ncci-fixture {
+    grid-template-columns: 1fr auto 1fr;
+    padding: 10px 15px;
+  }
+
+  .ncci-fixture-team {
+    font-size: 13px;
+  }
+
+  .ncci-team-logo {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+  }
+}
+
+@media (max-width: 350px) {
+  .ncci-playoff-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ncci-fixture-team {
+    font-size: 10px;
+  }
+
+  .ncci-team-logo {
+    width: 29px;
+    height: 29px;
+    flex-basis: 29px;
+  }
+}
+ 
 </style>
 
 <!-- NCCI: FOUR-TEAM TOURNAMENT -->
