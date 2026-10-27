@@ -391,15 +391,200 @@ footer b{color:var(--gold)}
  <p class="note">All standings start at zero. Win = 2 points; tie/no result = 1 point; loss = 0 points. No matches are invented.</p>
 </div></section>
 
-<section id="fixtures"><div class="wrap">
- <div class="section-head"><div><div class="eyebrow">Upcoming matches</div><h2>Fixtures & Venues</h2><p>Match dates and teams will appear here after confirmation.</p></div></div>
- <div class="grid">
-  <div class="card"><span class="pill gold">PROPOSED VENUE</span><h3>Nahrikhera Official Cricket Ground</h3><p>Proposed venue for the Champions Trophy. Confirmation pending.</p></div>
-  <div class="card"><span class="pill gold">PROPOSED VENUE</span><h3>Nahrikhera Balaji Cricket Ground</h3><p>Proposed venue for the Champions Trophy. Confirmation pending.</p></div>
-  <div class="card"><span class="pill">FIXTURES PENDING</span><h3>Match Schedule</h3><p>Specific match dates, opponents and start times have not yet been provided.</p></div>
- </div>
- <div class="fixture" style="margin-top:15px"><strong>Fixtures</strong><span class="vs">COMING SOON</span><strong>Official Announcement</strong></div>
-</div></section>
+
+<section id="fixtures">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">NPL • UPCOMING</div>
+        <h2>Upcoming Matches</h2>
+        <p>Nahrikhera Premier League · Three-Match Series</p>
+      </div>
+    </div>
+
+    <div class="grid npl-fixtures-grid">
+
+      <div class="card npl-match">
+        <div class="npl-top">
+          <span class="pill gold">UPCOMING</span>
+          <span class="npl-match-no">MATCH 01</span>
+        </div>
+        <div class="npl-date">05–06 <small>NOVEMBER 2026</small></div>
+        <div class="npl-vs">VS</div>
+        <div class="npl-team red">SF <span>SHAURYA'S FIGHTERS</span></div>
+        <div class="npl-team gold-team">YL <span>YASH'S LIONS</span></div>
+        <div class="npl-footer">NPL SERIES · FIXTURE 01</div>
+      </div>
+
+      <div class="card npl-match">
+        <div class="npl-top">
+          <span class="pill gold">UPCOMING</span>
+          <span class="npl-match-no">MATCH 02</span>
+        </div>
+        <div class="npl-date">07 <small>NOVEMBER 2026</small></div>
+        <div class="npl-vs">VS</div>
+        <div class="npl-team red">SF <span>SHAURYA'S FIGHTERS</span></div>
+        <div class="npl-team gold-team">YL <span>YASH'S LIONS</span></div>
+        <div class="npl-footer">NPL SERIES · FIXTURE 02</div>
+      </div>
+
+      <div class="card npl-match">
+        <div class="npl-top">
+          <span class="pill gold">UPCOMING</span>
+          <span class="npl-match-no">MATCH 03</span>
+        </div>
+        <div class="npl-date">08 <small>NOVEMBER 2026</small></div>
+        <div class="npl-vs">VS</div>
+        <div class="npl-team red">SF <span>SHAURYA'S FIGHTERS</span></div>
+        <div class="npl-team gold-team">YL <span>YASH'S LIONS</span></div>
+        <div class="npl-footer">NPL SERIES · FIXTURE 03</div>
+      </div>
+
+    </div>
+
+    <p class="npl-note">
+      Match timings, venues and individual formats will be announced later.
+    </p>
+  </div>
+</section>
+
+<style>
+#fixtures .npl-fixtures-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+#fixtures .npl-match {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  background:
+    radial-gradient(ellipse at 50% 45%, #203654 0%, transparent 72%),
+    linear-gradient(145deg, #101d32, #080f1b);
+  border: 1px solid #344765;
+  border-radius: 15px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.22);
+}
+
+#fixtures .npl-match::before {
+  content: "";
+  display: block;
+  height: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg,#ed414b,#e8bd62);
+}
+
+#fixtures .npl-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#fixtures .npl-match-no {
+  color: #e8bd62;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+#fixtures .npl-date {
+  text-align: center;
+  color: #fff;
+  font-size: 35px;
+  font-weight: 900;
+  margin: 25px 0 8px;
+}
+
+#fixtures .npl-date small {
+  display: block;
+  margin-top: 7px;
+  color: #e8bd62;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+#fixtures .npl-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #a9b7cb;
+  font-size: 11px;
+  font-weight: 900;
+  margin: 17px 0;
+}
+
+#fixtures .npl-vs::before,
+#fixtures .npl-vs::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #35465f;
+}
+
+#fixtures .npl-team {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 10px;
+  margin-top: 10px;
+  border: 1px solid #35445c;
+  border-radius: 10px;
+  background: rgba(255,255,255,.035);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+#fixtures .npl-team > span {
+  line-height: 1.5;
+}
+
+#fixtures .npl-team.red {
+  border-left: 3px solid #ed414b;
+}
+
+#fixtures .npl-team.gold-team {
+  border-left: 3px solid #e8bd62;
+}
+
+#fixtures .npl-footer {
+  margin-top: 17px;
+  padding-top: 13px;
+  border-top: 1px solid #34445b;
+  text-align: center;
+  color: #e8bd62;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+#fixtures .npl-note {
+  margin-top: 18px;
+  text-align: center;
+  color: #aab6c8;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  #fixtures .npl-fixtures-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  #fixtures .npl-fixtures-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
 
 <section id="records"><div class="wrap">
  <div class="section-head"><div><div class="eyebrow">Made on the field</div><h2>Records & Highlights</h2><p>Highlights based on supplied NCCI player information.</p></div></div>
