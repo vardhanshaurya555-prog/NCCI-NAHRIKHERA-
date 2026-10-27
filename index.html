@@ -184,10 +184,43 @@ tbody tr:hover{background:#1a2539}
 .record span{font-size:12px;color:var(--muted)}
 footer{padding:30px 20px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:12px}
 footer b{color:var(--gold)}
-@media(max-width:800px){
- nav{display:none;position:absolute;top:68px;left:0;right:0;background:#0b1120;padding:18px;flex-direction:column;border-bottom:1px solid var(--line)}
- nav.open{display:flex}.menu{display:block}.grid,.player-grid,.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+@media (max-width: 800px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .menu {
+    display: block;
+    margin-left: auto;
+  }
+
+  nav {
+    display: none;
+    position: static;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px 16px;
+    padding: 14px 0;
+    background: transparent;
+    border-bottom: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  .grid,
+  .player-grid,
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
+
 @media(max-width:520px){
  .wrap{padding:0 14px}.nav{padding:10px 14px}.hero{padding:44px 0 28px}
  .hero h1{letter-spacing:-1px}.hero-stats{gap:7px}.stat{padding:10px}.stat strong{font-size:20px}
