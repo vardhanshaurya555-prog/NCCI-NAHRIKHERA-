@@ -101,6 +101,76 @@ footer b{color:var(--gold)}
  .grid,.player-grid,.team-grid,.news-list,.record-grid{grid-template-columns:1fr}
  .section-head{align-items:start;flex-direction:column}
 }
+#fixtures .npl-teams-versus {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0;
+  text-align: center;
+}
+
+#fixtures .npl-side-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+#fixtures .npl-team-logo {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: 900;
+  box-shadow: 0 6px 22px #0005;
+}
+
+#fixtures .red-logo {
+  color: #fff;
+  background: linear-gradient(145deg, #ff4b55, #8e101d);
+  border: 1px solid #ff7780;
+}
+
+#fixtures .gold-logo {
+  color: #17120a;
+  background: linear-gradient(145deg, #ffe9a0, #c58b24);
+  border: 1px solid #fff0bd;
+}
+
+#fixtures .npl-side-team strong {
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: .5px;
+}
+
+#fixtures .npl-vs-center {
+  color: #f5c75e;
+  font-size: 25px;
+  font-weight: 1000;
+  font-style: italic;
+  text-shadow: 0 0 18px #f5c75e55;
+}
+
+@media (max-width: 380px) {
+  #fixtures .npl-team-logo {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+
+  #fixtures .npl-side-team strong {
+    font-size: 9px;
+  }
+
+  #fixtures .npl-vs-center {
+    font-size: 20px;
+  }
+}
+
 </style>
 </head>
 <body>
