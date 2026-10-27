@@ -173,16 +173,198 @@ footer b{color:var(--gold)}
  <p class="note">Tournament information on this website represents NCCI announcements. Unconfirmed details are labelled accordingly.</p>
 </div></section>
 
-<section id="news"><div class="wrap">
- <div class="section-head"><div><div class="eyebrow">Latest updates</div><h2>NCCI Newsroom</h2><p>Announcements and tournament developments.</p></div></div>
- <div class="news-list">
-  <article class="news-item"><div class="news-no">01</div><div><span class="pill red">TOURNAMENT</span><h3>Champions Trophy starts 6 November</h3><p>NCCI has announced 6 November 2026 as the planned start date for the Champions Trophy.</p></div></article>
-  <article class="news-item"><div class="news-no">02</div><div><span class="pill gold">PLAYER UPDATE</span><h3>Yuvraj Singh availability under discussion</h3><p>There is a possibility that Yuvraj Singh could miss the tournament. Any replacement will be announced when confirmed.</p></div></article>
-  <article class="news-item"><div class="news-no">03</div><div><span class="pill">VENUES</span><h3>Two proposed grounds</h3><p>Nahrikhera Official Cricket Ground and Nahrikhera Balaji Cricket Ground have been proposed. Final venue confirmation is pending.</p></div></article>
-  <article class="news-item"><div class="news-no">04</div><div><span class="pill">FIXTURES</span><h3>Fixtures expected after tournament begins</h3><p>NCCI has announced that fixtures are intended to be declared within two days of the Champions Trophy commencement.</p></div></article>
- </div>
- <p class="note">These are NCCI-provided announcements, not independently verified external cricket news. Update this section when new official information is available.</p>
-</div></section>
+
+<section id="news" class="section">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">NCCI NEWSROOM</p>
+      <h2>Latest News & Updates</h2>
+      <p>Official announcements from Nahrikhera Cricket Council of India.</p>
+    </div>
+  </div>
+
+  <div class="news-grid">
+
+    <!-- NEWS 1: CHAMPIONS TROPHY -->
+    <article class="news-card">
+      <div class="news-tag postponed">DATE POSTPONED</div>
+      <div class="news-content">
+        <p class="news-date">NCCI CHAMPIONS TROPHY 2026</p>
+        <h3>NCCI Champions Trophy Postponed</h3>
+        <p>
+          The NCCI Champions Trophy has been postponed.
+          The tournament is now tentatively expected to begin
+          on <strong>5 or 6 December 2026</strong>.
+          The final start date will be announced after confirmation
+          by the NCCI management.
+        </p>
+        <span class="news-status">New date awaiting confirmation</span>
+      </div>
+    </article>
+
+    <!-- NEWS 2: NPL -->
+    <article class="news-card">
+      <div class="news-tag proposed">PROPOSED TOURNAMENT</div>
+      <div class="news-content">
+        <p class="news-date">NAHRIKHERA PREMIER LEAGUE</p>
+        <h3>NPL Could Begin Between 3–6 November</h3>
+        <p>
+          The Nahrikhera Premier League (NPL) is highly likely
+          to begin between <strong>3 and 6 November 2026</strong>.
+          The proposed series will feature two teams competing
+          in <strong>Test and T20 formats</strong>.
+        </p>
+
+        <div class="npl-teams">
+          <div class="npl-team">
+            <span class="team-number">01</span>
+            <strong>SHAURYA'S FIGHTERS</strong>
+          </div>
+          <div class="npl-team">
+            <span class="team-number">02</span>
+            <strong>YASH'S LIONS</strong>
+          </div>
+        </div>
+
+        <span class="news-status">
+          Awaiting final confirmation and fixtures
+        </span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<style>
+#news {
+  padding: 36px 0;
+}
+
+#news .section-header {
+  margin-bottom: 24px;
+}
+
+#news .eyebrow {
+  color: #e5b85c;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+#news h2 {
+  font-size: clamp(25px, 4vw, 36px);
+  margin: 0 0 10px;
+}
+
+#news .section-header p:not(.eyebrow) {
+  color: #aab6ca;
+}
+
+#news .news-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+#news .news-card {
+  background: linear-gradient(145deg, #111f38, #091323);
+  border: 1px solid #283956;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .18);
+}
+
+#news .news-tag {
+  display: inline-block;
+  margin: 20px 20px 0;
+  padding: 7px 11px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+#news .postponed {
+  background: #54252b;
+  color: #ffb6b6;
+}
+
+#news .proposed {
+  background: #253d2e;
+  color: #9ff0b5;
+}
+
+#news .news-content {
+  padding: 16px 20px 22px;
+}
+
+#news .news-date {
+  color: #e5b85c;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+#news h3 {
+  color: #fff;
+  font-size: 21px;
+  line-height: 1.35;
+  margin: 10px 0;
+}
+
+#news .news-content > p:not(.news-date) {
+  color: #c1cadd;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+#news .news-status {
+  display: inline-block;
+  margin-top: 12px;
+  color: #e5b85c;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+#news .npl-teams {
+  display: grid;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+#news .npl-team {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid #2c3b55;
+  border-radius: 9px;
+  color: #fff;
+  font-size: 12px;
+}
+
+#news .team-number {
+  color: #e5b85c;
+  font-weight: 900;
+}
+
+@media (max-width: 650px) {
+  #news .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #news .news-content {
+    padding: 15px 16px 20px;
+  }
+
+  #news h3 {
+    font-size: 19px;
+  }
+}
+</style>
+
 
 <section id="rankings"><div class="wrap">
  <div class="section-head"><div><div class="eyebrow">Player performance</div><h2>Player Rankings</h2><p>Ranked by the supplied runs for the selected format.</p></div></div>
