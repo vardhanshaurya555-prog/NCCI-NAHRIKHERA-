@@ -16,12 +16,105 @@ button,input,select{font:inherit}
 button{cursor:pointer}
 .topline{height:4px;background:linear-gradient(90deg,#ed2945,#f5c76a,#ed2945)}
 header{position:sticky;top:0;z-index:10;background:#080d19ed;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{max-width:1200px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:1px}
-.crest{width:43px;height:43px;border:2px solid var(--gold);border-radius:12px;display:grid;place-items:center;color:var(--gold);font-weight:900;background:#191b29}
-.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.7px}
-nav{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;color:#dce4f2}
-nav a:hover{color:var(--gold)}
+
+/* NCCI HORIZONTAL NAVIGATION */
+.nav {
+  max-width: 1400px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.crest {
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-weight: 900;
+  background: #191b29;
+}
+
+.brand small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .7px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 17px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #dce4f2;
+}
+
+nav a {
+  display: inline-block;
+  padding: 9px 0;
+  transition: color .2s ease;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+/* MOBILE NAVIGATION */
+.menu {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .menu {
+    display: block;
+    margin-left: auto;
+    padding: 9px 13px;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    background: #191b29;
+    color: var(--gold);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px 18px;
+    padding: 12px 0;
+    border-top: 1px solid #ffffff20;
+  }
+
+  nav.open {
+    display: flex;
+  }
+}
+
 .menu{display:none;background:var(--panel);border:1px solid var(--line);color:white;border-radius:8px;padding:8px 12px}
 .wrap{max-width:1200px;margin:auto;padding:0 20px}
 .hero{padding:65px 0 38px;background:radial-gradient(ellipse at 80% 10%,#71203150,transparent 40%),linear-gradient(135deg,#0d1424,#080d19 65%)}
