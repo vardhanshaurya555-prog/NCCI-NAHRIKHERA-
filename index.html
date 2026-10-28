@@ -1,0 +1,1045 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="NCCI Cricket Council — Teams, fixtures, points table and playoffs.">
+<title>NCCI | Cricket Council</title>
+
+<style>
+/* ================================
+   1. GLOBAL DESIGN & NAVY VFX
+================================ */
+:root {
+  --navy: #071426;
+  --navy2: #0b1e36;
+  --card: #102944;
+  --blue: #64d5ff;
+  --blue2: #168fce;
+  --white: #eef8ff;
+  --muted: #93aec5;
+  --line: rgba(100,213,255,.17);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--white);
+  background:
+    radial-gradient(ellipse at 15% 0%, #10355a 0%, transparent 42%),
+    radial-gradient(ellipse at 100% 40%, #092a49 0%, transparent 35%),
+    var(--navy);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button { font: inherit; }
+
+.wrap {
+  width: min(1080px, 92%);
+  margin: auto;
+}
+
+section { scroll-margin-top: 82px; }
+
+.section {
+  padding: 34px 0;
+}
+
+.section-heading {
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: clamp(22px, 4vw, 30px);
+  margin: 8px 0;
+  letter-spacing: -.6px;
+}
+
+.subtext {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.accent {
+  color: var(--blue);
+}
+
+/* ================================
+   2. HEADER & NAVIGATION
+================================ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(5,17,32,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  min-height: 66px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 39px;
+  height: 39px;
+  border: 1px solid var(--blue);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 0 18px #168fce28;
+}
+
+.brand-name {
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.brand-small {
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-links a {
+  white-space: nowrap;
+  color: #b5cce0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.nav-links a:hover { color: var(--blue); }
+
+/* ================================
+   3. HERO / HOME
+================================ */
+.hero {
+  padding: 54px 0 32px;
+}
+
+.hero-panel {
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  padding: clamp(22px, 5vw, 42px);
+  background:
+    linear-gradient(115deg, #102b49e8, #08192ce8),
+    var(--navy2);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-panel::after {
+  content: "";
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  right: -100px;
+  top: -100px;
+  border: 1px solid #64d5ff30;
+  box-shadow: 0 0 0 25px #64d5ff08,
+              0 0 0 55px #64d5ff05;
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-block;
+  border: 1px solid #64d5ff45;
+  background: #64d5ff0b;
+  color: var(--blue);
+  padding: 7px 11px;
+  border-radius: 30px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  max-width: 650px;
+  font-size: clamp(34px, 7vw, 57px);
+  line-height: 1.03;
+  letter-spacing: -2px;
+  margin: 22px 0 14px;
+}
+
+.hero h1 span { color: var(--blue); }
+
+.hero p {
+  color: #adc5d9;
+  max-width: 490px;
+  line-height: 1.8;
+  font-size: 13px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 23px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 11px 16px;
+  font-size: 11px;
+  font-weight: 800;
+  border: 1px solid var(--line);
+  background: #0b2038;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #061426;
+  border-color: var(--blue);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.mini-stat {
+  background: #0b1e33;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 15px;
+}
+
+.mini-stat strong {
+  display: block;
+  color: var(--blue);
+  font-size: 22px;
+}
+
+.mini-stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+/* ================================
+   4. FOUR TEAM CARDS + LOGO SLOTS
+================================ */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+  padding: 16px;
+  background: linear-gradient(135deg, #112b47, #0b1d32);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  transition: border-color .2s, transform .2s;
+}
+
+.team-card:hover {
+  border-color: #64d5ff80;
+  transform: translateY(-2px);
+}
+
+.logo-slot {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  border: 1px dashed #64d5ff70;
+  border-radius: 50%;
+  background: #07182b;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.logo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
+  display: block;
+}
+
+.team-info { min-width: 0; }
+
+.team-info h3 {
+  margin: 0;
+  font-size: 19px;
+  letter-spacing: 1px;
+}
+
+.team-info p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.team-badge {
+  margin-left: auto;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* ================================
+   5. UPCOMING FIXTURES
+================================ */
+.fixture-list {
+  display: grid;
+  gap: 9px;
+}
+
+.fixture {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr) 94px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: linear-gradient(90deg, #102741, #0b1e33);
+  border-radius: 10px;
+}
+
+.fixture-date {
+  color: var(--blue);
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 800;
+}
+
+.fixture-date span {
+  display: block;
+  color: #7896af;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.fixture-match {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.fixture-team {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.vs {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.fixture-status {
+  text-align: right;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.fixture-status strong {
+  display: block;
+  color: var(--blue);
+  font-size: 9px;
+  margin-bottom: 4px;
+}
+
+/* ================================
+   6. FOUR-TEAM POINTS TABLE
+================================ */
+.table-shell {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #0a1b2e;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 390px;
+  text-align: center;
+}
+
+th {
+  background: #112b47;
+  color: #a9c7dd;
+  font-size: 9px;
+  letter-spacing: .6px;
+  padding: 13px 10px;
+}
+
+td {
+  padding: 14px 10px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: #dcecf8;
+}
+
+td:first-child {
+  text-align: left;
+  font-weight: 800;
+}
+
+.position {
+  display: inline-grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 7px;
+  background: #14334f;
+  color: var(--blue);
+  margin-right: 7px;
+  font-size: 10px;
+}
+
+.points {
+  color: var(--blue);
+  font-weight: 900;
+}
+
+.table-note {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 11px;
+  line-height: 1.7;
+}
+
+/* ================================
+   7. PLAYOFF BRACKET
+================================ */
+.playoff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.playoff-card {
+  background: linear-gradient(140deg, #102b47, #091a2e);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.playoff-card.final {
+  grid-column: 1 / -1;
+  border-color: #64d5ff65;
+  background: linear-gradient(120deg, #123753, #0a2038);
+}
+
+.playoff-label {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.playoff-card h3 {
+  margin: 8px 0 13px;
+  font-size: 14px;
+}
+
+.playoff-versus {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 9px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--line);
+  background: #07182a75;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.playoff-versus .vs {
+  color: var(--blue);
+}
+
+.playoff-note {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
+
+/* ================================
+   8. SQUADS — RESERVED FOR LATER
+================================ */
+.squad-placeholder {
+  border: 1px dashed #64d5ff45;
+  border-radius: 12px;
+  padding: 18px;
+  background: #0b1e32;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+/* ================================
+   9. FOOTER & MOBILE
+================================ */
+footer {
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+  padding: 24px 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 580px) {
+  .nav {
+    align-items: flex-start;
+    padding: 12px 0;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    width: 100%;
+    gap: 19px;
+    padding: 5px 0;
+  }
+
+  .hero { padding-top: 25px; }
+
+  .hero-stats { gap: 6px; }
+
+  .mini-stat { padding: 11px 8px; }
+  .mini-stat strong { font-size: 19px; }
+  .mini-stat span { font-size: 9px; }
+
+  .team-grid { gap: 8px; }
+
+  .team-card {
+    padding: 11px 9px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .logo-slot {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .team-info h3 { font-size: 16px; }
+
+  .team-badge {
+    margin-left: 50px;
+    margin-top: -7px;
+  }
+
+  .fixture {
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 7px;
+    padding: 11px 9px;
+  }
+
+  .fixture-status {
+    grid-column: 2;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    padding-top: 7px;
+  }
+
+  .fixture-match { gap: 5px; }
+  .fixture-team { font-size: 11px; }
+  .fixture-date { font-size: 9px; }
+
+  .playoff-grid { gap: 8px; }
+  .playoff-card { padding: 11px 9px; }
+  .playoff-versus { gap: 5px; font-size: 10px; padding: 9px 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================================
+     SECTION A: HEADER
+================================ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="NCCI Home">
+      <div class="brand-mark">NCCI</div>
+      <div>
+        <div class="brand-name">NCCI</div>
+        <div class="brand-small">NAHRIKHERA CRICKET COUNCIL OF INDIA</div>
+      </div>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#home">HOME</a>
+      <a href="#teams">TEAMS</a>
+      <a href="#fixtures">FIXTURES</a>
+      <a href="#points">POINTS TABLE</a>
+      <a href="#playoffs">PLAYOFFS</a>
+      <a href="#squads">SQUADS</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ================================
+     SECTION B: HOME / HERO
+================================ -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-panel">
+      <span class="hero-tag">NCCI • CRICKET SEASON 2026</span>
+
+      <h1>THE GAME.<br>THE GLORY.<br><span>THE CRICKET.</span></h1>
+
+      <p>
+        Follow the tournament, upcoming fixtures, team standings
+        and the road to the final — all in one place.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#fixtures">VIEW FIXTURES ↗</a>
+        <a class="btn" href="#points">POINTS TABLE</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="mini-stat">
+          <strong>04</strong>
+          <span>TEAMS</span>
+        </div>
+        <div class="mini-stat">
+          <strong>04</strong>
+          <span>LEAGUE FIXTURES</span>
+        </div>
+        <div class="mini-stat">
+          <strong>04</strong>
+          <span>PLAYOFF STAGES</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION C: FOUR TEAMS
+     LOGO: Replace each placeholder with
+     <img src="images/npp.png" alt="NPP logo">
+================================ -->
+<section class="section" id="teams">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">THE COMPETITORS</div>
+      <h2>Official <span class="accent">Teams</span></h2>
+      <div class="subtext">Four teams. One tournament. One champion.</div>
+    </div>
+
+    <div class="team-grid">
+
+      <article class="team-card">
+        <div class="logo-slot" aria-label="NPP logo placeholder">
+          <span>LOGO</span>
+        </div>
+        <div class="team-info">
+          <h3>NPP</h3>
+          <p>Official team profile</p>
+        </div>
+        <span class="team-badge">TEAM 01</span>
+      </article>
+
+      <article class="team-card">
+        <div class="logo-slot" aria-label="NSC logo placeholder">
+          <span>LOGO</span>
+        </div>
+        <div class="team-info">
+          <h3>NSC</h3>
+          <p>Official team profile</p>
+        </div>
+        <span class="team-badge">TEAM 02</span>
+      </article>
+
+      <article class="team-card">
+        <div class="logo-slot" aria-label="NRK logo placeholder">
+          <span>LOGO</span>
+        </div>
+        <div class="team-info">
+          <h3>NRK</h3>
+          <p>Official team profile</p>
+        </div>
+        <span class="team-badge">TEAM 03</span>
+      </article>
+
+      <article class="team-card">
+        <div class="logo-slot" aria-label="NKR logo placeholder">
+          <span>LOGO</span>
+        </div>
+        <div class="team-info">
+          <h3>NKR</h3>
+          <p>Official team profile</p>
+        </div>
+        <span class="team-badge">TEAM 04</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION D: LEAGUE FIXTURES
+     Edit dates or teams inside each card.
+================================ -->
+<section class="section" id="fixtures">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">THE ROAD AHEAD</div>
+      <h2>Upcoming <span class="accent">Fixtures</span></h2>
+      <div class="subtext">League-stage match schedule • November 2026</div>
+    </div>
+
+    <div class="fixture-list">
+
+      <article class="fixture">
+        <div class="fixture-date">05–06 NOV<span>MATCH 01</span></div>
+        <div class="fixture-match">
+          <div class="fixture-team">NPP</div>
+          <div class="vs">VS</div>
+          <div class="fixture-team">NSC</div>
+        </div>
+        <div class="fixture-status">
+          <strong>UPCOMING</strong>
+          League Stage
+        </div>
+      </article>
+
+      <article class="fixture">
+        <div class="fixture-date">05–06 NOV<span>MATCH 02</span></div>
+        <div class="fixture-match">
+          <div class="fixture-team">NRK</div>
+          <div class="vs">VS</div>
+          <div class="fixture-team">NKR</div>
+        </div>
+        <div class="fixture-status">
+          <strong>UPCOMING</strong>
+          League Stage
+        </div>
+      </article>
+
+      <article class="fixture">
+        <div class="fixture-date">06–07 NOV<span>MATCH 03</span></div>
+        <div class="fixture-match">
+          <div class="fixture-team">NRK</div>
+          <div class="vs">VS</div>
+          <div class="fixture-team">NSC</div>
+        </div>
+        <div class="fixture-status">
+          <strong>UPCOMING</strong>
+          League Stage
+        </div>
+      </article>
+
+      <article class="fixture">
+        <div class="fixture-date">07–08 NOV<span>MATCH 04</span></div>
+        <div class="fixture-match">
+          <div class="fixture-team">NPP</div>
+          <div class="vs">VS</div>
+          <div class="fixture-team">NKR</div>
+        </div>
+        <div class="fixture-status">
+          <strong>UPCOMING</strong>
+          League Stage
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION E: FOUR-TEAM POINTS TABLE
+     Initial values are zero because results
+     have not been entered yet.
+================================ -->
+<section class="section" id="points">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">LEAGUE STANDINGS</div>
+      <h2>Points <span class="accent">Table</span></h2>
+      <div class="subtext">Only NPP, NSC, NRK and NKR are included.</div>
+    </div>
+
+    <div class="table-shell">
+      <table>
+        <thead>
+          <tr>
+            <th>POS / TEAM</th>
+            <th>PLAYED</th>
+            <th>WON</th>
+            <th>LOST</th>
+            <th>PTS</th>
+            <th>NRR</th>
+          </tr>
+        </thead>
+        <tbody id="points-body">
+          <!-- Filled by the JavaScript below -->
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-note">
+      * Initial standings only. Enter actual match results to update the
+      table. Points and NRR are not invented. Teams tied on points are
+      shown in the default order until the required tie-break data is available.
+    </p>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION F: PLAYOFFS
+     Q1: 1st vs 2nd
+     Eliminator: 3rd vs 4th
+     Q2: Loser Q1 vs Winner Eliminator
+     Final: Winner Q1 vs Winner Q2
+================================ -->
+<section class="section" id="playoffs">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">THE ROAD TO THE TITLE</div>
+      <h2>Playoff <span class="accent">Fixtures</span></h2>
+      <div class="subtext">
+        Final league positions will determine the playoff teams.
+      </div>
+    </div>
+
+    <div class="playoff-grid">
+
+      <article class="playoff-card">
+        <div class="playoff-label">Qualifier 1</div>
+        <h3>1st vs 2nd</h3>
+        <div class="playoff-versus">
+          <span>1st Place</span>
+          <span class="vs">VS</span>
+          <span>2nd Place</span>
+        </div>
+        <p class="playoff-note">
+          Winner advances directly to the final.
+          Loser gets another chance in Qualifier 2.
+        </p>
+      </article>
+
+      <article class="playoff-card">
+        <div class="playoff-label">Eliminator</div>
+        <h3>3rd vs 4th</h3>
+        <div class="playoff-versus">
+          <span>3rd Place</span>
+          <span class="vs">VS</span>
+          <span>4th Place</span>
+        </div>
+        <p class="playoff-note">
+          Winner advances to Qualifier 2.
+          Loser is eliminated.
+        </p>
+      </article>
+
+      <article class="playoff-card">
+        <div class="playoff-label">Qualifier 2</div>
+        <h3>Second Chance</h3>
+        <div class="playoff-versus">
+          <span>Loser Q1</span>
+          <span class="vs">VS</span>
+          <span>Winner E</span>
+        </div>
+        <p class="playoff-note">
+          Winner qualifies for the final.
+          Loser is eliminated.
+        </p>
+      </article>
+
+      <article class="playoff-card final">
+        <div class="playoff-label">The Grand Finale</div>
+        <h3>Championship Final</h3>
+        <div class="playoff-versus">
+          <span>Winner Q1</span>
+          <span class="vs">VS</span>
+          <span>Winner Q2</span>
+        </div>
+        <p class="playoff-note">
+          The winner of this match becomes the tournament champion.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION G: SQUADS — ADD LATER
+================================ -->
+<section class="section" id="squads">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">TEAM ROSTERS</div>
+      <h2>Squads <span class="accent">Coming Later</span></h2>
+    </div>
+
+    <div class="squad-placeholder">
+      Player names, roles, photographs and complete squads will be
+      added here when the official squad details are provided.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================================
+     SECTION H: FOOTER
+================================ -->
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <strong style="color:#64d5ff;">NCCI</strong><br>
+      Nahrikhera Cricket Council of India
+    </div>
+    <div>Official tournament website • 2026</div>
+  </div>
+</footer>
+
+<!-- ================================
+     SECTION I: POINTS TABLE DATA
+     Update these numbers only after matches.
+================================ -->
+<script>
+const teams = [
+  { name: "NPP", played: 0, won: 0, lost: 0, points: 0, nrr: null },
+  { name: "NSC", played: 0, won: 0, lost: 0, points: 0, nrr: null },
+  { name: "NRK", played: 0, won: 0, lost: 0, points: 0, nrr: null },
+  { name: "NKR", played: 0, won: 0, lost: 0, points: 0, nrr: null }
+];
+
+function renderPointsTable() {
+  const tbody = document.getElementById("points-body");
+  tbody.innerHTML = "";
+
+  // Sort by points. Equal-point teams retain their default order
+  // until real NRR and other tie-break data are available.
+  const sortedTeams = teams
+    .map((team, index) => ({ ...team, originalIndex: index }))
+    .sort((a, b) => {
+      if (b.points !== a.points) return b.points - a.points;
+      return a.originalIndex - b.originalIndex;
+    });
+
+  sortedTeams.forEach((team, index) => {
+    const row = document.createElement("tr");
+
+    const values = [
+      `${index + 1}|${team.name}`,
+      team.played,
+      team.won,
+      team.lost,
+      team.points,
+      team.nrr === null ? "—" : Number(team.nrr).toFixed(3)
+    ];
+
+    values.forEach((value, cellIndex) => {
+      const cell = document.createElement("td");
+
+      if (cellIndex === 0) {
+        const split = value.split("|");
+        const position = document.createElement("span");
+        position.className = "position";
+        position.textContent = split[0];
+
+        cell.appendChild(position);
+        cell.appendChild(document.createTextNode(split[1]));
+      } else {
+        cell.textContent = value;
+      }
+
+      if (cellIndex === 4) cell.classList.add("points");
+      row.appendChild(cell);
+    });
+
+    tbody.appendChild(row);
+  });
+}
+
+renderPointsTable();
+</script>
+
+</body>
+</html>
