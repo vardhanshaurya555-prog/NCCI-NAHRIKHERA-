@@ -1058,33 +1058,66 @@ footer {
 </div>
 
 
-<article class="result-card">
-  <div class="result-teams">
-    <div class="result-team">
-      <div class="team-name">NPP</div>
-      <div class="team-score">-</div>
-      <div class="team-overs">15.0 Overs</div>
+
+<div class="npl-featured">
+  <div class="npl-score-card">
+
+    <div class="npl-score-top">
+      <small>NCC MATCH SCORECARD</small>
+      <strong style="color:#65c9ff">UPCOMING</strong>
     </div>
 
-    <div class="result-vs">VS</div>
-
-    <div class="result-team">
-      <div class="team-name">NSC</div>
-      <div class="team-score">-</div>
-      <div class="team-overs">15.0 Overs</div>
+    <div style="font-size:11px;color:#9cabc4;margin-bottom:10px">
+      03–05 NOV 2026 · LEAGUE STAGE · VENUE: TBD
     </div>
+
+    <div class="npl-score-row">
+      <div class="npl-side">
+        <div class="npl-team">HOME</div>
+        <div style="font-size:12px;color:#9cabc4">NPP</div>
+        <div class="npl-runs">-</div>
+        <small>15.0 Overs</small>
+      </div>
+
+      <div class="npl-vs">VS</div>
+
+      <div class="npl-side">
+        <div class="npl-team">AWAY</div>
+        <div style="font-size:12px;color:#9cabc4">NSC</div>
+        <div class="npl-runs">-</div>
+        <small>15.0 Overs</small>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;font-size:12px;font-weight:800;color:#65c9ff">
+      MATCH NOT STARTED
+    </div>
+
+    <button class="npl-score-btn"
+      onclick="toggleNPLScorecard(this)"
+      aria-expanded="false">
+      SCORECARD +
+    </button>
+
+    <div class="npl-score-details">
+      <div class="npl-score-inner">
+        <div class="npl-score-info">
+          <strong>MATCH INFORMATION</strong>
+          <div>Date: 03–05 November 2026</div>
+          <div>Match: NPP vs NSC</div>
+          <div>Format: 15 overs per side</div>
+          <div>Venue: To be announced</div>
+          <div>Result: Match not started</div>
+          <p style="color:#9cabc4">
+            Full scorecard will be available after the match.
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
 
-  <div class="result-status">UPCOMING</div>
-
-  <button class="scorecard-btn" onclick="toggleNPLScorecard(this)">
-    SCORECARD +
-  </button>
-
-  <div class="scorecard-content" style="display:none;">
-    <p>Match has not started yet.</p>
-  </div>
-</article>
 
 
       <article class="fixture">
