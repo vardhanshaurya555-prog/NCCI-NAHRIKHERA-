@@ -1759,5 +1759,325 @@ renderPointsTable();
 </section>
 <!-- ========== NCCI TOURNAMENTS SECTION END ========== -->
 
+<!-- NPL 2026 ORANGE & PURPLE CAP SECTION -->
+<section class="npl-caps">
+  <div class="npl-caps-heading">
+    <span class="npl-live-dot"></span>
+    <h2>NPL 2026 AWARDS</h2>
+    <p>LEADERBOARD • SEASON 2026</p>
+  </div>
+
+  <div class="npl-caps-grid">
+
+    <!-- ORANGE CAP: HIGHEST RUN SCORER -->
+    <div class="npl-cap-card orange-card">
+      <div class="npl-cap-header">
+        <div class="npl-cap-icon">🧢</div>
+        <div>
+          <h3>ORANGE CAP</h3>
+          <p>HIGHEST RUN SCORER</p>
+        </div>
+      </div>
+
+      <div class="npl-cap-rule"></div>
+
+      <div class="npl-player-list">
+        <div class="npl-player first">
+          <span class="npl-rank">01</span>
+          <span class="npl-cap-badge">🧢</span>
+          <span class="npl-player-name">-</span>
+          <span class="npl-crown">★</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">02</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">03</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">04</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">05</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+      </div>
+
+      <div class="npl-cap-footer">MOST RUNS • NPL 2026</div>
+    </div>
+
+    <!-- PURPLE CAP: HIGHEST WICKET TAKER -->
+    <div class="npl-cap-card purple-card">
+      <div class="npl-cap-header">
+        <div class="npl-cap-icon">🧢</div>
+        <div>
+          <h3>PURPLE CAP</h3>
+          <p>HIGHEST WICKET TAKER</p>
+        </div>
+      </div>
+
+      <div class="npl-cap-rule"></div>
+
+      <div class="npl-player-list">
+        <div class="npl-player first">
+          <span class="npl-rank">01</span>
+          <span class="npl-cap-badge">🧢</span>
+          <span class="npl-player-name">-</span>
+          <span class="npl-crown">★</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">02</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">03</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">04</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">05</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+      </div>
+
+      <div class="npl-cap-footer">MOST WICKETS • NPL 2026</div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.npl-caps {
+  --red: #ff2948;
+  --blue: #1677ff;
+  --dark: #080d19;
+  --panel: #101a2c;
+  --orange: #ff9d22;
+  --purple: #b58aff;
+
+  padding: 30px 16px;
+  margin: 24px auto;
+  max-width: 1100px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(ellipse at 0% 0%,
+      #40111f 0%, transparent 42%),
+    radial-gradient(ellipse at 100% 100%,
+      #102d61 0%, transparent 45%),
+    var(--dark);
+  border: 1px solid #26334c;
+  border-radius: 22px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.npl-caps * {
+  box-sizing: border-box;
+}
+
+.npl-caps-heading {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.npl-caps-heading h2 {
+  margin: 10px 0 7px;
+  font-size: clamp(23px, 4vw, 34px);
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #ff4059, #fff, #398cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.npl-caps-heading p {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #a8b8d4;
+}
+
+.npl-live-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #ff3855;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #ff3855;
+}
+
+.npl-caps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.npl-cap-card {
+  padding: 20px;
+  min-width: 0;
+  border-radius: 17px;
+  background: linear-gradient(145deg, #121d31, #0b1220);
+  position: relative;
+  overflow: hidden;
+}
+
+.orange-card {
+  border: 1px solid #ff9d2255;
+  box-shadow: inset 0 3px 0 #ff9d22;
+}
+
+.purple-card {
+  border: 1px solid #a56cff55;
+  box-shadow: inset 0 3px 0 #a56cff;
+}
+
+.npl-cap-header {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 64px;
+}
+
+.npl-cap-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 14px;
+  font-size: 30px;
+  background: #ff9d2218;
+  border: 1px solid #ff9d2255;
+}
+
+.purple-card .npl-cap-icon {
+  background: #a56cff18;
+  border-color: #a56cff55;
+}
+
+.npl-cap-header h3 {
+  margin: 0 0 7px;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.orange-card h3 {
+  color: #ffb13d;
+}
+
+.purple-card h3 {
+  color: #c5a0ff;
+}
+
+.npl-cap-header p {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  color: #aab7ce;
+}
+
+.npl-cap-rule {
+  height: 2px;
+  margin: 18px 0 12px;
+  background: linear-gradient(90deg, #ff4059, #286fff, transparent);
+}
+
+.npl-player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.npl-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 9px 11px;
+  border-radius: 10px;
+  background: #ffffff06;
+  border: 1px solid #ffffff0c;
+}
+
+.npl-player.first {
+  background: linear-gradient(100deg, #ff30451c, #286fff12);
+  border-color: #ff6c6c66;
+}
+
+.npl-rank {
+  width: 23px;
+  flex-shrink: 0;
+  color: #8ea3c3;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.npl-player.first .npl-rank {
+  color: #fff;
+}
+
+.npl-cap-badge {
+  width: 23px;
+  flex-shrink: 0;
+  font-size: 19px;
+  text-align: center;
+}
+
+.npl-player-name {
+  flex: 1;
+  min-width: 0;
+  color: #e8eefb;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.npl-crown {
+  color: #ffbd51;
+  font-size: 17px;
+}
+
+.npl-cap-footer {
+  margin-top: 17px;
+  padding-top: 13px;
+  border-top: 1px solid #ffffff12;
+  text-align: center;
+  color: #91a5c7;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+  .npl-caps {
+    padding: 23px 12px;
+  }
+
+  .npl-caps-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .npl-cap-card {
+    padding: 17px;
+  }
+}
+</style>
+
 </body>
 </html>
