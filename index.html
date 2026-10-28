@@ -2469,5 +2469,16 @@ renderPointsTable();
   </div>
 </section>
 
+function toggleNPLScorecard(button) {
+  const details = button.nextElementSibling;
+  const isOpen = details.classList.toggle("open");
+
+  button.textContent = isOpen
+    ? "SCORECARD −"
+    : "SCORECARD +";
+
+  button.setAttribute("aria-expanded", isOpen);
+}
+
 </body>
 </html>
