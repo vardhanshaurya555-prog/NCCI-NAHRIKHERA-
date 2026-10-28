@@ -627,6 +627,127 @@ footer {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }
+   
+/* NPL featured scorecard */
+.npl-featured {
+  border-top: 1px solid #35415a;
+  margin: 12px 0 18px;
+  padding-top: 12px;
+}
+
+.npl-score-card {
+  background: #101a2b;
+  border: 1px solid #293a55;
+  border-radius: 10px;
+  padding: 12px;
+  color: #f4f7ff;
+}
+
+.npl-score-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.npl-score-top small {
+  color: #9cabc4;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.npl-score-top strong {
+  color: #65e6a4;
+  font-size: 11px;
+}
+
+.npl-score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.npl-side {
+  flex: 1;
+  min-width: 0;
+}
+
+.npl-side:last-child {
+  text-align: right;
+}
+
+.npl-team {
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.npl-runs {
+  font-size: 17px;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.npl-vs {
+  color: #8999b4;
+  font-size: 11px;
+}
+
+.npl-score-btn {
+  display: block;
+  margin: 12px 0 0 auto;
+  padding: 6px 10px;
+  background: #1d2c43;
+  color: #dce8ff;
+  border: 1px solid #405574;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.npl-score-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows .3s ease,
+              opacity .3s ease;
+}
+
+.npl-score-details.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.npl-score-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.npl-score-info {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #293a55;
+  font-size: 12px;
+  color: #bdc9dd;
+  line-height: 1.9;
+}
+
+.npl-score-info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.npl-score-info th,
+.npl-score-info td {
+  padding: 6px 3px;
+  text-align: left;
+  border-bottom: 1px solid #293a55;
+}
+
 </style>
 </head>
 
