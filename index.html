@@ -1291,18 +1291,171 @@ footer {
         </p>
       </article>
 
-      <article class="playoff-card final">
-        <div class="playoff-label">The Grand Finale</div>
-        <h3>Championship Final</h3>
-        <div class="playoff-versus">
-          <span>Winner Q1</span>
-          <span class="vs">VS</span>
-          <span>Winner Q2</span>
-        </div>
-        <p class="playoff-note">
-          The winner of this match becomes the tournament champion.
-        </p>
-      </article>
+      
+<style>
+/* NCCI — HOLLYWOOD GRAND FINAL */
+.ncci-grand-final-cinema {
+  --gold: #f5cf68;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 24px 0;
+  padding: 38px 16px;
+  text-align: center;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at 50% 110%, #49330b 0%, #171108 32%, #030303 75%);
+  border: 1px solid #987329;
+  border-radius: 14px;
+  box-shadow: 0 0 24px #c69b3022,
+              inset 0 0 35px #d7a52a0b;
+  animation: ncciCinemaReveal 1.4s ease-out both;
+}
+
+.ncci-grand-final-cinema::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    #f9e7a018 42%,
+    #fff4c955 50%,
+    #d7a62b18 57%,
+    transparent 74%
+  );
+  background-size: 250% 100%;
+  animation: ncciGoldSweep 4.5s ease-in-out infinite;
+}
+
+.ncci-grand-final-cinema::after {
+  content: "✦       ·      ✧       ·       ✦";
+  position: absolute;
+  inset: 12px 0 auto;
+  color: #d6ad4c;
+  font-size: 13px;
+  letter-spacing: 9px;
+  opacity: .75;
+  pointer-events: none;
+}
+
+.ncci-cinema-eyebrow {
+  margin: 0 0 15px;
+  color: #d9b75d;
+  font: 700 10px/1.5 Arial, sans-serif;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.ncci-cinema-title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(37px, 9vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(
+    180deg,
+    #fff8d9 0%,
+    #f9df86 22%,
+    #c48b20 48%,
+    #ffe9a1 64%,
+    #9b6812 83%,
+    #f5d779 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 3px 0 #5b3a09);
+  animation: ncciGoldPulse 3s ease-in-out infinite;
+}
+
+.ncci-cinema-rule {
+  width: min(230px, 75%);
+  height: 1px;
+  margin: 20px auto 15px;
+  background: linear-gradient(
+    90deg, transparent, #f8d878, #fff5c8,
+    #c28c21, transparent
+  );
+  box-shadow: 0 0 12px #f3ca57;
+}
+
+.ncci-cinema-subtitle {
+  margin: 0;
+  color: #e8d9b1;
+  font: 600 10px/1.8 Arial, sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.ncci-cinema-footer {
+  margin: 19px 0 0;
+  color: #b99a51;
+  font: 700 9px/1.6 Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+@keyframes ncciCinemaReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(.98);
+    filter: brightness(.4);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes ncciGoldSweep {
+  0%, 15% { background-position: 130% 0; }
+  65%, 100% { background-position: -130% 0; }
+}
+
+@keyframes ncciGoldPulse {
+  0%, 100% {
+    filter: drop-shadow(0 3px 0 #5b3a09);
+  }
+  50% {
+    filter: drop-shadow(0 3px 0 #5b3a09)
+            drop-shadow(0 0 12px #e9bb4a66);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ncci-grand-final-cinema,
+  .ncci-grand-final-cinema::before,
+  .ncci-cinema-title {
+    animation: none;
+  }
+}
+</style>
+
+<section class="ncci-grand-final-cinema">
+  <p class="ncci-cinema-eyebrow">
+    NCCI Championship
+  </p>
+
+  <h2 class="ncci-cinema-title">
+    Grand Final
+  </h2>
+
+  <div class="ncci-cinema-rule"></div>
+
+  <p class="ncci-cinema-subtitle">
+    The Ultimate Showdown
+  </p>
+
+  <p class="ncci-cinema-footer">
+    ONE FINAL &bull; ONE CHAMPION
+  </p>
+</section>
+
 
     </div>
   </div>
