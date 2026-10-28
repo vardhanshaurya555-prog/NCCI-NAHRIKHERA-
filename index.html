@@ -1259,5 +1259,505 @@ renderPointsTable();
   </script>
 </section>
 
+<!-- ========== NCCI NEWS SECTION START ========== -->
+<section id="ncci-news">
+  <style>
+    #ncci-news {
+      --cyan: #43eaff;
+      --gold: #ffd166;
+      color: #f4f7ff;
+      font-family: Arial, sans-serif;
+      margin: 32px 0;
+    }
+    #ncci-news * { box-sizing: border-box; }
+    #ncci-news .news-head {
+      position: relative;
+      overflow: hidden;
+      padding: 24px 18px;
+      border: 1px solid #28536d;
+      border-radius: 18px;
+      background: linear-gradient(125deg,#101b35,#102e43,#201637);
+      box-shadow: 0 0 24px #20d9ff18;
+    }
+    #ncci-news .news-head:after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      right: -55px;
+      top: -65px;
+      border-radius: 50%;
+      border: 20px solid #43eaff13;
+      pointer-events: none;
+    }
+    #ncci-news .news-kicker {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+    #ncci-news h2 {
+      font-size: clamp(25px,5vw,36px);
+      margin: 10px 0;
+      color: #fff;
+    }
+    #ncci-news .news-sub {
+      color: #b8c9e2;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    #ncci-news .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    #ncci-news .news-card {
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      border: 1px solid #2b405d;
+      border-radius: 15px;
+      background: linear-gradient(145deg,#111e33,#0b1322);
+      transition: transform .25s,border-color .25s,box-shadow .25s;
+    }
+    #ncci-news .news-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px #43eaff19;
+    }
+    #ncci-news .news-tag {
+      display: inline-block;
+      padding: 6px 9px;
+      border-radius: 30px;
+      background: #43eaff15;
+      border: 1px solid #43eaff55;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    #ncci-news .news-card h3 {
+      color: var(--gold);
+      line-height: 1.4;
+      margin: 14px 0 9px;
+      font-size: 19px;
+    }
+    #ncci-news .news-card p {
+      color: #c1cce0;
+      line-height: 1.65;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+    #ncci-news .news-date {
+      color: #8fa8c7;
+      font-size: 12px;
+      margin-top: 14px;
+      display: block;
+    }
+    #ncci-news .news-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #ffdb8a;
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+    #ncci-news .news-dot {
+      width: 8px;
+      height: 8px;
+      background: #ffbf47;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ffbf47;
+      animation: ncciNewsPulse 1.5s infinite;
+    }
+    #ncci-news .news-footer {
+      text-align: center;
+      color: #8197b5;
+      font-size: 12px;
+      margin-top: 16px;
+    }
+    @keyframes ncciNewsPulse {
+      50% { opacity: .35; transform: scale(.75); }
+    }
+    @media(max-width:600px) {
+      #ncci-news .news-grid { grid-template-columns: 1fr; }
+      #ncci-news .news-card { padding: 16px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      #ncci-news *, #ncci-news *:before, #ncci-news *:after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+
+  <div class="news-head">
+    <div class="news-kicker">NCCI • OFFICIAL UPDATES</div>
+    <h2>📰 NCCI Newsroom</h2>
+    <p class="news-sub">
+      Latest tournament announcements, schedules and updates
+      from Nahrikhera Cricket Council of India.
+    </p>
+    <div class="news-live"><span class="news-dot"></span> TOURNAMENT UPDATES</div>
+  </div>
+
+  <div class="news-grid">
+    <article class="news-card">
+      <span class="news-tag">UPCOMING • NOVEMBER</span>
+      <h3>🏏 NPL 2026 Is Coming!</h3>
+      <p>
+        The NPL is scheduled for <strong>3–6 November 2026</strong>.
+        Fixtures and schedule have been provided. Squads will be
+        announced when the matches take place, as specified by NCCI.
+      </p>
+      <span class="news-date">Tournament window: 3–6 Nov 2026</span>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag">VENUE UPDATE</span>
+      <h3>📍 NPL Venues Not Final</h3>
+      <p>
+        The venues are not fixed yet. The two possible venues are
+        <strong>NCG</strong> and <strong>NBG</strong>.
+        Final venue confirmation is awaited.
+      </p>
+      <span class="news-date">Status: Awaiting confirmation</span>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag">DECEMBER • CHAMPIONSHIP</span>
+      <h3>🏆 NCCI Official Champions Trophy</h3>
+      <p>
+        The NCCI Champions Trophy is scheduled to start on
+        <strong>6 December 2026</strong>. Teams and fixtures
+        are yet to be announced.
+      </p>
+      <span class="news-date">Start date: 6 Dec 2026</span>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag">SCHEDULE STATUS</span>
+      <h3>📢 Follow Official Updates</h3>
+      <p>
+        Keep checking this section for tournament announcements.
+        Any unconfirmed venue, team or fixture details will remain
+        marked as pending until officially declared.
+      </p>
+      <span class="news-date">NCCI • Cricket updates</span>
+    </article>
+  </div>
+
+  <div class="news-footer">
+    NCCI NEWSROOM • Dates and details displayed as supplied
+  </div>
+</section>
+<!-- ========== NCCI NEWS SECTION END ========== -->
+
+<!-- ========== NCCI TOURNAMENTS SECTION START ========== -->
+<section id="ncci-tournaments">
+  <style>
+    #ncci-tournaments {
+      --gold: #ffd166;
+      --blue: #43d9ff;
+      color: #f5f7ff;
+      font-family: Arial, sans-serif;
+      margin: 34px 0;
+    }
+    #ncci-tournaments * { box-sizing: border-box; }
+    #ncci-tournaments .tour-hero {
+      padding: 25px 18px;
+      border: 1px solid #5b4a29;
+      border-radius: 19px;
+      background:
+        radial-gradient(ellipse at top right,#51401f77,transparent 55%),
+        linear-gradient(135deg,#151c30,#101522 65%,#262016);
+      box-shadow: 0 0 26px #ffd16612;
+    }
+    #ncci-tournaments .tour-eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: 800;
+    }
+    #ncci-tournaments h2 {
+      color: #fff;
+      font-size: clamp(25px,5vw,36px);
+      margin: 10px 0;
+    }
+    #ncci-tournaments .tour-intro {
+      color: #c1cce0;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    #ncci-tournaments .tour-section-title {
+      color: var(--gold);
+      font-size: 22px;
+      margin: 27px 0 14px;
+    }
+    #ncci-tournaments .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 14px;
+    }
+    #ncci-tournaments .tour-card {
+      position: relative;
+      overflow: hidden;
+      padding: 17px;
+      border: 1px solid #35415a;
+      border-radius: 16px;
+      background: linear-gradient(145deg,#18233a,#0d1422);
+      transition: transform .25s,border-color .25s,box-shadow .25s;
+    }
+    #ncci-tournaments .tour-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 0 22px #ffd16616;
+    }
+    #ncci-tournaments .tour-number {
+      color: var(--blue);
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+    #ncci-tournaments .tour-card h3 {
+      color: #fff;
+      font-size: 19px;
+      margin: 10px 0;
+      line-height: 1.4;
+    }
+    #ncci-tournaments .tour-year {
+      color: #a9bad5;
+      font-size: 13px;
+    }
+    #ncci-tournaments .tour-winner {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 11px;
+      background: #ffd16610;
+      border: 1px solid #ffd16638;
+    }
+    #ncci-tournaments .tour-winner small {
+      display: block;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+    #ncci-tournaments .tour-winner strong {
+      color: #fff0bf;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    #ncci-tournaments .tour-margin {
+      color: #b8c8df;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 11px 0 0;
+    }
+    #ncci-tournaments .tour-upcoming {
+      border-color: #24718a;
+      background:
+        radial-gradient(ellipse at top right,#12617b55,transparent 60%),
+        linear-gradient(145deg,#102b3d,#0d1422);
+    }
+    #ncci-tournaments .tour-upcoming:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 24px #43d9ff18;
+    }
+    #ncci-tournaments .tour-badge {
+      display: inline-block;
+      color: var(--blue);
+      background: #43d9ff12;
+      border: 1px solid #43d9ff55;
+      padding: 6px 9px;
+      border-radius: 30px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    #ncci-tournaments .tour-date {
+      color: var(--gold);
+      font-size: 15px;
+      font-weight: 800;
+      margin: 12px 0;
+    }
+    #ncci-tournaments .tour-status {
+      color: #c2d2e8;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    #ncci-tournaments .tour-timer {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 13px;
+      margin-top: 13px;
+      line-height: 1.5;
+    }
+    #ncci-tournaments .tour-footnote {
+      color: #8197b5;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 18px;
+      line-height: 1.6;
+    }
+    @media(max-width:600px) {
+      #ncci-tournaments .tour-grid { grid-template-columns: 1fr; }
+      #ncci-tournaments .tour-card { padding: 16px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      #ncci-tournaments *, #ncci-tournaments *:before,
+      #ncci-tournaments *:after { transition: none !important; }
+    }
+  </style>
+
+  <div class="tour-hero">
+    <div class="tour-eyebrow">NCCI • THE LEGACY</div>
+    <h2>🏆 Tournament Hall of Fame</h2>
+    <p class="tour-intro">
+      Celebrating past champions, unforgettable finishes and
+      the next chapter of NCCI cricket.
+    </p>
+  </div>
+
+  <h3 class="tour-section-title">🥇 Past Tournament Champions</h3>
+
+  <div class="tour-grid">
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 01</div>
+      <h3>🏏 T20 World Cup</h3>
+      <div class="tour-year">Diwali 2022</div>
+      <div class="tour-winner">
+        <small>CHAMPION</small>
+        <strong>Shaurya (Captain)</strong>
+      </div>
+      <p class="tour-margin">Victory margin: 1 run.</p>
+    </article>
+
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 02</div>
+      <h3>🌍 Southern Cup</h3>
+      <div class="tour-year">May 2023</div>
+      <div class="tour-winner">
+        <small>CHAMPION</small>
+        <strong>Yash</strong>
+      </div>
+      <p class="tour-margin">Victory margin: 8 runs.</p>
+    </article>
+
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 03</div>
+      <h3>🔥 T20 World Cup</h3>
+      <div class="tour-year">November–December 2024</div>
+      <div class="tour-winner">
+        <small>CHAMPION</small>
+        <strong>Shaurya</strong>
+      </div>
+      <p class="tour-margin">
+        Decided by a Super Over; recorded winning margin: 7 runs.
+      </p>
+    </article>
+
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 04</div>
+      <h3>🏆 World Cup</h3>
+      <div class="tour-year">July 2025</div>
+      <div class="tour-winner">
+        <small>CHAMPION</small>
+        <strong>Yash</strong>
+      </div>
+      <p class="tour-margin">Victory margin: 10 runs.</p>
+    </article>
+
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 05</div>
+      <h3>⚡ T20 World Cup</h3>
+      <div class="tour-year">March 2026</div>
+      <div class="tour-winner">
+        <small>CHAMPION • CHASE VICTORY</small>
+        <strong>Yuvraj Singh</strong>
+      </div>
+      <p class="tour-margin">
+        Won by 2 wickets with 8 balls remaining.
+        The only tournament in this list won by chasing.
+      </p>
+    </article>
+  </div>
+
+  <h3 class="tour-section-title">🚀 Upcoming Tournaments</h3>
+
+  <div class="tour-grid">
+    <article class="tour-card tour-upcoming">
+      <span class="tour-badge">UPCOMING • NPL 2026</span>
+      <h3>🏏 NPL 2026</h3>
+      <div class="tour-date">3–6 November 2026</div>
+      <p class="tour-status">
+        Fixtures and schedule: provided.<br>
+        Squads: to be announced when matches take place.<br>
+        Venues: NCG or NBG; not yet fixed.
+      </p>
+      <div class="tour-timer" id="ncciNplCountdown">
+        Tournament countdown
+      </div>
+    </article>
+
+    <article class="tour-card tour-upcoming">
+      <span class="tour-badge">UPCOMING • CHAMPIONSHIP</span>
+      <h3>🏆 NCCI Official Champions Trophy</h3>
+      <div class="tour-date">Starts 6 December 2026</div>
+      <p class="tour-status">
+        Teams: to be announced.<br>
+        Fixtures: coming soon.<br>
+        Official tournament details will be added when declared.
+      </p>
+      <div class="tour-timer" id="ncciTrophyCountdown">
+        Tournament countdown
+      </div>
+    </article>
+  </div>
+
+  <p class="tour-footnote">
+    NCCI TOURNAMENT ARCHIVE • Past winners and margins displayed
+    according to the supplied records.
+  </p>
+
+  <script>
+    (() => {
+      const timers = [
+        {id: "ncciNplCountdown", date: "2026-11-03T00:00:00"},
+        {id: "ncciTrophyCountdown", date: "2026-12-06T00:00:00"}
+      ];
+
+      function updateTournamentTimers() {
+        timers.forEach(item => {
+          const el = document.getElementById(item.id);
+          if (!el) return;
+
+          const target = new Date(item.date).getTime();
+          const now = Date.now();
+          const diff = target - now;
+
+          if (diff > 0) {
+            const days = Math.floor(diff / 86400000);
+            const hours = Math.floor((diff % 86400000) / 3600000);
+            const mins = Math.floor((diff % 3600000) / 60000);
+            el.textContent =
+              "⏳ Starts in " + days + " days, " +
+              hours + " hours, " + mins + " minutes";
+          } else {
+            el.textContent = "📅 Scheduled start date has arrived or passed";
+          }
+        });
+      }
+
+      updateTournamentTimers();
+      setInterval(updateTournamentTimers, 60000);
+    })();
+  </script>
+</section>
+<!-- ========== NCCI TOURNAMENTS SECTION END ========== -->
+
 </body>
 </html>
