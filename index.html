@@ -752,7 +752,33 @@ footer {
 </head>
 
 <body>
+<style>
+.npl-top-live {
+ display:block;
+ text-align:center;
+ padding:11px 8px;
+ background:linear-gradient(90deg,#05251b,#10432d,#05251b);
+ border-bottom:1px solid #36d995;
+ color:#65f0a8;
+ text-decoration:none;
+ font-size:13px;
+ font-weight:900;
+ letter-spacing:2px;
+ animation:nplLiveGlow 2s infinite;
+}
+@keyframes nplLiveGlow {
+ 50% {box-shadow:inset 0 0 18px #37dc8c44;}
+}
+.npl-top-live span {
+ color:white;
+ margin-left:7px;
+}
+</style>
 
+<a class="npl-top-live" href="#npl-ticket-zone">
+ 🎟 NPL TICKETS BOOKING IS LIVE
+ <span>BOOK NOW →</span>
+</a>
 <!-- ================================
      SECTION A: HEADER
 ================================ -->
