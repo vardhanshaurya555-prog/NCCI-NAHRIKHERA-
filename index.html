@@ -2871,300 +2871,418 @@ function toggleNPLScorecard(button) {
 }
 </script>
 
-<!-- NPL TICKET BOOKING SYSTEM -->
-<section id="npl-ticket">
+
+<section id="npl-ticket-zone">
 <style>
-#npl-ticket {
-  background:#080d19;
-  color:#fff;
-  padding:35px 15px;
-  font-family:Arial,sans-serif;
+#npl-ticket-zone{background:#050b16;color:#fff;padding:0 14px 35px;font-family:Arial,sans-serif;overflow:hidden}
+#npl-ticket-zone *{box-sizing:border-box}
+#npl-ticket-zone .nt-wrap{max-width:1200px;margin:auto}
+#npl-ticket-zone .nt-hero{
+ position:relative;text-align:center;padding:42px 12px 35px;
+ background:
+ radial-gradient(ellipse at 50% 100%,#80500d66,transparent 65%),
+ linear-gradient(180deg,#030812,#101b2a 70%,#050b16);
+ border-bottom:2px solid #b98730;overflow:hidden;
 }
-#npl-ticket * {box-sizing:border-box}
-.npl-ticket-wrap {
-  max-width:850px;margin:auto;
+#npl-ticket-zone .nt-hero:before{
+ content:"";position:absolute;inset:0;
+ background:repeating-linear-gradient(115deg,transparent 0 75px,#dca83b0b 76px 78px);
+ pointer-events:none
 }
-.npl-ticket-heading {
-  text-align:center;
-  color:#e8bd55;
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:2px;
+#npl-ticket-zone .nt-crown{font-size:45px;color:#f5ca64}
+#npl-ticket-zone .nt-hero h2{
+ position:relative;margin:5px 0;color:#f8d77e;
+ font-size:clamp(35px,7vw,68px);font-weight:1000;
+ letter-spacing:4px;text-shadow:0 0 20px #d69b35;
 }
-.npl-ticket-sub {
-  text-align:center;color:#aab2c4;
-  margin:10px 0 28px;
+#npl-ticket-zone .nt-hero h3{
+ position:relative;margin:0;color:#fff;font-size:clamp(17px,3vw,27px);
+ font-style:italic;letter-spacing:2px
 }
-.npl-options {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:15px;
+#npl-ticket-zone .nt-hero p{color:#e6c67c;letter-spacing:3px;font-size:12px}
+#npl-ticket-zone .nt-live{
+ display:inline-block;margin-top:17px;padding:11px 23px;
+ color:#06110d;background:linear-gradient(90deg,#40e69b,#a4ffbd);
+ border-radius:30px;font-size:13px;font-weight:900;
+ box-shadow:0 0 22px #36e99877;animation:ntPulse 2s infinite
 }
-.npl-option {
-  background:linear-gradient(145deg,#172238,#090e19);
-  border:1px solid #b58a37;
-  border-radius:15px;
-  padding:22px 14px;
-  text-align:center;
+@keyframes ntPulse{50%{box-shadow:0 0 30px #36e998}}
+#npl-ticket-zone .nt-layout{
+ display:grid;grid-template-columns:minmax(0,2.1fr) minmax(250px,.9fr);
+ gap:16px;margin-top:22px
 }
-.npl-option h3 {color:#f2ca68;margin:5px}
-.npl-price {
-  font-size:27px;font-weight:900;
-  color:#fff;margin:15px 0;
+#npl-ticket-zone .nt-panel{
+ background:linear-gradient(145deg,#101c2d,#070e19);
+ border:1px solid #a87c2e;border-radius:14px;padding:17px;
+ box-shadow:0 8px 25px #0008
 }
-.npl-option p {
-  color:#b7c0d1;font-size:13px;line-height:1.6;
+#npl-ticket-zone .nt-title{
+ color:#f5cd70;font-size:18px;font-weight:900;margin:0 0 5px
 }
-.npl-book-btn {
-  width:100%;border:0;border-radius:8px;
-  padding:13px;background:linear-gradient(90deg,#a87924,#f5d77c);
-  color:#080d19;font-weight:900;
-  cursor:pointer;margin-top:12px;
+#npl-ticket-zone .nt-sub{color:#aab8cc;font-size:12px;margin:0 0 17px}
+#npl-ticket-zone .nt-cards{
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px
 }
-.npl-form-box {
-  display:none;
-  background:#111c30;border:1px solid #bd943f;
-  border-radius:15px;padding:22px;
-  margin-top:25px;
+#npl-ticket-zone .nt-card{
+ background:linear-gradient(155deg,#182337,#070d17);
+ border:1px solid #b7862e;border-radius:11px;
+ padding:15px 8px;text-align:center;display:flex;flex-direction:column
 }
-.npl-form-box h3 {color:#f2ca68}
-.npl-field {
-  width:100%;padding:13px;margin:7px 0 14px;
-  background:#080d19;color:white;
-  border:1px solid #36445c;border-radius:7px;
+#npl-ticket-zone .nt-icon{font-size:28px;color:#edc365}
+#npl-ticket-zone .nt-card h4{font-size:13px;color:#ffdc8c;margin:10px 0}
+#npl-ticket-zone .nt-card small{color:#b9c6d7;font-size:10px}
+#npl-ticket-zone .nt-price-row{
+ display:flex;justify-content:space-between;gap:4px;
+ margin-top:13px;padding-top:10px;border-top:1px solid #5a4727
 }
-.npl-field:focus {outline:1px solid #e7bd5b}
-.npl-label {font-size:13px;color:#c8d0de}
-#npl-confirm {
-  display:none;text-align:center;
-  padding:25px 10px;margin-top:20px;
+#npl-ticket-zone .nt-price-row span{font-size:10px;color:#d0d8e5}
+#npl-ticket-zone .nt-price-row b{display:block;color:#fff;font-size:12px;margin-top:5px}
+#npl-ticket-zone .nt-select{
+ border:0;border-radius:8px;padding:10px 4px;margin-top:14px;
+ background:linear-gradient(90deg,#b77e24,#f9d77a);
+ color:#101010;font-weight:900;font-size:11px;cursor:pointer
 }
-.npl-tick {
-  width:75px;height:75px;border-radius:50%;
-  border:4px solid #40d98c;color:#40d98c;
-  display:flex;align-items:center;justify-content:center;
-  font-size:45px;margin:auto;
-  animation:nplPop .45s ease-out;
+#npl-ticket-zone .nt-match-list{list-style:none;padding:0;margin:0}
+#npl-ticket-zone .nt-match-list li{
+ padding:8px 3px;border-bottom:1px solid #28364a;
+ font-size:12px;color:#e4eaf4;display:flex;gap:9px
 }
-@keyframes nplPop {
-  from {transform:scale(.1);opacity:0}
-  to {transform:scale(1);opacity:1}
+#npl-ticket-zone .nt-match-list li span:first-child{color:#edc365;font-weight:bold}
+#npl-ticket-zone .nt-match-list li span:last-child{margin-left:auto;color:#edc365}
+#npl-ticket-zone .nt-form{margin-top:16px}
+#npl-ticket-zone .nt-fields{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px
 }
-.npl-success {color:#40d98c;font-size:22px;font-weight:900}
-.npl-ticket-preview {
-  display:none;margin-top:25px;text-align:center;
+#npl-ticket-zone label{font-size:12px;color:#dce5f3}
+#npl-ticket-zone input,#npl-ticket-zone select{
+ width:100%;margin-top:7px;padding:13px;
+ border:1px solid #344d68;border-radius:7px;
+ background:#060e19;color:#fff;font-size:13px
 }
-#npl-ticket-canvas {
-  width:100%;max-width:650px;
-  border-radius:10px;border:1px solid #b58a37;
+#npl-ticket-zone input:focus,#npl-ticket-zone select:focus{outline:1px solid #edc365}
+#npl-ticket-zone .nt-price-display{
+ margin-top:14px;padding:13px;border:1px solid #9b742f;
+ border-radius:8px;background:#090f19;display:flex;
+ justify-content:space-between;align-items:center
 }
-.npl-download {
-  display:inline-block;padding:14px 25px;
-  margin-top:15px;background:#e9bf60;
-  color:#10131a;font-weight:900;
-  border-radius:8px;text-decoration:none;
+#npl-ticket-zone .nt-price-display strong{color:#f5ce71;font-size:21px}
+#npl-ticket-zone .nt-submit{
+ width:100%;margin-top:15px;padding:15px;border:0;border-radius:9px;
+ background:linear-gradient(90deg,#b87c20,#ffdc7b);
+ color:#090d13;font-size:15px;font-weight:1000;cursor:pointer
 }
-.npl-small {
-  color:#8590a3;font-size:10px;
+#npl-ticket-zone .nt-whatsapp{
+ margin-top:15px;padding:15px;border:1px solid #28cf83;
+ border-radius:10px;background:#06251e;display:flex;
+ align-items:center;gap:13px;flex-wrap:wrap
 }
-@media(max-width:480px) {
- .npl-options {grid-template-columns:1fr}
- .npl-ticket-heading {font-size:25px}
+#npl-ticket-zone .nt-whatsapp a{color:#45efa0;font-size:21px;font-weight:900;text-decoration:none}
+#npl-ticket-zone .nt-whatsapp p{font-size:12px;color:#e1f5eb;margin:0}
+#npl-ticket-zone .nt-bookings{margin-top:16px}
+#npl-ticket-zone .nt-bookings table{width:100%;border-collapse:collapse;font-size:11px}
+#npl-ticket-zone .nt-bookings th,#npl-ticket-zone .nt-bookings td{
+ padding:10px 5px;text-align:left;border-bottom:1px solid #29374a
+}
+#npl-ticket-zone .nt-bookings th{color:#edc365}
+#npl-ticket-zone .nt-empty{color:#9aa9be;font-size:12px;padding:15px 0}
+#npl-ticket-zone .nt-footer{text-align:center;color:#eac56b;letter-spacing:3px;margin-top:28px;font-size:12px}
+#npl-ticket-zone .nt-success{
+ display:none;text-align:center;padding:24px 10px;
+ background:#08251c;border:1px solid #36db8b;border-radius:12px;margin-top:15px
+}
+#npl-ticket-zone .nt-tick{
+ width:65px;height:65px;border:4px solid #3ee995;border-radius:50%;
+ color:#3ee995;font-size:40px;display:grid;place-items:center;margin:auto;
+ animation:ntPop .45s ease-out
+}
+@keyframes ntPop{from{transform:scale(.1)}to{transform:scale(1)}}
+#npl-ticket-zone .nt-success h3{color:#4cf0a1}
+#npl-ticket-zone .nt-download{
+ display:inline-block;margin-top:12px;padding:12px 20px;
+ border-radius:7px;background:#f2ca6b;color:#080e17;
+ font-weight:900;text-decoration:none
+}
+#npl-ticket-zone .nt-demo-note{font-size:9px;color:#8793a6}
+#npl-ticket-zone .nt-ticket{display:none;text-align:center;margin-top:20px}
+#npl-ticket-zone .nt-ticket canvas{width:100%;max-width:650px;border-radius:10px}
+@media(max-width:850px){
+ #npl-ticket-zone .nt-layout{grid-template-columns:1fr}
+ #npl-ticket-zone .nt-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #npl-ticket-zone .nt-card:last-child{grid-column:span 2}
+}
+@media(max-width:420px){
+ #npl-ticket-zone .nt-fields{grid-template-columns:1fr}
+ #npl-ticket-zone .nt-panel{padding:12px}
 }
 </style>
 
-<div class="npl-ticket-wrap">
-  <div class="npl-ticket-heading">NPL TICKETS</div>
-  <div class="npl-ticket-sub">
-    NAHRIKHERA PREMIER LEAGUE • SEASON 2026
-  </div>
+<div class="nt-hero">
+ <div class="nt-crown">♛</div>
+ <h2>NPL TICKETS</h2>
+ <h3>BOOKING IS LIVE</h3>
+ <p>NAHRIKHERA PREMIER LEAGUE</p>
+ <div class="nt-live">● TICKETS BOOKING IS NOW LIVE</div>
+</div>
 
-  <div class="npl-options">
-    <div class="npl-option">
-      <h3>GENERAL STAND</h3>
-      <div class="npl-price">₹1,000</div>
-      <p>Normal seating area<br>Regular match access</p>
-      <button class="npl-book-btn"
-        onclick="nplChoose('GENERAL',1000)">
-        BOOK GENERAL
-      </button>
+<div class="nt-wrap">
+ <div class="nt-layout">
+  <div>
+   <div class="nt-panel">
+    <h3 class="nt-title">🎟 SELECT YOUR TICKET</h3>
+    <p class="nt-sub">Choose your match and preferred ticket category</p>
+    <div class="nt-cards">
+     <div class="nt-card">
+      <div class="nt-icon">🏏</div>
+      <h4>LEAGUE MATCHES</h4>
+      <small>6 MATCHES</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹1,000</b></span>
+       <span>VIP<b>₹25,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('league')">SELECT</button>
+     </div>
+     <div class="nt-card">
+      <div class="nt-icon">🏆</div>
+      <h4>QUALIFIER 1</h4>
+      <small>1 MATCH</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹1,000</b></span>
+       <span>VIP<b>₹50,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('q1')">SELECT</button>
+     </div>
+     <div class="nt-card">
+      <div class="nt-icon">⚔️</div>
+      <h4>ELIMINATOR</h4>
+      <small>1 MATCH</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹1,000</b></span>
+       <span>VIP<b>₹50,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('eliminator')">SELECT</button>
+     </div>
+     <div class="nt-card">
+      <div class="nt-icon">🏆</div>
+      <h4>QUALIFIER 2</h4>
+      <small>1 MATCH</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹1,000</b></span>
+       <span>VIP<b>₹50,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('q2')">SELECT</button>
+     </div>
+     <div class="nt-card">
+      <div class="nt-icon">👑</div>
+      <h4>GRAND FINAL</h4>
+      <small>1 MATCH</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹5,000</b></span>
+       <span>VIP<b>₹1,00,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('final')">SELECT</button>
+     </div>
     </div>
+   </div>
 
-    <div class="npl-option">
-      <h3>VIP EXPERIENCE</h3>
-      <div class="npl-price">₹1,00,000</div>
-      <p>VIP seating<br>Scheduled player meet opportunity</p>
-      <button class="npl-book-btn"
-        onclick="nplChoose('VIP',100000)">
-        BOOK VIP
-      </button>
-    </div>
-  </div>
-
-  <div class="npl-form-box" id="npl-form">
-    <h3>🎟️ COMPLETE YOUR BOOKING</h3>
-    <p id="npl-selected" style="color:#e9bf60"></p>
-
-    <form id="npl-booking-form">
-      <label class="npl-label">Full Name</label>
-      <input class="npl-field" id="npl-name"
-        placeholder="Enter your name" required maxlength="60">
-
-      <label class="npl-label">Mobile Number</label>
-      <input class="npl-field" id="npl-phone"
-        type="tel" placeholder="Enter mobile number"
-        pattern="[0-9]{10}" required>
-
-      <label class="npl-label">Select Match</label>
-      <select class="npl-field" id="npl-match" required>
-        <option value="">Choose NPL match</option>
-        <option>NPL Match 01</option>
-        <option>NPL Match 02</option>
-        <option>NPL Match 03</option>
-        <option>NPL Match 04</option>
-      </select>
-
-      <label class="npl-label">Ticket Holder Age (optional)</label>
-      <input class="npl-field" id="npl-age"
-        type="number" min="1" max="120" placeholder="Age">
-
-      <button type="submit" class="npl-book-btn">
-        CONFIRM DEMO BOOKING
-      </button>
+   <div class="nt-panel nt-form" id="npl-book-form">
+    <h3 class="nt-title">🎟 BOOK YOUR TICKET</h3>
+    <p class="nt-sub">Enter your details to generate your personalised NPL ticket</p>
+    <form id="npl-form">
+     <div class="nt-fields">
+      <label>Full Name *
+       <input id="npl-b-name" required maxlength="60" placeholder="Enter your full name">
+      </label>
+      <label>Select Match *
+       <select id="npl-b-match" required>
+        <option value="">Choose a match</option>
+        <option value="League Match 01">League Match 01</option>
+        <option value="League Match 02">League Match 02</option>
+        <option value="League Match 03">League Match 03</option>
+        <option value="League Match 04">League Match 04</option>
+        <option value="League Match 05">League Match 05</option>
+        <option value="League Match 06">League Match 06</option>
+        <option value="Qualifier 1">Qualifier 1</option>
+        <option value="Eliminator">Eliminator</option>
+        <option value="Qualifier 2">Qualifier 2</option>
+        <option value="Grand Final">Grand Final</option>
+       </select>
+      </label>
+      <label>Mobile Number *
+       <input id="npl-b-phone" type="tel" pattern="[0-9]{10}" maxlength="10" required placeholder="10-digit mobile number">
+      </label>
+      <label>Ticket Category *
+       <select id="npl-b-category" required>
+        <option value="">Select category</option>
+        <option value="GENERAL">GENERAL</option>
+        <option value="VIP">VIP</option>
+       </select>
+      </label>
+      <label>Age (Optional)
+       <input id="npl-b-age" type="number" min="1" max="120" placeholder="Enter age">
+      </label>
+     </div>
+     <div class="nt-price-display">
+      <span>YOUR TICKET PRICE</span>
+      <strong id="npl-live-price">₹0</strong>
+     </div>
+     <button type="submit" class="nt-submit">BOOK NOW →</button>
+     <p class="nt-demo-note" style="text-align:right">DEMO • NO PAYMENT TAKEN</p>
     </form>
+
+    <div class="nt-success" id="npl-success">
+     <div class="nt-tick">✓</div>
+     <h3>DEMO BOOKING SUCCESSFUL!</h3>
+     <p>Your personalised NPL demo ticket is ready.</p>
+     <p class="nt-demo-note">No payment has been made or collected.</p>
+    </div>
+    <div class="nt-ticket" id="npl-ticket">
+     <h3 style="color:#f2ca6b">YOUR PERSONAL NPL TICKET</h3>
+     <canvas id="npl-ticket-canvas" width="1000" height="570"></canvas><br>
+     <a id="npl-download" class="nt-download" download="NPL-Demo-Ticket.png">DOWNLOAD TICKET ↓</a>
+    </div>
+   </div>
+
+   <div class="nt-whatsapp">
+    <div style="font-size:35px">☘</div>
+    <div>
+     <p>After booking your ticket, please WhatsApp us for confirmation:</p>
+     <a href="https://wa.me/919352483580?text=Hello%20NPL%2C%20I%20have%20booked%20a%20demo%20ticket." target="_blank" rel="noopener">9352483580</a>
+    </div>
+   </div>
   </div>
 
-  <div id="npl-confirm">
-    <div class="npl-tick">✓</div>
-    <p class="npl-success">DEMO BOOKING SUCCESSFUL!</p>
-    <p style="color:#b8c4d5">
-      Your NPL demo ticket has been generated.
-    </p>
-  </div>
+  <aside>
+   <div class="nt-panel">
+    <h3 class="nt-title">📅 MATCHES LIST (10)</h3>
+    <ul class="nt-match-list">
+     <li><span>01.</span> League Match 01 <span>→</span></li>
+     <li><span>02.</span> League Match 02 <span>→</span></li>
+     <li><span>03.</span> League Match 03 <span>→</span></li>
+     <li><span>04.</span> League Match 04 <span>→</span></li>
+     <li><span>05.</span> League Match 05 <span>→</span></li>
+     <li><span>06.</span> League Match 06 <span>→</span></li>
+     <li><span>07.</span> Qualifier 1 <span>→</span></li>
+     <li><span>08.</span> Eliminator <span>→</span></li>
+     <li><span>09.</span> Qualifier 2 <span>→</span></li>
+     <li><span>10.</span> Grand Final <span>→</span></li>
+    </ul>
+   </div>
 
-  <div class="npl-ticket-preview" id="npl-ticket-preview">
-    <h3 style="color:#e9bf60">YOUR NPL MATCH TICKET</h3>
-    <canvas id="npl-ticket-canvas"
-      width="1000" height="570"></canvas>
-    <br>
-    <a class="npl-download" id="npl-download"
-      download="NPL-Demo-Ticket.png">
-      DOWNLOAD YOUR TICKET ↓
-    </a>
-    <p class="npl-small">
-      DEMO • NO PAYMENT TAKEN
-    </p>
-  </div>
+   <div class="nt-panel nt-bookings">
+    <h3 class="nt-title">👥 TICKET BOOKED BY</h3>
+    <p class="nt-sub">Public demo booking directory</p>
+    <div id="npl-booking-list">
+     <p class="nt-empty">No demo bookings yet.</p>
+    </div>
+    <p class="nt-demo-note">Only names, category and match are displayed.</p>
+   </div>
+  </aside>
+ </div>
+ <div class="nt-footer">♛ &nbsp; NAHRIKHERA PREMIER LEAGUE &nbsp; ♛</div>
 </div>
 
 <script>
-let nplCategory = "";
-let nplPrice = 0;
+(function(){
+ const $=id=>document.getElementById(id);
+ const match=$("npl-b-match"),category=$("npl-b-category");
+ let bookings=[];
 
-function nplChoose(category, price) {
-  nplCategory = category;
-  nplPrice = price;
+ function stage(m){
+  if(m==="Grand Final")return "final";
+  if(["Qualifier 1","Qualifier 2","Eliminator"].includes(m))return "playoff";
+  return "league";
+ }
+ function price(m,c){
+  if(!m||!c)return 0;
+  const s=stage(m);
+  if(s==="final")return c==="VIP"?100000:5000;
+  if(s==="playoff")return c==="VIP"?50000:1000;
+  return c==="VIP"?25000:1000;
+ }
+ function updatePrice(){
+  $("npl-live-price").textContent="₹"+price(match.value,category.value).toLocaleString("en-IN");
+ }
+ match.addEventListener("change",updatePrice);
+ category.addEventListener("change",updatePrice);
 
-  document.getElementById("npl-form").style.display="block";
-  document.getElementById("npl-selected").textContent =
-    category + " TICKET — ₹" + price.toLocaleString("en-IN");
+ window.nplPreset=function(key){
+  const map={
+   league:"League Match 01",
+   q1:"Qualifier 1",
+   eliminator:"Eliminator",
+   q2:"Qualifier 2",
+   final:"Grand Final"
+  };
+  match.value=map[key];
+  category.value="";
+  updatePrice();
+  $("npl-book-form").scrollIntoView({behavior:"smooth",block:"start"});
+ };
 
-  document.getElementById("npl-confirm").style.display="none";
-  document.getElementById("npl-ticket-preview").style.display="none";
-
-  document.getElementById("npl-form").scrollIntoView({
-    behavior:"smooth",block:"center"
-  });
-}
-
-document.getElementById("npl-booking-form")
-.addEventListener("submit",function(e) {
-  e.preventDefault();
-
-  const name = document.getElementById("npl-name").value.trim();
-  const phone = document.getElementById("npl-phone").value.trim();
-  const match = document.getElementById("npl-match").value;
-  const age = document.getElementById("npl-age").value;
-
-  if(!name || !/^[0-9]{10}$/.test(phone) || !match) {
-    alert("Please enter valid booking details.");
-    return;
+ function renderBookings(){
+  const box=$("npl-booking-list");
+  if(!bookings.length){
+   box.innerHTML='<p class="nt-empty">No demo bookings yet.</p>';
+   return;
   }
+  let html='<table><thead><tr><th>Name</th><th>Category</th><th>Match</th></tr></thead><tbody>';
+  bookings.forEach(b=>{
+   html+='<tr><td>'+escapeText(b.name)+'</td><td>'+b.category+'</td><td>'+escapeText(b.match)+'</td></tr>';
+  });
+  box.innerHTML=html+'</tbody></table>';
+ }
+ function escapeText(s){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ }
 
-  // DEMO ONLY — NO PAYMENT OR MONEY TRANSFER
-  const bookingID = "NPL-DEMO-" +
-    Math.random().toString(36).substring(2,9).toUpperCase();
+ $("npl-form").addEventListener("submit",function(e){
+  e.preventDefault();
+  const name=$("npl-b-name").value.trim();
+  const phone=$("npl-b-phone").value.trim();
+  const age=$("npl-b-age").value;
+  const m=match.value,c=category.value;
+  if(!/^[0-9]{10}$/.test(phone)){
+   alert("Please enter a valid 10-digit mobile number.");return;
+  }
+  const amount=price(m,c);
+  const id="NPL-"+Math.random().toString(36).slice(2,9).toUpperCase();
+  const record={name,category:c,match:m,id,amount};
+  bookings.unshift(record);
+  renderBookings();
 
-  document.getElementById("npl-confirm").style.display="block";
-  document.getElementById("npl-ticket-preview").style.display="block";
-
-  // Generate personalised ticket image
-  const canvas = document.getElementById("npl-ticket-canvas");
-  const ctx = canvas.getContext("2d");
-
-  ctx.fillStyle="#080d19";
-  ctx.fillRect(0,0,1000,570);
-
-  // Gold border
-  ctx.strokeStyle="#d6aa4d";
-  ctx.lineWidth=7;
-  ctx.strokeRect(16,16,968,538);
-
-  ctx.strokeStyle="#76551f";
-  ctx.lineWidth=2;
-  ctx.strokeRect(30,30,940,510);
-
-  // Header
-  ctx.fillStyle="#eac56b";
+  const cv=$("npl-ticket-canvas"),ctx=cv.getContext("2d");
+  ctx.fillStyle="#070e1b";ctx.fillRect(0,0,1000,570);
+  ctx.strokeStyle="#d5a447";ctx.lineWidth=8;ctx.strokeRect(15,15,970,540);
+  ctx.strokeStyle="#725323";ctx.lineWidth=2;ctx.strokeRect(32,32,936,506);
   ctx.textAlign="center";
-  ctx.font="bold 57px Arial";
-  ctx.fillText("NPL",500,110);
-
-  ctx.fillStyle="#ffffff";
-  ctx.font="bold 25px Arial";
-  ctx.fillText("NAHRIKHERA PREMIER LEAGUE",500,155);
-
-  ctx.strokeStyle="#b68a37";
-  ctx.beginPath();
-  ctx.moveTo(100,185);
-  ctx.lineTo(900,185);
-  ctx.stroke();
-
-  // Ticket category
-  ctx.fillStyle="#eac56b";
-  ctx.font="bold 34px Arial";
-  ctx.fillText(nplCategory+" ENTRY TICKET",500,245);
-
-  ctx.textAlign="left";
-  ctx.fillStyle="#ffffff";
-  ctx.font="bold 26px Arial";
-  ctx.fillText("NAME: "+name.toUpperCase(),100,310);
-
-  ctx.font="23px Arial";
-  ctx.fillText("MATCH: "+match,100,360);
-  ctx.fillText("TICKET: "+nplCategory,100,405);
-  ctx.fillText("PRICE: Rs. "+nplPrice.toLocaleString("en-IN"),100,450);
-
-  ctx.fillStyle="#eac56b";
-  ctx.font="bold 20px Arial";
-  ctx.fillText("BOOKING ID: "+bookingID,100,500);
-
-  ctx.textAlign="right";
-  ctx.fillStyle="#8994a8";
-  ctx.font="14px Arial";
+  ctx.fillStyle="#f5ce72";ctx.font="bold 65px Arial";
+  ctx.fillText("♛ NPL ♛",500,112);
+  ctx.fillStyle="#fff";ctx.font="bold 27px Arial";
+  ctx.fillText("NAHRIKHERA PREMIER LEAGUE",500,158);
+  ctx.strokeStyle="#c3933e";ctx.beginPath();ctx.moveTo(100,190);ctx.lineTo(900,190);ctx.stroke();
+  ctx.fillStyle="#f5ce72";ctx.font="bold 36px Arial";
+  ctx.fillText(c+" ENTRY TICKET",500,250);
+  ctx.textAlign="left";ctx.fillStyle="#fff";ctx.font="bold 28px Arial";
+  ctx.fillText("NAME: "+name.toUpperCase().slice(0,35),100,320);
+  ctx.font="24px Arial";
+  ctx.fillText("MATCH: "+m,100,375);
+  ctx.fillText("CATEGORY: "+c,100,420);
+  ctx.fillText("PRICE: Rs. "+amount.toLocaleString("en-IN"),100,465);
+  ctx.fillStyle="#f5ce72";ctx.font="bold 21px Arial";
+  ctx.fillText("BOOKING ID: "+id,100,510);
+  ctx.textAlign="right";ctx.fillStyle="#9da8ba";ctx.font="14px Arial";
   ctx.fillText("DEMO • NO PAYMENT TAKEN",950,530);
 
-  // Downloadable image link
-  const link = document.getElementById("npl-download");
-  link.href=canvas.toDataURL("image/png");
-  link.download=bookingID+".png";
-
-  document.getElementById("npl-confirm").scrollIntoView({
-    behavior:"smooth",block:"center"
-  });
-});
+  $("npl-download").href=cv.toDataURL("image/png");
+  $("npl-download").download=id+".png";
+  $("npl-success").style.display="block";
+  $("npl-ticket").style.display="block";
+  $("npl-success").scrollIntoView({behavior:"smooth",block:"center"});
+ });
+})();
 </script>
 </section>
+
 
 </body>
 </html>
