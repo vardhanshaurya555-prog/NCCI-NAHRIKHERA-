@@ -2871,5 +2871,300 @@ function toggleNPLScorecard(button) {
 }
 </script>
 
+<!-- NPL TICKET BOOKING SYSTEM -->
+<section id="npl-ticket">
+<style>
+#npl-ticket {
+  background:#080d19;
+  color:#fff;
+  padding:35px 15px;
+  font-family:Arial,sans-serif;
+}
+#npl-ticket * {box-sizing:border-box}
+.npl-ticket-wrap {
+  max-width:850px;margin:auto;
+}
+.npl-ticket-heading {
+  text-align:center;
+  color:#e8bd55;
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+.npl-ticket-sub {
+  text-align:center;color:#aab2c4;
+  margin:10px 0 28px;
+}
+.npl-options {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+}
+.npl-option {
+  background:linear-gradient(145deg,#172238,#090e19);
+  border:1px solid #b58a37;
+  border-radius:15px;
+  padding:22px 14px;
+  text-align:center;
+}
+.npl-option h3 {color:#f2ca68;margin:5px}
+.npl-price {
+  font-size:27px;font-weight:900;
+  color:#fff;margin:15px 0;
+}
+.npl-option p {
+  color:#b7c0d1;font-size:13px;line-height:1.6;
+}
+.npl-book-btn {
+  width:100%;border:0;border-radius:8px;
+  padding:13px;background:linear-gradient(90deg,#a87924,#f5d77c);
+  color:#080d19;font-weight:900;
+  cursor:pointer;margin-top:12px;
+}
+.npl-form-box {
+  display:none;
+  background:#111c30;border:1px solid #bd943f;
+  border-radius:15px;padding:22px;
+  margin-top:25px;
+}
+.npl-form-box h3 {color:#f2ca68}
+.npl-field {
+  width:100%;padding:13px;margin:7px 0 14px;
+  background:#080d19;color:white;
+  border:1px solid #36445c;border-radius:7px;
+}
+.npl-field:focus {outline:1px solid #e7bd5b}
+.npl-label {font-size:13px;color:#c8d0de}
+#npl-confirm {
+  display:none;text-align:center;
+  padding:25px 10px;margin-top:20px;
+}
+.npl-tick {
+  width:75px;height:75px;border-radius:50%;
+  border:4px solid #40d98c;color:#40d98c;
+  display:flex;align-items:center;justify-content:center;
+  font-size:45px;margin:auto;
+  animation:nplPop .45s ease-out;
+}
+@keyframes nplPop {
+  from {transform:scale(.1);opacity:0}
+  to {transform:scale(1);opacity:1}
+}
+.npl-success {color:#40d98c;font-size:22px;font-weight:900}
+.npl-ticket-preview {
+  display:none;margin-top:25px;text-align:center;
+}
+#npl-ticket-canvas {
+  width:100%;max-width:650px;
+  border-radius:10px;border:1px solid #b58a37;
+}
+.npl-download {
+  display:inline-block;padding:14px 25px;
+  margin-top:15px;background:#e9bf60;
+  color:#10131a;font-weight:900;
+  border-radius:8px;text-decoration:none;
+}
+.npl-small {
+  color:#8590a3;font-size:10px;
+}
+@media(max-width:480px) {
+ .npl-options {grid-template-columns:1fr}
+ .npl-ticket-heading {font-size:25px}
+}
+</style>
+
+<div class="npl-ticket-wrap">
+  <div class="npl-ticket-heading">NPL TICKETS</div>
+  <div class="npl-ticket-sub">
+    NAHRIKHERA PREMIER LEAGUE • SEASON 2026
+  </div>
+
+  <div class="npl-options">
+    <div class="npl-option">
+      <h3>GENERAL STAND</h3>
+      <div class="npl-price">₹1,000</div>
+      <p>Normal seating area<br>Regular match access</p>
+      <button class="npl-book-btn"
+        onclick="nplChoose('GENERAL',1000)">
+        BOOK GENERAL
+      </button>
+    </div>
+
+    <div class="npl-option">
+      <h3>VIP EXPERIENCE</h3>
+      <div class="npl-price">₹1,00,000</div>
+      <p>VIP seating<br>Scheduled player meet opportunity</p>
+      <button class="npl-book-btn"
+        onclick="nplChoose('VIP',100000)">
+        BOOK VIP
+      </button>
+    </div>
+  </div>
+
+  <div class="npl-form-box" id="npl-form">
+    <h3>🎟️ COMPLETE YOUR BOOKING</h3>
+    <p id="npl-selected" style="color:#e9bf60"></p>
+
+    <form id="npl-booking-form">
+      <label class="npl-label">Full Name</label>
+      <input class="npl-field" id="npl-name"
+        placeholder="Enter your name" required maxlength="60">
+
+      <label class="npl-label">Mobile Number</label>
+      <input class="npl-field" id="npl-phone"
+        type="tel" placeholder="Enter mobile number"
+        pattern="[0-9]{10}" required>
+
+      <label class="npl-label">Select Match</label>
+      <select class="npl-field" id="npl-match" required>
+        <option value="">Choose NPL match</option>
+        <option>NPL Match 01</option>
+        <option>NPL Match 02</option>
+        <option>NPL Match 03</option>
+        <option>NPL Match 04</option>
+      </select>
+
+      <label class="npl-label">Ticket Holder Age (optional)</label>
+      <input class="npl-field" id="npl-age"
+        type="number" min="1" max="120" placeholder="Age">
+
+      <button type="submit" class="npl-book-btn">
+        CONFIRM DEMO BOOKING
+      </button>
+    </form>
+  </div>
+
+  <div id="npl-confirm">
+    <div class="npl-tick">✓</div>
+    <p class="npl-success">DEMO BOOKING SUCCESSFUL!</p>
+    <p style="color:#b8c4d5">
+      Your NPL demo ticket has been generated.
+    </p>
+  </div>
+
+  <div class="npl-ticket-preview" id="npl-ticket-preview">
+    <h3 style="color:#e9bf60">YOUR NPL MATCH TICKET</h3>
+    <canvas id="npl-ticket-canvas"
+      width="1000" height="570"></canvas>
+    <br>
+    <a class="npl-download" id="npl-download"
+      download="NPL-Demo-Ticket.png">
+      DOWNLOAD YOUR TICKET ↓
+    </a>
+    <p class="npl-small">
+      DEMO • NO PAYMENT TAKEN
+    </p>
+  </div>
+</div>
+
+<script>
+let nplCategory = "";
+let nplPrice = 0;
+
+function nplChoose(category, price) {
+  nplCategory = category;
+  nplPrice = price;
+
+  document.getElementById("npl-form").style.display="block";
+  document.getElementById("npl-selected").textContent =
+    category + " TICKET — ₹" + price.toLocaleString("en-IN");
+
+  document.getElementById("npl-confirm").style.display="none";
+  document.getElementById("npl-ticket-preview").style.display="none";
+
+  document.getElementById("npl-form").scrollIntoView({
+    behavior:"smooth",block:"center"
+  });
+}
+
+document.getElementById("npl-booking-form")
+.addEventListener("submit",function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("npl-name").value.trim();
+  const phone = document.getElementById("npl-phone").value.trim();
+  const match = document.getElementById("npl-match").value;
+  const age = document.getElementById("npl-age").value;
+
+  if(!name || !/^[0-9]{10}$/.test(phone) || !match) {
+    alert("Please enter valid booking details.");
+    return;
+  }
+
+  // DEMO ONLY — NO PAYMENT OR MONEY TRANSFER
+  const bookingID = "NPL-DEMO-" +
+    Math.random().toString(36).substring(2,9).toUpperCase();
+
+  document.getElementById("npl-confirm").style.display="block";
+  document.getElementById("npl-ticket-preview").style.display="block";
+
+  // Generate personalised ticket image
+  const canvas = document.getElementById("npl-ticket-canvas");
+  const ctx = canvas.getContext("2d");
+
+  ctx.fillStyle="#080d19";
+  ctx.fillRect(0,0,1000,570);
+
+  // Gold border
+  ctx.strokeStyle="#d6aa4d";
+  ctx.lineWidth=7;
+  ctx.strokeRect(16,16,968,538);
+
+  ctx.strokeStyle="#76551f";
+  ctx.lineWidth=2;
+  ctx.strokeRect(30,30,940,510);
+
+  // Header
+  ctx.fillStyle="#eac56b";
+  ctx.textAlign="center";
+  ctx.font="bold 57px Arial";
+  ctx.fillText("NPL",500,110);
+
+  ctx.fillStyle="#ffffff";
+  ctx.font="bold 25px Arial";
+  ctx.fillText("NAHRIKHERA PREMIER LEAGUE",500,155);
+
+  ctx.strokeStyle="#b68a37";
+  ctx.beginPath();
+  ctx.moveTo(100,185);
+  ctx.lineTo(900,185);
+  ctx.stroke();
+
+  // Ticket category
+  ctx.fillStyle="#eac56b";
+  ctx.font="bold 34px Arial";
+  ctx.fillText(nplCategory+" ENTRY TICKET",500,245);
+
+  ctx.textAlign="left";
+  ctx.fillStyle="#ffffff";
+  ctx.font="bold 26px Arial";
+  ctx.fillText("NAME: "+name.toUpperCase(),100,310);
+
+  ctx.font="23px Arial";
+  ctx.fillText("MATCH: "+match,100,360);
+  ctx.fillText("TICKET: "+nplCategory,100,405);
+  ctx.fillText("PRICE: Rs. "+nplPrice.toLocaleString("en-IN"),100,450);
+
+  ctx.fillStyle="#eac56b";
+  ctx.font="bold 20px Arial";
+  ctx.fillText("BOOKING ID: "+bookingID,100,500);
+
+  ctx.textAlign="right";
+  ctx.fillStyle="#8994a8";
+  ctx.font="14px Arial";
+  ctx.fillText("DEMO • NO PAYMENT TAKEN",950,530);
+
+  // Downloadable image link
+  const link = document.getElementById("npl-download");
+  link.href=canvas.toDataURL("image/png");
+  link.download=bookingID+".png";
+
+  document.getElementById("npl-confirm").scrollIntoView({
+    behavior:"smooth",block:"center"
+  });
+});
+</script>
+</section>
+
 </body>
 </html>
