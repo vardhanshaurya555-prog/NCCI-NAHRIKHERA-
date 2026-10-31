@@ -1,0 +1,3456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="NCCI Cricket Council — Teams, fixtures, points table and playoffs.">
+<title>NCCI | Cricket Council</title>
+
+<style>
+/* ================================
+   1. GLOBAL DESIGN & NAVY VFX
+================================ */
+:root {
+  --navy: #071426;
+  --navy2: #0b1e36;
+  --card: #102944;
+  --blue: #64d5ff;
+  --blue2: #168fce;
+  --white: #eef8ff;
+  --muted: #93aec5;
+  --line: rgba(100,213,255,.17);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--white);
+  background:
+    radial-gradient(ellipse at 15% 0%, #10355a 0%, transparent 42%),
+    radial-gradient(ellipse at 100% 40%, #092a49 0%, transparent 35%),
+    var(--navy);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button { font: inherit; }
+
+.wrap {
+  width: min(1080px, 92%);
+  margin: auto;
+}
+
+section { scroll-margin-top: 82px; }
+
+.section {
+  padding: 34px 0;
+}
+
+.section-heading {
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: clamp(22px, 4vw, 30px);
+  margin: 8px 0;
+  letter-spacing: -.6px;
+}
+
+.subtext {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.accent {
+  color: var(--blue);
+}
+
+/* ================================
+   2. HEADER & NAVIGATION
+================================ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(5,17,32,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  min-height: 66px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 39px;
+  height: 39px;
+  border: 1px solid var(--blue);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 0 18px #168fce28;
+}
+
+.brand-name {
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.brand-small {
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-links a {
+  white-space: nowrap;
+  color: #b5cce0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.nav-links a:hover { color: var(--blue); }
+
+/* ================================
+   3. HERO / HOME
+================================ */
+.hero {
+  padding: 54px 0 32px;
+}
+
+.hero-panel {
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  padding: clamp(22px, 5vw, 42px);
+  background:
+    linear-gradient(115deg, #102b49e8, #08192ce8),
+    var(--navy2);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-panel::after {
+  content: "";
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  right: -100px;
+  top: -100px;
+  border: 1px solid #64d5ff30;
+  box-shadow: 0 0 0 25px #64d5ff08,
+              0 0 0 55px #64d5ff05;
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-block;
+  border: 1px solid #64d5ff45;
+  background: #64d5ff0b;
+  color: var(--blue);
+  padding: 7px 11px;
+  border-radius: 30px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  max-width: 650px;
+  font-size: clamp(34px, 7vw, 57px);
+  line-height: 1.03;
+  letter-spacing: -2px;
+  margin: 22px 0 14px;
+}
+
+.hero h1 span { color: var(--blue); }
+
+.hero p {
+  color: #adc5d9;
+  max-width: 490px;
+  line-height: 1.8;
+  font-size: 13px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 23px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 11px 16px;
+  font-size: 11px;
+  font-weight: 800;
+  border: 1px solid var(--line);
+  background: #0b2038;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #061426;
+  border-color: var(--blue);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.mini-stat {
+  background: #0b1e33;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 15px;
+}
+
+.mini-stat strong {
+  display: block;
+  color: var(--blue);
+  font-size: 22px;
+}
+
+.mini-stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+/* ================================
+   4. FOUR TEAM CARDS + LOGO SLOTS
+================================ */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+  padding: 16px;
+  background: linear-gradient(135deg, #112b47, #0b1d32);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  transition: border-color .2s, transform .2s;
+}
+
+.team-card:hover {
+  border-color: #64d5ff80;
+  transform: translateY(-2px);
+}
+
+.logo-slot {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  border: 1px dashed #64d5ff70;
+  border-radius: 50%;
+  background: #07182b;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.logo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
+  display: block;
+}
+
+.team-info { min-width: 0; }
+
+.team-info h3 {
+  margin: 0;
+  font-size: 19px;
+  letter-spacing: 1px;
+}
+
+.team-info p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.team-badge {
+  margin-left: auto;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* ================================
+   5. UPCOMING FIXTURES
+================================ */
+.fixture-list {
+  display: grid;
+  gap: 9px;
+}
+
+.fixture {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr) 94px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: linear-gradient(90deg, #102741, #0b1e33);
+  border-radius: 10px;
+}
+
+.fixture-date {
+  color: var(--blue);
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 800;
+}
+
+.fixture-date span {
+  display: block;
+  color: #7896af;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.fixture-match {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.fixture-team {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.vs {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.fixture-status {
+  text-align: right;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.fixture-status strong {
+  display: block;
+  color: var(--blue);
+  font-size: 9px;
+  margin-bottom: 4px;
+}
+
+/* ================================
+   6. FOUR-TEAM POINTS TABLE
+================================ */
+.table-shell {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #0a1b2e;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 390px;
+  text-align: center;
+}
+
+th {
+  background: #112b47;
+  color: #a9c7dd;
+  font-size: 9px;
+  letter-spacing: .6px;
+  padding: 13px 10px;
+}
+
+td {
+  padding: 14px 10px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: #dcecf8;
+}
+
+td:first-child {
+  text-align: left;
+  font-weight: 800;
+}
+
+.position {
+  display: inline-grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 7px;
+  background: #14334f;
+  color: var(--blue);
+  margin-right: 7px;
+  font-size: 10px;
+}
+
+.points {
+  color: var(--blue);
+  font-weight: 900;
+}
+
+.table-note {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 11px;
+  line-height: 1.7;
+}
+
+/* ================================
+   7. PLAYOFF BRACKET
+================================ */
+.playoff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.playoff-card {
+  background: linear-gradient(140deg, #102b47, #091a2e);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.playoff-card.final {
+  grid-column: 1 / -1;
+  border-color: #64d5ff65;
+  background: linear-gradient(120deg, #123753, #0a2038);
+}
+
+.playoff-label {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.playoff-card h3 {
+  margin: 8px 0 13px;
+  font-size: 14px;
+}
+
+.playoff-versus {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 9px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--line);
+  background: #07182a75;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.playoff-versus .vs {
+  color: var(--blue);
+}
+
+.playoff-note {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
+
+/* ================================
+   8. SQUADS — RESERVED FOR LATER
+================================ */
+.squad-placeholder {
+  border: 1px dashed #64d5ff45;
+  border-radius: 12px;
+  padding: 18px;
+  background: #0b1e32;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+/* ================================
+   9. FOOTER & MOBILE
+================================ */
+footer {
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+  padding: 24px 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 580px) {
+  .nav {
+    align-items: flex-start;
+    padding: 12px 0;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    width: 100%;
+    gap: 19px;
+    padding: 5px 0;
+  }
+
+  .hero { padding-top: 25px; }
+
+  .hero-stats { gap: 6px; }
+
+  .mini-stat { padding: 11px 8px; }
+  .mini-stat strong { font-size: 19px; }
+  .mini-stat span { font-size: 9px; }
+
+  .team-grid { gap: 8px; }
+
+  .team-card {
+    padding: 11px 9px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .logo-slot {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .team-info h3 { font-size: 16px; }
+
+  .team-badge {
+    margin-left: 50px;
+    margin-top: -7px;
+  }
+
+  .fixture {
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 7px;
+    padding: 11px 9px;
+  }
+
+  .fixture-status {
+    grid-column: 2;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    padding-top: 7px;
+  }
+
+  .fixture-match { gap: 5px; }
+  .fixture-team { font-size: 11px; }
+  .fixture-date { font-size: 9px; }
+
+  .playoff-grid { gap: 8px; }
+  .playoff-card { padding: 11px 9px; }
+  .playoff-versus { gap: 5px; font-size: 10px; padding: 9px 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+   
+/* NPL featured scorecard */
+.npl-featured {
+  border-top: 1px solid #35415a;
+  margin: 12px 0 18px;
+  padding-top: 12px;
+}
+
+.npl-score-card {
+  background: #101a2b;
+  border: 1px solid #293a55;
+  border-radius: 10px;
+  padding: 12px;
+  color: #f4f7ff;
+}
+
+.npl-score-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.npl-score-top small {
+  color: #9cabc4;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.npl-score-top strong {
+  color: #65e6a4;
+  font-size: 11px;
+}
+
+.npl-score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.npl-side {
+  flex: 1;
+  min-width: 0;
+}
+
+.npl-side:last-child {
+  text-align: right;
+}
+
+.npl-team {
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.npl-runs {
+  font-size: 17px;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.npl-vs {
+  color: #8999b4;
+  font-size: 11px;
+}
+
+.npl-score-btn {
+  display: block;
+  margin: 12px 0 0 auto;
+  padding: 6px 10px;
+  background: #1d2c43;
+  color: #dce8ff;
+  border: 1px solid #405574;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.npl-score-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows .3s ease,
+              opacity .3s ease;
+}
+
+.npl-score-details.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.npl-score-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.npl-score-info {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #293a55;
+  font-size: 12px;
+  color: #bdc9dd;
+  line-height: 1.9;
+}
+
+.npl-score-info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.npl-score-info th,
+.npl-score-info td {
+  padding: 6px 3px;
+  text-align: left;
+  border-bottom: 1px solid #293a55;
+}
+
+</style>
+</head>
+
+<body>
+<style>
+.npl-top-live {
+ display:block;
+ text-align:center;
+ padding:11px 8px;
+ background:linear-gradient(90deg,#05251b,#10432d,#05251b);
+ border-bottom:1px solid #36d995;
+ color:#65f0a8;
+ text-decoration:none;
+ font-size:13px;
+ font-weight:900;
+ letter-spacing:2px;
+ animation:nplLiveGlow 2s infinite;
+}
+@keyframes nplLiveGlow {
+ 50% {box-shadow:inset 0 0 18px #37dc8c44;}
+}
+.npl-top-live span {
+ color:white;
+ margin-left:7px;
+}
+</style>
+
+<a class="npl-top-live" href="#npl-ticket-zone">
+ 🎟 NPL TICKETS BOOKING IS LIVE
+ <span>BOOK NOW →</span>
+</a>
+<!-- ================================
+     SECTION A: HEADER
+================================ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="NCCI Home">
+      <div class="brand-mark">NCCI</div>
+      <div>
+        <div class="brand-name">NCCI</div>
+        <div class="brand-small">NAHRIKHERA CRICKET COUNCIL OF INDIA</div>
+      </div>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#home">HOME</a>
+      <a href="#teams">TEAMS</a>
+      <a href="#fixtures">FIXTURES</a>
+      <a href="#points">POINTS TABLE</a>
+      <a href="#playoffs">PLAYOFFS</a>
+      <a href="#squads">SQUADS</a>
+      <a href="#rankings">RANKINGS</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ================================
+     SECTION B: HOME / HERO
+================================ -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-panel">
+      <span class="hero-tag">NCCI • CRICKET SEASON 2026</span>
+
+      <h1>THE GAME.<br>THE GLORY.<br><span>THE CRICKET.</span></h1>
+
+      <p>
+        Follow the tournament, upcoming fixtures, team standings
+        and the road to the final — all in one place.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#fixtures">VIEW FIXTURES ↗</a>
+        <a class="btn" href="#points">POINTS TABLE</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="mini-stat">
+          <strong>DIFFERENT</strong>
+          <span>TEAMS</span>
+        </div>
+        <div class="mini-stat">
+          <strong>ONE DREAM</strong>
+          <span> TO win the</span>
+        </div>
+        <div class="mini-stat">
+          <strong>CHAMPIONSHIPS</strong>
+          <span> OF NAHRIKHERA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION C: FOUR TEAMS
+     LOGO: Replace each placeholder with
+     <img src="images/npp.png" alt="NPP logo">
+================================ -->
+<section class="section" id="teams">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">THE COMPETITORS OF NPL 2026</div>
+      <h2>Official <span class="accent">Teams</span></h2>
+      <div class="subtext">Four teams. One tournament. One champion.</div>
+    </div>
+
+    <div class="team-grid">
+
+      <article class="team-card">
+        <div class="logo-slot" aria-label="NPP logo placeholder">
+          <img src="NPP.jpg" alt="NPP Logo">
+        </div>
+        <div class="team-info">
+          <h3>NPP</h3>
+          <p>Official team profile</p>
+        </div>
+        <span class="team-badge">TEAM 01</span>
+      </article>
+
+      <article class="team-card">
+        <div class="logo-slot" aria-label="NSC logo placeholder">
+          <img src="NSC.jpg" alt="NSC Logo">
+        </div>
+        <div class="team-info">
+          <h3>NSC</h3>
+          <p>Official team profile</p>
+        </div>
+        <span class="team-badge">TEAM 02</span>
+      </article>
+
+      <article class="team-card">
+        <div class="logo-slot" aria-label="NRK logo placeholder">
+          <img src="NRK.jpg" alt="NRK Logo">
+        </div>
+        <div class="team-info">
+          <h3>NRK</h3>
+          <p>Official team profile</p>
+        </div>
+        <span class="team-badge">TEAM 03</span>
+      </article>
+
+      <article class="team-card">
+        <div class="logo-slot" aria-label="NKR logo placeholder">
+          <img src="NKR.jpg" alt="NKR Logo">
+        </div>
+        <div class="team-info">
+          <h3>NKR</h3>
+          <p>Official team profile</p>
+        </div>
+        <span class="team-badge">TEAM 04</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION D: LEAGUE FIXTURES
+     Edit dates or teams inside each card.
+================================ -->
+<section class="section" id="fixtures">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">THE ROAD AHEAD</div>
+      <h2>Upcoming <span class="accent">Fixtures</span></h2>
+      <div class="subtext">League-stage match schedule • November 2026</div>
+    </div>
+
+    <div class="fixture-list">
+
+<div class="npl-featured">
+  <div class="npl-score-card">
+
+    <div class="npl-score-top">
+      <small>NCC MATCH SCORECARD</small>
+      <strong style="color:#65e6a4">COMPLETED</strong>
+    </div>
+
+    <div style="font-size:11px;color:#9cabc4;margin-bottom:10px">
+      14 JUNE 2026 · DAY · VENUE: NCC
+    </div>
+
+    <div class="npl-score-row">
+      <div class="npl-side">
+        <div class="npl-team">HOME</div>
+        <div style="font-size:12px;color:#9cabc4">MONSTERS</div>
+        <div class="npl-runs">116/3</div>
+        <small>9.3 Overs</small>
+      </div>
+
+      <div class="npl-vs">VS</div>
+
+      <div class="npl-side">
+        <div class="npl-team">AWAY</div>
+        <div style="font-size:12px;color:#9cabc4">GANGSTERS</div>
+        <div class="npl-runs">81/5</div>
+        <small>15.0 Overs</small>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;font-size:12px;font-weight:800;color:#65e6a4">
+      MONSTERS WON BY 35 RUNS
+    </div>
+
+    <button class="npl-score-btn"
+      onclick="toggleNPLScorecard(this)"
+      aria-expanded="false">
+      SCORECARD +
+    </button>
+
+    <div class="npl-score-details">
+      <div class="npl-score-inner">
+        <div class="npl-score-info">
+
+          <strong>MATCH INFORMATION</strong>
+          <div>Date: 14 June 2026</div>
+          <div>Time: Day</div>
+          <div>Venue: NCC</div>
+          <div>Toss: Monsters won the toss and elected to bat</div>
+          <div>Result: Monsters won by 35 runs</div>
+
+          <hr style="border-color:#293a55;margin:12px 0">
+
+          <strong>1. MONSTERS — 116/3</strong>
+          <div>Overs: 15.0</div>
+
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Batter</th><th>Dismissal</th>
+                  <th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Yogesh</td><td>b Kishan</td><td>0</td><td>3</td><td>0</td><td>0</td><td>0.00</td></tr>
+                <tr><td>Yash</td><td>b Kishan</td><td>47</td><td>22</td><td>4</td><td>4</td><td>213.64</td></tr>
+                <tr><td>Shaurya</td><td>b Ashutosh</td><td>51</td><td>32</td><td>4</td><td>4</td><td>159.38</td></tr>
+                <tr><td>Extras</td><td>—</td><td>18</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><th>TOTAL</th><th>—</th><th>116/3</th><th>57 balls*</th><th>—</th><th>—</th><th>—</th></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p><strong>Fall of wickets</strong></p>
+          <p>1-0 (Yogesh, 0.3 ov) · 2-47 (Yash, 3.2 ov) · 3-116 (Shaurya, 9.3 ov)</p>
+
+          <p><strong>Batting summary</strong></p>
+          <p>Yash: 47 (22) · 4 fours · 4 sixes · SR 213.64</p>
+          <p>Shaurya: 51 (32) · 4 fours · 4 sixes · SR 159.38</p>
+
+          <p><strong>Bowling — GANGSTERS</strong></p>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th>Bowler</th><th>O</th><th>M</th><th>R</th><th>W</th><th>Econ</th></tr></thead>
+              <tbody>
+                <tr><td>Kishan</td><td>4.3</td><td>0</td><td>51</td><td>2</td><td>11.33</td></tr>
+                <tr><td>Ashutosh</td><td>5.0</td><td>0</td><td>65</td><td>1</td><td>13.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Kishan: Wickets — Yogesh, Yash</p>
+          <p>Ashutosh: Wicket — Shaurya</p>
+
+          <hr style="border-color:#293a55;margin:12px 0">
+
+          <strong>2. GANGSTERS — 81/5</strong>
+          <div>Overs: 15.0</div>
+
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Batter</th><th>Dismissal</th>
+                  <th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Ashutosh</td><td>c &amp; b Yash*</td><td>50</td><td>57</td><td>6</td><td>1</td><td>87.72</td></tr>
+                <tr><td>Kishan</td><td>b Yash</td><td>19</td><td>21</td><td>3</td><td>0</td><td>90.48</td></tr>
+                <tr><td>Yash</td><td>b Yogesh</td><td>9</td><td>12</td><td>1</td><td>0</td><td>75.00</td></tr>
+                <tr><td>Extras</td><td>—</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><th>TOTAL</th><th>—</th><th>81/5</th><th>78 balls*</th><th>—</th><th>—</th><th>—</th></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p><strong>Fall of wickets</strong></p>
+          <p>1-22 (Kishan, 3.4 ov) · 2-37 (Yash, 5.2 ov) · 3-81 (Ashutosh, 12.3 ov) · 4-81 · 5-81</p>
+
+          <p><strong>Batting summary</strong></p>
+          <p>Ashutosh: 50 (57) · 6 fours · 1 six · SR 87.72</p>
+          <p>Kishan: 19 (21) · 3 fours · SR 90.48</p>
+          <p>Yash: 9 (12) · 1 four · SR 75.00</p>
+
+          <p><strong>Bowling — MONSTERS</strong></p>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th>Bowler</th><th>O</th><th>R</th><th>W</th><th>Econ</th></tr></thead>
+              <tbody>
+                <tr><td>Yash</td><td>6.0</td><td>24</td><td>1</td><td>4.00</td></tr>
+                <tr><td>Shaurya</td><td>7.0</td><td>45</td><td>0</td><td>6.43</td></tr>
+                <tr><td>Yogesh</td><td>2.0</td><td>9</td><td>1</td><td>4.50</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Yash: Wicket — Kishan</p>
+          <p>Yogesh: Wicket — Yash</p>
+
+          <hr style="border-color:#293a55;margin:12px 0">
+
+          <strong>MAN OF THE MATCH</strong>
+          <div style="font-size:17px;font-weight:800;color:#65e6a4;margin-top:5px">YASH</div>
+          <p>47 (22) &amp; 1/24 (6.0)</p>
+          <p>Match-winning knock and economical bowling.</p>
+
+          <strong>TOP PERFORMERS</strong>
+          <p>YASH — 47 (22), 4x4, 4x6 · 1/24 (6.0)</p>
+          <p>SHAURYA — 51 (32), 4x4, 4x6 · 0/45 (7.0)</p>
+          <p>ASHUTOSH — 50 (57), 6x4, 1x6 · 1/65 (5.0)</p>
+          <p>KISHAN — 19 (21), 3x4 · 2/51 (4.3)</p>
+
+          <div style="margin-top:12px;color:#8999b4;font-size:10px">
+            *Figures displayed as supplied in the scorecard.
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="npl-featured">
+  <div class="npl-score-card">
+
+    <div class="npl-score-top">
+      <small>NCC MATCH SCORECARD</small>
+      <strong style="color:#65c9ff">UPCOMING</strong>
+    </div>
+
+    <div style="font-size:11px;color:#9cabc4;margin-bottom:10px">
+      03–05 NOV 2026 · LEAGUE STAGE · VENUE: TBD
+    </div>
+
+    <div class="npl-score-row">
+      <div class="npl-side">
+        <div class="npl-team">HOME</div>
+        <div style="font-size:12px;color:#9cabc4">NPP</div>
+        <div class="npl-runs">-</div>
+        <small>15.0 Overs</small>
+      </div>
+
+      <div class="npl-vs">VS</div>
+
+      <div class="npl-side">
+        <div class="npl-team">AWAY</div>
+        <div style="font-size:12px;color:#9cabc4">NSC</div>
+        <div class="npl-runs">-</div>
+        <small>15.0 Overs</small>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;font-size:12px;font-weight:800;color:#65c9ff">
+      MATCH NOT STARTED
+    </div>
+
+    <button class="npl-score-btn"
+      onclick="toggleNPLScorecard(this)"
+      aria-expanded="false">
+      SCORECARD +
+    </button>
+
+    <div class="npl-score-details">
+      <div class="npl-score-inner">
+        <div class="npl-score-info">
+          <strong>MATCH INFORMATION</strong>
+          <div>Date: 03–05 November 2026</div>
+          <div>Match: NPP vs NSC</div>
+          <div>Format: 15 overs per side</div>
+          <div>Venue: To be announced</div>
+          <div>Result: Match not started</div>
+          <p style="color:#9cabc4">
+            Full scorecard will be available after the match.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+      <article class="fixture">
+        <div class="fixture-date">05–06 NOV<span>MATCH 02</span></div>
+        <div class="fixture-match">
+          <div class="fixture-team">NRK</div>
+          <div class="vs">VS</div>
+          <div class="fixture-team">NKR</div>
+        </div>
+        <div class="fixture-status">
+          <strong>UPCOMING</strong>
+          League Stage
+        </div>
+      </article>
+
+      <article class="fixture">
+        <div class="fixture-date">06–07 NOV<span>MATCH 03</span></div>
+        <div class="fixture-match">
+          <div class="fixture-team">NRK</div>
+          <div class="vs">VS</div>
+          <div class="fixture-team">NSC</div>
+        </div>
+        <div class="fixture-status">
+          <strong>UPCOMING</strong>
+          League Stage
+        </div>
+      </article>
+
+      <article class="fixture">
+        <div class="fixture-date">07–08 NOV<span>MATCH 04</span></div>
+        <div class="fixture-match">
+          <div class="fixture-team">NPP</div>
+          <div class="vs">VS</div>
+          <div class="fixture-team">NKR</div>
+        </div>
+        <div class="fixture-status">
+          <strong>UPCOMING</strong>
+          League Stage
+        </div>
+      </article>
+
+       
+      <article class="fixture">
+        <div class="fixture-date">07–08 NOV<span>MATCH 04</span></div>
+        <div class="fixture-match">
+          <div class="fixture-team">NPP</div>
+          <div class="vs">VS</div>
+          <div class="fixture-team">NRK</div>
+        </div>
+        <div class="fixture-status">
+          <strong>UPCOMING</strong>
+          League Stage
+        </div>
+      </article>
+
+      <article class="fixture">
+        <div class="fixture-date">08–09 NOV<span>MATCH 05</span></div>
+        <div class="fixture-match">
+          <div class="fixture-team">NSC</div>
+          <div class="vs">VS</div>
+          <div class="fixture-team">NKR</div>
+        </div>
+        <div class="fixture-status">
+          <strong>UPCOMING</strong>
+          League Stage
+        </div>
+      </article>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION E: FOUR-TEAM POINTS TABLE
+     Initial values are zero because results
+     have not been entered yet.
+================================ -->
+<section class="section" id="points">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">LEAGUE STANDINGS</div>
+      <h2>Points <span class="accent">Table</span></h2>
+      <div class="subtext">Only NPP, NSC, NRK and NKR are included.</div>
+    </div>
+
+    <div class="table-shell">
+      <table>
+        <thead>
+          <tr>
+            <th>POS / TEAM</th>
+            <th>PLAYED</th>
+            <th>WON</th>
+            <th>LOST</th>
+            <th>PTS</th>
+            <th>NRR</th>
+          </tr>
+        </thead>
+        <tbody id="points-body">
+          <!-- Filled by the JavaScript below -->
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-note">
+      * Initial standings only. Enter actual match results to update the
+      table. Points and NRR are not invented. Teams tied on points are
+      shown in the default order until the required tie-break data is available.
+    </p>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION F: PLAYOFFS
+     Q1: 1st vs 2nd
+     Eliminator: 3rd vs 4th
+     Q2: Loser Q1 vs Winner Eliminator
+     Final: Winner Q1 vs Winner Q2
+================================ -->
+<section class="section" id="playoffs">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">THE ROAD TO THE TITLE</div>
+      <h2>Playoff <span class="accent">Fixtures</span></h2>
+      <div class="subtext">
+        Final league positions will determine the playoff teams.
+      </div>
+    </div>
+
+    <div class="playoff-grid">
+
+      <article class="playoff-card">
+        <div class="playoff-label">Qualifier 1</div>
+        <h3>1st vs 2nd</h3>
+        <div class="playoff-versus">
+          <span>1st Place</span>
+          <span class="vs">VS</span>
+          <span>2nd Place</span>
+        </div>
+        <p class="playoff-note">
+          Winner advances directly to the final.
+          Loser gets another chance in Qualifier 2.
+        </p>
+      </article>
+
+      <article class="playoff-card">
+        <div class="playoff-label">Eliminator</div>
+        <h3>3rd vs 4th</h3>
+        <div class="playoff-versus">
+          <span>3rd Place</span>
+          <span class="vs">VS</span>
+          <span>4th Place</span>
+        </div>
+        <p class="playoff-note">
+          Winner advances to Qualifier 2.
+          Loser is eliminated.
+        </p>
+      </article>
+
+      <article class="playoff-card">
+        <div class="playoff-label">Qualifier 2</div>
+        <h3>Second Chance</h3>
+        <div class="playoff-versus">
+          <span>Loser Q1</span>
+          <span class="vs">VS</span>
+          <span>Winner E</span>
+        </div>
+        <p class="playoff-note">
+          Winner qualifies for the final.
+          Loser is eliminated.
+        </p>
+      </article>
+    </div>
+  </div>
+
+<style>
+/* NCCI GRAND FINAL — WIDE CINEMATIC BANNER */
+.ncci-grand-wide {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 25px 0;
+  padding: 27px 22px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, #30220a 0%, #100d07 48%, #030303 100%);
+  border: 1px solid #b68a2b;
+  border-radius: 13px;
+  box-shadow: 0 0 22px #d7a52a20,
+              inset 0 0 30px #d7a52a0b;
+  animation: nccigwEnter 1.1s ease-out both;
+}
+
+.ncci-grand-wide *,
+.ncci-grand-wide *::before,
+.ncci-grand-wide *::after {
+  box-sizing: border-box;
+}
+
+.ncci-grand-wide::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    #e9c45b12 42%,
+    #fff1b44d 50%,
+    #c8972c12 58%,
+    transparent 80%
+  );
+  background-size: 250% 100%;
+  animation: nccigwSweep 4s ease-in-out infinite;
+}
+
+.ncci-gw-side {
+  min-width: 0;
+  padding: 15px 7px;
+  border: 1px solid #8c6927;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #17130a, #070707);
+  box-shadow: inset 0 0 18px #c59b2a0b;
+}
+
+.ncci-gw-side-label {
+  display: block;
+  color: #b99a56;
+  font: 700 9px/1.7 Arial, sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.ncci-gw-side-winner {
+  display: block;
+  margin-top: 8px;
+  color: #f4d47d;
+  font: 800 clamp(13px, 2.1vw, 20px)/1.25 Arial, sans-serif;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px #d8a42e33;
+}
+
+.ncci-gw-center {
+  min-width: 0;
+  position: relative;
+  padding: 8px 0;
+}
+
+.ncci-gw-eyebrow {
+  margin: 0 0 8px;
+  color: #e0bd60;
+  font: 700 9px/1.6 Arial, sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.ncci-gw-title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(24px, 4.5vw, 48px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(
+    180deg,
+    #fffbe4 0%,
+    #f7dc83 24%,
+    #bd851b 48%,
+    #ffedac 64%,
+    #98620f 82%,
+    #f8d875 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 0 #493006);
+  animation: nccigwGlow 3s ease-in-out infinite;
+}
+
+.ncci-gw-divider {
+  height: 1px;
+  width: 78%;
+  margin: 12px auto 9px;
+  background: linear-gradient(
+    90deg, transparent, #bd8a2c, #fff0b3,
+    #bd8a2c, transparent
+  );
+  box-shadow: 0 0 9px #d7ac4c77;
+}
+
+.ncci-gw-tagline {
+  margin: 0;
+  color: #e1d1a9;
+  font: 700 9px/1.6 Arial, sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+@keyframes nccigwEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nccigwSweep {
+  0%, 15% { background-position: 130% 0; }
+  70%, 100% { background-position: -130% 0; }
+}
+
+@keyframes nccigwGlow {
+  0%, 100% {
+    filter: drop-shadow(0 2px 0 #493006);
+  }
+  50% {
+    filter: drop-shadow(0 2px 0 #493006)
+            drop-shadow(0 0 13px #f5cd6077);
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 480px) {
+  .ncci-grand-wide {
+    padding: 20px 9px;
+    gap: 6px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr);
+  }
+
+  .ncci-gw-side {
+    padding: 12px 3px;
+  }
+
+  .ncci-gw-side-label {
+    font-size: 7px;
+    letter-spacing: .5px;
+  }
+
+  .ncci-gw-side-winner {
+    font-size: 11px;
+  }
+
+  .ncci-gw-eyebrow {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .ncci-gw-title {
+    font-size: clamp(19px, 5vw, 25px);
+    letter-spacing: 0;
+  }
+
+  .ncci-gw-tagline {
+    font-size: 7px;
+    letter-spacing: .5px;
+  }
+
+  .ncci-gw-divider {
+    margin: 9px auto 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ncci-grand-wide,
+  .ncci-grand-wide::before,
+  .ncci-gw-title {
+    animation: none;
+  }
+}
+</style>
+
+<section class="ncci-grand-wide">
+
+  <!-- LEFT: QUALIFIER 1 WINNER -->
+  <div class="ncci-gw-side">
+    <span class="ncci-gw-side-label">
+      WINNER OF
+    </span>
+    <strong class="ncci-gw-side-winner">
+      Q1
+    </strong>
+  </div>
+
+  <!-- CENTER: CINEMATIC GRAND FINAL -->
+  <div class="ncci-gw-center">
+    <p class="ncci-gw-eyebrow">
+      NCCI Championship
+    </p>
+
+    <h2 class="ncci-gw-title">
+      GRAND<br>FINAL
+    </h2>
+
+    <div class="ncci-gw-divider"></div>
+
+    <p class="ncci-gw-tagline">
+      The Ultimate Showdown
+    </p>
+  </div>
+
+  <!-- RIGHT: QUALIFIER 2 WINNER -->
+  <div class="ncci-gw-side">
+    <span class="ncci-gw-side-label">
+      WINNER OF
+    </span>
+    <strong class="ncci-gw-side-winner">
+      Q2
+    </strong>
+  </div>
+
+</section>
+
+</section>
+
+ 
+
+<!-- ================================
+     SECTION G: SQUADS — ADD LATER
+================================ -->
+<section class="section" id="squads">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">TEAM ROSTERS</div>
+      <h2>Squads <span class="accent">Coming Later</span></h2>
+    </div>
+
+    <div class="squad-placeholder">
+      Player names, roles, photographs and complete squads will be
+      added here when the official squad details are provided.
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SECTION H: NCCI PLAYER RANKINGS & AWARDS
+================================ -->
+<style>
+#rankings {
+  padding: 72px 0;
+  background: radial-gradient(ellipse at top, #102b49 0%, #071426 62%);
+  color: #eef8ff;
+}
+#rankings .rank-intro { color:#93aec5; max-width:680px; line-height:1.7; }
+#rankings .rank-block { margin-top:42px; }
+#rankings .rank-kicker { color:#64d5ff; font-size:11px; font-weight:900; letter-spacing:3px; }
+#rankings .rank-heading { margin:8px 0 18px; font-size:clamp(25px,4vw,38px); font-weight:1000; }
+#rankings .rank-heading span { color:#64d5ff; }
+#rankings .rank-award-feature {
+  position:relative; overflow:hidden; border:1px solid rgba(245,205,112,.55);
+  border-radius:20px; padding:28px; text-align:center;
+  background:linear-gradient(135deg,#3b2b12,#171d2b 58%,#102944);
+  box-shadow:0 16px 45px #0005;
+}
+#rankings .rank-award-feature:before { content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at 50% 0%,#f5cd7230,transparent 62%); }
+#rankings .rank-award-feature > * { position:relative; }
+#rankings .rank-year { color:#f5cd72; font-size:12px; font-weight:900; letter-spacing:4px; }
+#rankings .rank-feature-title { margin:12px 0; font-size:clamp(26px,5vw,43px); font-weight:1000; color:#fff1c5; }
+#rankings .rank-tbd { display:inline-block; margin-top:8px; padding:10px 18px; border:1px solid #f5cd72; border-radius:999px; color:#f5cd72; font-size:12px; font-weight:900; letter-spacing:2px; }
+#rankings .rank-hall-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+#rankings .rank-hall-card { padding:18px 12px; border:1px solid #ffffff18; border-radius:14px; background:linear-gradient(145deg,#132d49,#0b1e36); text-align:center; }
+#rankings .rank-hall-card strong { display:block; margin:7px 0; color:#fff; font-size:18px; }
+#rankings .rank-hall-card small { color:#f5cd72; font-size:10px; font-weight:900; letter-spacing:2px; }
+#rankings .rank-table-wrap { overflow-x:auto; border:1px solid #ffffff18; border-radius:16px; background:#0b1e36; }
+#rankings .rank-table { width:100%; border-collapse:collapse; min-width:310px; }
+#rankings .rank-table th { padding:14px 16px; color:#64d5ff; text-align:left; font-size:11px; letter-spacing:2px; background:#102944; }
+#rankings .rank-table td { padding:15px 16px; border-top:1px solid #ffffff12; font-weight:750; }
+#rankings .rank-table tr:first-child td { color:#f5cd72; }
+#rankings .rank-number { width:55px; color:#64d5ff; font-weight:1000; }
+#rankings .rank-note { margin-top:12px; color:#93aec5; font-size:12px; }
+@media(max-width:650px) {
+  #rankings .rank-hall-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #rankings .rank-award-feature { padding:23px 14px; }
+  #rankings .rank-table th,#rankings .rank-table td { padding:13px 11px; }
+}
+
+/* MOBILE FIX: keep the complete rankings section centered and full-width */
+#rankings {
+  display:block;
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+}
+#rankings > .wrap {
+  display:block;
+  width:min(1080px, calc(100% - 32px)) !important;
+  max-width:100%;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  padding:0;
+}
+#rankings .rank-block,
+#rankings .section-heading,
+#rankings .rank-award-feature,
+#rankings .rank-table-wrap {
+  width:100%;
+  max-width:100%;
+}
+@media(max-width:650px) {
+  #rankings { padding:44px 0; }
+  #rankings .rank-block { margin-top:32px; }
+  #rankings .rank-hall-card { min-width:0; padding:16px 8px; }
+  #rankings .rank-hall-card strong { font-size:16px; overflow-wrap:anywhere; }
+  #rankings .rank-hall-card small { font-size:9px; letter-spacing:1.5px; }
+}
+</style>
+
+<section id="rankings">
+  <div class="wrap">
+    <div class="section-heading">
+      <div class="eyebrow">NCCI HONOURS & PLAYER STANDINGS</div>
+      <h2>Player <span class="accent">Rankings</span></h2>
+      <p class="rank-intro">Celebrating NCCI's standout performers and recognizing the players making their mark.</p>
+    </div>
+
+    <div class="rank-block">
+      <div class="rank-kicker">THE BIGGEST INDIVIDUAL HONOUR</div>
+      <h3 class="rank-heading">Players of the <span>Year</span></h3>
+      <div class="rank-award-feature">
+        <div class="rank-year">2026 • CURRENT SEASON</div>
+        <div class="rank-feature-title">PLAYER OF THE YEAR</div>
+        <div class="rank-tbd">TO BE ANNOUNCED</div>
+      </div>
+      <div style="margin:22px 0 12px;font-weight:900;letter-spacing:2px;color:#f5cd72;font-size:12px;">HALL OF FAME • 2022–2025</div>
+      <div class="rank-hall-grid">
+        <div class="rank-hall-card"><small>2022 WINNER</small><strong>Shaurya</strong><small>PLAYER OF THE YEAR</small></div>
+        <div class="rank-hall-card"><small>2023 WINNER</small><strong>Yash</strong><small>PLAYER OF THE YEAR</small></div>
+        <div class="rank-hall-card"><small>2024 WINNER</small><strong>Shaurya</strong><small>PLAYER OF THE YEAR</small></div>
+        <div class="rank-hall-card"><small>2025 WINNER</small><strong>Yash</strong><small>PLAYER OF THE YEAR</small></div>
+      </div>
+    </div>
+
+    <div class="rank-block">
+      <div class="rank-kicker">CURRENT PLAYER STANDINGS</div>
+      <h3 class="rank-heading">Overall <span>Rankings</span></h3>
+      <div class="rank-table-wrap">
+        <table class="rank-table">
+          <thead><tr><th>RANK</th><th>PLAYER</th></tr></thead>
+          <tbody>
+            <tr><td class="rank-number">01</td><td>Shaurya Vardhan Singh Naruka</td></tr>
+            <tr><td class="rank-number">02</td><td>Yash Vardhan Singh Naruka</td></tr>
+            <tr><td class="rank-number">03</td><td>Kishan Yadav</td></tr>
+            <tr><td class="rank-number">04</td><td>Ashutosh</td></tr>
+            <tr><td class="rank-number">05</td><td>Yogendra Singh Bhati</td></tr>
+            <tr><td class="rank-number">06</td><td>Yuvraj Singh</td></tr>
+            <tr><td class="rank-number">07</td><td>Balveer Singh</td></tr>
+            <tr><td class="rank-number">08</td><td>Vishnu Yadav</td></tr>
+            <tr><td class="rank-number">09</td><td>Mehandre Singh</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="rank-note">Rankings are based on current form across the last 10 matches.</p>
+    </div>
+
+    <div class="rank-block">
+      <div class="rank-kicker">RECOGNIZING THE NEXT GENERATION</div>
+      <h3 class="rank-heading">Emerging Players of the <span>Year</span></h3>
+      <div class="rank-award-feature">
+        <div class="rank-year">2026 • CURRENT SEASON</div>
+        <div class="rank-feature-title">EMERGING PLAYER OF THE YEAR</div>
+        <div class="rank-tbd">TO BE ANNOUNCED</div>
+      </div>
+      <div style="margin:22px 0 12px;font-weight:900;letter-spacing:2px;color:#f5cd72;font-size:12px;">HALL OF FAME • 2022–2025</div>
+      <div class="rank-hall-grid">
+        <div class="rank-hall-card"><small>2022 WINNER</small><strong>Kishan</strong><small>EMERGING PLAYER</small></div>
+        <div class="rank-hall-card"><small>2023 WINNER</small><strong>Ashutosh</strong><small>EMERGING PLAYER</small></div>
+        <div class="rank-hall-card"><small>2024 WINNER</small><strong>Kishan</strong><small>EMERGING PLAYER</small></div>
+        <div class="rank-hall-card"><small>2025 WINNER</small><strong>Yuvraj</strong><small>EMERGING PLAYER</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================================
+     SECTION H: FOOTER
+================================ -->
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <strong style="color:#64d5ff;">NCCI</strong><br>
+      Nahrikhera Cricket Council of India
+    </div>
+    <div>Official tournament website • 2026</div>
+  </div>
+</footer>
+
+<!-- ================================
+     SECTION I: POINTS TABLE DATA
+     Update these numbers only after matches.
+================================ -->
+<script>
+const teams = [
+  { name: "NPP", played: 0, won: 0, lost: 0, points: 0, nrr: null },
+  { name: "NSC", played: 0, won: 0, lost: 0, points: 0, nrr: null },
+  { name: "NRK", played: 0, won: 0, lost: 0, points: 0, nrr: null },
+  { name: "NKR", played: 0, won: 0, lost: 0, points: 0, nrr: null }
+];
+
+function renderPointsTable() {
+  const tbody = document.getElementById("points-body");
+  tbody.innerHTML = "";
+
+  // Sort by points. Equal-point teams retain their default order
+  // until real NRR and other tie-break data are available.
+  const sortedTeams = teams
+    .map((team, index) => ({ ...team, originalIndex: index }))
+    .sort((a, b) => {
+      if (b.points !== a.points) return b.points - a.points;
+      return a.originalIndex - b.originalIndex;
+    });
+
+  sortedTeams.forEach((team, index) => {
+    const row = document.createElement("tr");
+
+    const values = [
+      `${index + 1}|${team.name}`,
+      team.played,
+      team.won,
+      team.lost,
+      team.points,
+      team.nrr === null ? "—" : Number(team.nrr).toFixed(3)
+    ];
+
+    values.forEach((value, cellIndex) => {
+      const cell = document.createElement("td");
+
+      if (cellIndex === 0) {
+        const split = value.split("|");
+        const position = document.createElement("span");
+        position.className = "position";
+        position.textContent = split[0];
+
+        cell.appendChild(position);
+        cell.appendChild(document.createTextNode(split[1]));
+      } else {
+        cell.textContent = value;
+      }
+
+      if (cellIndex === 4) cell.classList.add("points");
+      row.appendChild(cell);
+    });
+
+    tbody.appendChild(row);
+  });
+}
+
+renderPointsTable();
+</script>
+
+<section id="ncci-player-stats">
+  <style>
+    #ncci-player-stats {
+      color: #eef5ff;
+      font-family: Arial, sans-serif;
+      margin: 30px 0;
+    }
+    #ncci-player-stats .stats-card {
+      background: #111d31;
+      border: 1px solid #2a405f;
+      border-radius: 14px;
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+    #ncci-player-stats h2,
+    #ncci-player-stats h3 { color: #62c5ff; }
+    #ncci-player-stats .stats-table {
+      overflow-x: auto;
+    }
+    #ncci-player-stats table {
+      width: 100%;
+      min-width: 590px;
+      border-collapse: collapse;
+    }
+    #ncci-player-stats th,
+    #ncci-player-stats td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #2a405f;
+      white-space: nowrap;
+    }
+    #ncci-player-stats th {
+      color: #62c5ff;
+      background: #192b46;
+    }
+    #ncci-player-stats input,
+    #ncci-player-stats select {
+      background: #0c1627;
+      color: white;
+      border: 1px solid #2a405f;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 4px;
+    }
+    #ncci-player-stats .rank-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 12px;
+    }
+    #ncci-player-stats .rank-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #2a405f;
+      font-size: 14px;
+    }
+    #ncci-player-stats .rank-line strong { color: #ffd166; }
+    @media(max-width:600px) {
+      #ncci-player-stats .rank-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="stats-card">
+    <h2>🏏 Player Statistics</h2>
+    <p>Total Runs → Matches → 50s → 100s</p>
+
+    <input id="ncciSearch" placeholder="Search player...">
+    <select id="ncciSort">
+      <option value="runs">Total Runs</option>
+      <option value="matches">Matches</option>
+      <option value="fifties">50s</option>
+      <option value="name">Player Name</option>
+    </select>
+
+    <div class="stats-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player Name</th>
+            <th>Total Runs</th>
+            <th>Matches</th>
+            <th>50s</th>
+            <th>100s</th>
+          </tr>
+        </thead>
+        <tbody id="ncciPlayersBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>🏆 Player Rankings</h2>
+  <div class="rank-grid">
+    <div class="stats-card">
+      <h3>Top Run Scorers</h3>
+      <div id="ncciRunsRank"></div>
+    </div>
+    <div class="stats-card">
+      <h3>Most Matches</h3>
+      <div id="ncciMatchesRank"></div>
+    </div>
+    <div class="stats-card">
+      <h3>Most Fifties</h3>
+      <div id="ncciFiftiesRank"></div>
+    </div>
+    <div class="stats-card">
+      <h3>Most Hundreds</h3>
+      <div id="ncciHundredsRank"></div>
+    </div>
+  </div>
+
+  <h2>⭐ Special Records</h2>
+  <div class="rank-grid">
+    <div class="stats-card">
+      <h3>Yash Vardhan Singh Naruka</h3>
+      <p>40 tournament average; highest sixes/runs; 6.3 maiden overs.</p>
+    </div>
+    <div class="stats-card">
+      <h3>Shaurya Vardhan Singh Naruka</h3>
+      <p>Hat-trick; 72 stumpings; highest fours.</p>
+    </div>
+    <div class="stats-card">
+      <h3>Yogendra Singh Bhati</h3>
+      <p>Highest captain/player win percentage; 87 (70) at NCG.</p>
+    </div>
+    <div class="stats-card">
+      <h3>Kishan Yadav</h3>
+      <p>88 (61) at BCC; third-highest fifties.</p>
+    </div>
+    <div class="stats-card">
+      <h3>Yuvraj Singh Rathore</h3>
+      <p>Youngest fifty.</p>
+    </div>
+    <div class="stats-card">
+      <h3>Balveer Singh Rathore</h3>
+      <p>Longest six.</p>
+    </div>
+    <div class="stats-card">
+      <h3>Ashutosh Yadav</h3>
+      <p>Highest chasing fifties (2).</p>
+    </div>
+    <div class="stats-card">
+      <h3>Other Records</h3>
+      <p>Pending until confirmed.</p>
+    </div>
+  </div>
+
+  <script>
+  (() => {
+    const players = [
+      {name:"Yash Vardhan Singh Naruka",runs:4419,matches:163,fifties:11,hundreds:0},
+      {name:"Shaurya Vardhan Singh Naruka",runs:3799,matches:151,fifties:6,hundreds:0},
+      {name:"Yogendra Singh Bhati",runs:318,matches:19,fifties:1,hundreds:0},
+      {name:"Kuldeep Singh Naruka",runs:1811,matches:102,fifties:1,hundreds:0},
+      {name:"Keshav Singh",runs:123,matches:67,fifties:0,hundreds:0},
+      {name:"Kishan Yadav",runs:2579,matches:145,fifties:5,hundreds:0},
+      {name:"Yuvraj Singh Rathore",runs:994,matches:45,fifties:2,hundreds:0},
+      {name:"Balveer Singh Rathore",runs:2265,matches:149,fifties:1,hundreds:0},
+      {name:"Mehendra Singh Rathore",runs:1426,matches:109,fifties:0,hundreds:0},
+      {name:"Piyush Yadav",runs:1246,matches:92,fifties:0,hundreds:0},
+      {name:"Ashutosh Yadav",runs:1937,matches:121,fifties:2,hundreds:0},
+      {name:"Vishnu Yadav",runs:1211,matches:99,fifties:1,hundreds:0}
+    ];
+
+    const root = document.getElementById("ncci-player-stats");
+    const el = id => root.querySelector("#" + id);
+
+    function renderPlayers() {
+      const q = el("ncciSearch").value.toLowerCase().trim();
+      const sort = el("ncciSort").value;
+      const list = players.filter(p =>
+        p.name.toLowerCase().includes(q)
+      ).sort((a,b) =>
+        sort === "name"
+          ? a.name.localeCompare(b.name)
+          : b[sort] - a[sort]
+      );
+
+      el("ncciPlayersBody").innerHTML = list.map((p,i) =>
+        `<tr>
+          <td>${i+1}</td>
+          <td>${p.name}</td>
+          <td>${p.runs.toLocaleString("en-IN")}</td>
+          <td>${p.matches}</td>
+          <td>${p.fifties}</td>
+          <td>${p.hundreds}</td>
+        </tr>`
+      ).join("") || '<tr><td colspan="6">No player found.</td></tr>';
+    }
+
+    function renderRank(id,key) {
+      const sorted = [...players].sort((a,b) =>
+        b[key] - a[key] || a.name.localeCompare(b.name)
+      ).slice(0,5);
+
+      el(id).innerHTML = sorted.map((p,i) =>
+        `<div class="rank-line">
+          <span>${i+1}. ${p.name}</span>
+          <strong>${p[key].toLocaleString("en-IN")}</strong>
+        </div>`
+      ).join("");
+    }
+
+    el("ncciSearch").addEventListener("input",renderPlayers);
+    el("ncciSort").addEventListener("change",renderPlayers);
+
+    renderPlayers();
+    renderRank("ncciRunsRank","runs");
+    renderRank("ncciMatchesRank","matches");
+    renderRank("ncciFiftiesRank","fifties");
+    renderRank("ncciHundredsRank","hundreds");
+  })();
+  </script>
+</section>
+
+<!-- ========== NCCI NEWS SECTION START ========== -->
+<section id="ncci-news">
+  <style>
+    #ncci-news {
+      --cyan: #43eaff;
+      --gold: #ffd166;
+      color: #f4f7ff;
+      font-family: Arial, sans-serif;
+      margin: 32px 0;
+    }
+    #ncci-news * { box-sizing: border-box; }
+    #ncci-news .news-head {
+      position: relative;
+      overflow: hidden;
+      padding: 24px 18px;
+      border: 1px solid #28536d;
+      border-radius: 18px;
+      background: linear-gradient(125deg,#101b35,#102e43,#201637);
+      box-shadow: 0 0 24px #20d9ff18;
+    }
+    #ncci-news .news-head:after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      right: -55px;
+      top: -65px;
+      border-radius: 50%;
+      border: 20px solid #43eaff13;
+      pointer-events: none;
+    }
+    #ncci-news .news-kicker {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+    #ncci-news h2 {
+      font-size: clamp(25px,5vw,36px);
+      margin: 10px 0;
+      color: #fff;
+    }
+    #ncci-news .news-sub {
+      color: #b8c9e2;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    #ncci-news .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    #ncci-news .news-card {
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      border: 1px solid #2b405d;
+      border-radius: 15px;
+      background: linear-gradient(145deg,#111e33,#0b1322);
+      transition: transform .25s,border-color .25s,box-shadow .25s;
+    }
+    #ncci-news .news-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px #43eaff19;
+    }
+    #ncci-news .news-tag {
+      display: inline-block;
+      padding: 6px 9px;
+      border-radius: 30px;
+      background: #43eaff15;
+      border: 1px solid #43eaff55;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    #ncci-news .news-card h3 {
+      color: var(--gold);
+      line-height: 1.4;
+      margin: 14px 0 9px;
+      font-size: 19px;
+    }
+    #ncci-news .news-card p {
+      color: #c1cce0;
+      line-height: 1.65;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+    #ncci-news .news-date {
+      color: #8fa8c7;
+      font-size: 12px;
+      margin-top: 14px;
+      display: block;
+    }
+    #ncci-news .news-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #ffdb8a;
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+    #ncci-news .news-dot {
+      width: 8px;
+      height: 8px;
+      background: #ffbf47;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ffbf47;
+      animation: ncciNewsPulse 1.5s infinite;
+    }
+    #ncci-news .news-footer {
+      text-align: center;
+      color: #8197b5;
+      font-size: 12px;
+      margin-top: 16px;
+    }
+    @keyframes ncciNewsPulse {
+      50% { opacity: .35; transform: scale(.75); }
+    }
+    @media(max-width:600px) {
+      #ncci-news .news-grid { grid-template-columns: 1fr; }
+      #ncci-news .news-card { padding: 16px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      #ncci-news *, #ncci-news *:before, #ncci-news *:after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+
+  <div class="news-head">
+    <div class="news-kicker">NCCI • OFFICIAL UPDATES</div>
+    <h2>📰 NCCI Newsroom</h2>
+    <p class="news-sub">
+      Latest tournament announcements, schedules and updates
+      from Nahrikhera Cricket Council of India.
+    </p>
+    <div class="news-live"><span class="news-dot"></span> TOURNAMENT UPDATES</div>
+  </div>
+
+  <div class="news-grid">
+    <article class="news-card">
+      <span class="news-tag">UPCOMING • NOVEMBER</span>
+      <h3>🏏 NPL 2026 Is Coming!</h3>
+      <p>
+        The NPL is scheduled for <strong>3–6 November 2026</strong>.
+        Fixtures and schedule have been provided. Squads will be
+        announced when the matches take place, as specified by NCCI.
+      </p>
+      <span class="news-date">Tournament window: 3–6 Nov 2026</span>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag">VENUE UPDATE</span>
+      <h3>📍 NPL Venues Not Final</h3>
+      <p>
+        The venues are not fixed yet. The two possible venues are
+        <strong>NCG</strong> and <strong>NBG</strong>.
+        Final venue confirmation is awaited.
+      </p>
+      <span class="news-date">Status: Awaiting confirmation</span>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag">DECEMBER • CHAMPIONSHIP</span>
+      <h3>🏆 NCCI Official Champions Trophy</h3>
+      <p>
+        The NCCI Champions Trophy is scheduled to start on
+        <strong>6 December 2026</strong>. Teams and fixtures
+        are yet to be announced.
+      </p>
+      <span class="news-date">Start date: 6 Dec 2026</span>
+    </article>
+
+    <article class="news-card">
+      <span class="news-tag">SCHEDULE STATUS</span>
+      <h3>📢 Follow Official Updates</h3>
+      <p>
+        Keep checking this section for tournament announcements.
+        Any unconfirmed venue, team or fixture details will remain
+        marked as pending until officially declared.
+      </p>
+      <span class="news-date">NCCI • Cricket updates</span>
+    </article>
+  </div>
+
+  <div class="news-footer">
+    NCCI NEWSROOM • Dates and details displayed as supplied
+  </div>
+</section>
+<!-- ========== NCCI NEWS SECTION END ========== -->
+
+<!-- ========== NCCI TOURNAMENTS SECTION START ========== -->
+<section id="ncci-tournaments">
+  <style>
+    #ncci-tournaments {
+      --gold: #ffd166;
+      --blue: #43d9ff;
+      color: #f5f7ff;
+      font-family: Arial, sans-serif;
+      margin: 34px 0;
+    }
+    #ncci-tournaments * { box-sizing: border-box; }
+    #ncci-tournaments .tour-hero {
+      padding: 25px 18px;
+      border: 1px solid #5b4a29;
+      border-radius: 19px;
+      background:
+        radial-gradient(ellipse at top right,#51401f77,transparent 55%),
+        linear-gradient(135deg,#151c30,#101522 65%,#262016);
+      box-shadow: 0 0 26px #ffd16612;
+    }
+    #ncci-tournaments .tour-eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: 800;
+    }
+    #ncci-tournaments h2 {
+      color: #fff;
+      font-size: clamp(25px,5vw,36px);
+      margin: 10px 0;
+    }
+    #ncci-tournaments .tour-intro {
+      color: #c1cce0;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    #ncci-tournaments .tour-section-title {
+      color: var(--gold);
+      font-size: 22px;
+      margin: 27px 0 14px;
+    }
+    #ncci-tournaments .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 14px;
+    }
+    #ncci-tournaments .tour-card {
+      position: relative;
+      overflow: hidden;
+      padding: 17px;
+      border: 1px solid #35415a;
+      border-radius: 16px;
+      background: linear-gradient(145deg,#18233a,#0d1422);
+      transition: transform .25s,border-color .25s,box-shadow .25s;
+    }
+    #ncci-tournaments .tour-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 0 22px #ffd16616;
+    }
+    #ncci-tournaments .tour-number {
+      color: var(--blue);
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+    #ncci-tournaments .tour-card h3 {
+      color: #fff;
+      font-size: 19px;
+      margin: 10px 0;
+      line-height: 1.4;
+    }
+    #ncci-tournaments .tour-year {
+      color: #a9bad5;
+      font-size: 13px;
+    }
+    #ncci-tournaments .tour-winner {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 11px;
+      background: #ffd16610;
+      border: 1px solid #ffd16638;
+    }
+    #ncci-tournaments .tour-winner small {
+      display: block;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+    #ncci-tournaments .tour-winner strong {
+      color: #fff0bf;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    #ncci-tournaments .tour-margin {
+      color: #b8c8df;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 11px 0 0;
+    }
+    #ncci-tournaments .tour-upcoming {
+      border-color: #24718a;
+      background:
+        radial-gradient(ellipse at top right,#12617b55,transparent 60%),
+        linear-gradient(145deg,#102b3d,#0d1422);
+    }
+    #ncci-tournaments .tour-upcoming:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 24px #43d9ff18;
+    }
+    #ncci-tournaments .tour-badge {
+      display: inline-block;
+      color: var(--blue);
+      background: #43d9ff12;
+      border: 1px solid #43d9ff55;
+      padding: 6px 9px;
+      border-radius: 30px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    #ncci-tournaments .tour-date {
+      color: var(--gold);
+      font-size: 15px;
+      font-weight: 800;
+      margin: 12px 0;
+    }
+    #ncci-tournaments .tour-status {
+      color: #c2d2e8;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    #ncci-tournaments .tour-timer {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 13px;
+      margin-top: 13px;
+      line-height: 1.5;
+    }
+    #ncci-tournaments .tour-footnote {
+      color: #8197b5;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 18px;
+      line-height: 1.6;
+    }
+    @media(max-width:600px) {
+      #ncci-tournaments .tour-grid { grid-template-columns: 1fr; }
+      #ncci-tournaments .tour-card { padding: 16px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      #ncci-tournaments *, #ncci-tournaments *:before,
+      #ncci-tournaments *:after { transition: none !important; }
+    }
+  </style>
+
+  <div class="tour-hero">
+    <div class="tour-eyebrow">NCCI • THE LEGACY</div>
+    <h2>🏆 Tournament Hall of Fame</h2>
+    <p class="tour-intro">
+      Celebrating past champions, unforgettable finishes and
+      the next chapter of NCCI cricket.
+    </p>
+  </div>
+
+  <h3 class="tour-section-title">🥇 Past Tournament Champions</h3>
+
+  <div class="tour-grid">
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 01</div>
+      <h3>🏏 T20 World Cup</h3>
+      <div class="tour-year">Diwali 2022</div>
+      <div class="tour-winner">
+        <small>CHAMPION</small>
+        <strong>Shaurya (Captain)</strong>
+      </div>
+      <p class="tour-margin">Victory margin: 1 run.</p>
+    </article>
+
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 02</div>
+      <h3>🌍 Southern Cup</h3>
+      <div class="tour-year">May 2023</div>
+      <div class="tour-winner">
+        <small>CHAMPION</small>
+        <strong>Yash</strong>
+      </div>
+      <p class="tour-margin">Victory margin: 8 runs.</p>
+    </article>
+
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 03</div>
+      <h3>🔥 T20 World Cup</h3>
+      <div class="tour-year">November–December 2024</div>
+      <div class="tour-winner">
+        <small>CHAMPION</small>
+        <strong>Shaurya</strong>
+      </div>
+      <p class="tour-margin">
+        Decided by a Super Over; recorded winning margin: 7 runs.
+      </p>
+    </article>
+
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 04</div>
+      <h3>🏆 World Cup</h3>
+      <div class="tour-year">July 2025</div>
+      <div class="tour-winner">
+        <small>CHAMPION</small>
+        <strong>Yash</strong>
+      </div>
+      <p class="tour-margin">Victory margin: 10 runs.</p>
+    </article>
+
+    <article class="tour-card">
+      <div class="tour-number">TOURNAMENT 05</div>
+      <h3>⚡ T20 World Cup</h3>
+      <div class="tour-year">March 2026</div>
+      <div class="tour-winner">
+        <small>CHAMPION • CHASE VICTORY</small>
+        <strong>Yuvraj Singh</strong>
+      </div>
+      <p class="tour-margin">
+        Won by 2 wickets with 8 balls remaining.
+        The only tournament in this list won by chasing.
+      </p>
+    </article>
+  </div>
+
+  <h3 class="tour-section-title">🚀 Upcoming Tournaments</h3>
+
+  <div class="tour-grid">
+    <article class="tour-card tour-upcoming">
+      <span class="tour-badge">UPCOMING • NPL 2026</span>
+      <h3>🏏 NPL 2026</h3>
+      <div class="tour-date">3–6 November 2026</div>
+      <p class="tour-status">
+        Fixtures and schedule: provided.<br>
+        Squads: to be announced when matches take place.<br>
+        Venues: NCG or NBG; not yet fixed.
+      </p>
+      <div class="tour-timer" id="ncciNplCountdown">
+        Tournament countdown
+      </div>
+    </article>
+
+    <article class="tour-card tour-upcoming">
+      <span class="tour-badge">UPCOMING • CHAMPIONSHIP</span>
+      <h3>🏆 NCCI Official Champions Trophy</h3>
+      <div class="tour-date">Starts 6 December 2026</div>
+      <p class="tour-status">
+        Teams: to be announced.<br>
+        Fixtures: coming soon.<br>
+        Official tournament details will be added when declared.
+      </p>
+      <div class="tour-timer" id="ncciTrophyCountdown">
+        Tournament countdown
+      </div>
+    </article>
+  </div>
+
+  <p class="tour-footnote">
+    NCCI TOURNAMENT ARCHIVE • Past winners and margins displayed
+    according to the supplied records.
+  </p>
+
+  <script>
+    (() => {
+      const timers = [
+        {id: "ncciNplCountdown", date: "2026-11-03T00:00:00"},
+        {id: "ncciTrophyCountdown", date: "2026-12-06T00:00:00"}
+      ];
+
+      function updateTournamentTimers() {
+        timers.forEach(item => {
+          const el = document.getElementById(item.id);
+          if (!el) return;
+
+          const target = new Date(item.date).getTime();
+          const now = Date.now();
+          const diff = target - now;
+
+          if (diff > 0) {
+            const days = Math.floor(diff / 86400000);
+            const hours = Math.floor((diff % 86400000) / 3600000);
+            const mins = Math.floor((diff % 3600000) / 60000);
+            el.textContent =
+              "⏳ Starts in " + days + " days, " +
+              hours + " hours, " + mins + " minutes";
+          } else {
+            el.textContent = "📅 Scheduled start date has arrived or passed";
+          }
+        });
+      }
+
+      updateTournamentTimers();
+      setInterval(updateTournamentTimers, 60000);
+    })();
+  </script>
+</section>
+<!-- ========== NCCI TOURNAMENTS SECTION END ========== -->
+
+<!-- NPL 2026 ORANGE & PURPLE CAP SECTION -->
+<section class="npl-caps">
+  <div class="npl-caps-heading">
+    <span class="npl-live-dot"></span>
+    <h2>NPL 2026 AWARDS</h2>
+    <p>LEADERBOARD • SEASON 2026</p>
+  </div>
+
+  <div class="npl-caps-grid">
+
+    <!-- ORANGE CAP: HIGHEST RUN SCORER -->
+    <div class="npl-cap-card orange-card">
+      <div class="npl-cap-header">
+        <div class="npl-cap-icon">🧢</div>
+        <div>
+          <h3>ORANGE CAP</h3>
+          <p>HIGHEST RUN SCORER</p>
+        </div>
+      </div>
+
+      <div class="npl-cap-rule"></div>
+
+      <div class="npl-player-list">
+        <div class="npl-player first">
+          <span class="npl-rank">01</span>
+          <span class="npl-cap-badge">🧢</span>
+          <span class="npl-player-name">-</span>
+          <span class="npl-crown">★</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">02</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">03</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">04</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">05</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+      </div>
+
+      <div class="npl-cap-footer">MOST RUNS • NPL 2026</div>
+    </div>
+
+    <!-- PURPLE CAP: HIGHEST WICKET TAKER -->
+    <div class="npl-cap-card purple-card">
+      <div class="npl-cap-header">
+        <div class="npl-cap-icon">🧢</div>
+        <div>
+          <h3>PURPLE CAP</h3>
+          <p>HIGHEST WICKET TAKER</p>
+        </div>
+      </div>
+
+      <div class="npl-cap-rule"></div>
+
+      <div class="npl-player-list">
+        <div class="npl-player first">
+          <span class="npl-rank">01</span>
+          <span class="npl-cap-badge">🧢</span>
+          <span class="npl-player-name">-</span>
+          <span class="npl-crown">★</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">02</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">03</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">04</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+        <div class="npl-player">
+          <span class="npl-rank">05</span>
+          <span class="npl-cap-badge"></span>
+          <span class="npl-player-name">-</span>
+        </div>
+      </div>
+
+      <div class="npl-cap-footer">MOST WICKETS • NPL 2026</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- POSTS BY NCCI -->
+<section class="ncci-posts" id="ncci-posts">
+  <div class="posts-heading">
+    <span class="posts-tag">OFFICIAL UPDATES</span>
+    <h2>POSTS BY <span>NCCI</span></h2>
+    <p>Latest photos, announcements & cricket updates.</p>
+  </div>
+
+  <div class="posts-grid">
+
+    <!-- POST 1: Copy this article to add another post -->
+    <article class="ncci-post">
+      <img
+        src="images/npl-update.jpg"
+        alt="NPL 2026 Update"
+        loading="lazy"
+      >
+      <div class="post-content">
+        <span class="post-label">NPL 2026</span>
+        <h3>NPL IS COMING! 🏏</h3>
+        <p>Get ready for the NPL 2026 season, starting from 3 November!</p>
+        <span class="post-footer">NCCI OFFICIAL</span>
+      </div>
+    </article>
+
+    <!-- POST 2 -->
+    <article class="ncci-post">
+      <img
+        src="images/ncci-update.jpg"
+        alt="NCCI Announcement"
+        loading="lazy"
+      >
+      <div class="post-content">
+        <span class="post-label">ANNOUNCEMENT</span>
+        <h3>MORE UPDATES SOON</h3>
+        <p>Stay tuned for upcoming fixtures, squads and tournament news.</p>
+        <span class="post-footer">NCCI OFFICIAL</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<style>
+.ncci-posts {
+  padding: 30px 16px;
+  margin: 24px 0;
+  color: #f4f7ff;
+  background: #080d19;
+  border: 1px solid #263650;
+  border-radius: 18px;
+}
+
+.posts-heading {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.posts-tag {
+  color: #60a5fa;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.posts-heading h2 {
+  margin: 10px 0;
+  font-size: clamp(25px, 5vw, 36px);
+  font-weight: 900;
+}
+
+.posts-heading h2 span {
+  color: #60a5fa;
+}
+
+.posts-heading p {
+  color: #9baac2;
+  font-size: 13px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ncci-post {
+  overflow: hidden;
+  background: #101a2c;
+  border: 1px solid #293b58;
+  border-radius: 14px;
+  transition: transform .2s, border-color .2s;
+}
+
+.ncci-post:hover {
+  transform: translateY(-3px);
+  border-color: #60a5fa;
+}
+
+.ncci-post img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #17243a;
+}
+
+.post-content {
+  padding: 14px;
+}
+
+.post-label {
+  color: #60a5fa;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.post-content h3 {
+  margin: 9px 0;
+  font-size: 16px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.post-content p {
+  color: #b3bfd2;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.post-footer {
+  display: block;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid #293b58;
+  color: #8295b4;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 480px) {
+  .ncci-posts {
+    padding: 22px 12px;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<style>
+.npl-caps {
+  --red: #ff2948;
+  --blue: #1677ff;
+  --dark: #080d19;
+  --panel: #101a2c;
+  --orange: #ff9d22;
+  --purple: #b58aff;
+
+  padding: 30px 16px;
+  margin: 24px auto;
+  max-width: 1100px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(ellipse at 0% 0%,
+      #40111f 0%, transparent 42%),
+    radial-gradient(ellipse at 100% 100%,
+      #102d61 0%, transparent 45%),
+    var(--dark);
+  border: 1px solid #26334c;
+  border-radius: 22px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.npl-caps * {
+  box-sizing: border-box;
+}
+
+.npl-caps-heading {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.npl-caps-heading h2 {
+  margin: 10px 0 7px;
+  font-size: clamp(23px, 4vw, 34px);
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #ff4059, #fff, #398cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.npl-caps-heading p {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #a8b8d4;
+}
+
+.npl-live-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #ff3855;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #ff3855;
+}
+
+.npl-caps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.npl-cap-card {
+  padding: 20px;
+  min-width: 0;
+  border-radius: 17px;
+  background: linear-gradient(145deg, #121d31, #0b1220);
+  position: relative;
+  overflow: hidden;
+}
+
+.orange-card {
+  border: 1px solid #ff9d2255;
+  box-shadow: inset 0 3px 0 #ff9d22;
+}
+
+.purple-card {
+  border: 1px solid #a56cff55;
+  box-shadow: inset 0 3px 0 #a56cff;
+}
+
+.npl-cap-header {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 64px;
+}
+
+.npl-cap-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 14px;
+  font-size: 30px;
+  background: #ff9d22;
+  border: 1px solid #ff9d2255;
+}
+
+.purple-card .npl-cap-icon {
+  background: #a56cff18;
+  border-color: #a56cff55;
+}
+
+.npl-cap-header h3 {
+  margin: 0 0 7px;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.orange-card h3 {
+  color: #ffb13d;
+}
+
+.purple-card h3 {
+  color: #c5a0ff;
+}
+
+.npl-cap-header p {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  color: #aab7ce;
+}
+
+.npl-cap-rule {
+  height: 2px;
+  margin: 18px 0 12px;
+  background: linear-gradient(90deg, #ff4059, #286fff, transparent);
+}
+
+.npl-player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.npl-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 9px 11px;
+  border-radius: 10px;
+  background: #ffffff06;
+  border: 1px solid #ffffff0c;
+}
+
+.npl-player.first {
+  background: linear-gradient(100deg, #ff30451c, #286fff12);
+  border-color: #ff6c6c66;
+}
+
+.npl-rank {
+  width: 23px;
+  flex-shrink: 0;
+  color: #8ea3c3;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.npl-player.first .npl-rank {
+  color: #fff;
+}
+
+.npl-cap-badge {
+  width: 23px;
+  flex-shrink: 0;
+  font-size: 19px;
+  text-align: center;
+}
+
+.npl-player-name {
+  flex: 1;
+  min-width: 0;
+  color: #e8eefb;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.npl-crown {
+  color: #ffbd51;
+  font-size: 17px;
+}
+
+.npl-cap-footer {
+  margin-top: 17px;
+  padding-top: 13px;
+  border-top: 1px solid #ffffff12;
+  text-align: center;
+  color: #91a5c7;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+  .npl-caps {
+    padding: 23px 12px;
+  }
+
+  .npl-caps-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .npl-cap-card {
+    padding: 17px;
+  }
+}
+</style>
+
+<!-- POSTS BY NCCI -->
+<section class="ncci-posts" id="ncci-posts">
+  <div class="posts-heading">
+    <span class="posts-tag">OFFICIAL UPDATES</span>
+    <h2>POSTS BY <span>NCCI</span></h2>
+    <p>Latest photos, announcements &amp; cricket updates.</p>
+  </div>
+
+  <div class="posts-grid">
+    <article class="ncci-post">
+      <img src="NPL%202026%20HOME%20VS%20AWAY%20EXCLUSIVE%20BE%20READY%20.png" alt="NPL 2026 Home vs Away">
+      <div class="post-content">
+        <span class="post-label">NPL 2026</span>
+        <h3>HOME VS AWAY — BE READY! 🏏</h3>
+        <p>Get ready for NPL 2026!</p>
+        <span class="post-footer">NCCI OFFICIAL</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<script>
+function toggleNPLScorecard(button) {
+  const details = button.nextElementSibling;
+
+  if (!details) return;
+
+  const isOpen = details.classList.contains("open");
+
+  if (isOpen) {
+    details.classList.remove("open");
+    button.textContent = "SCORECARD +";
+    button.setAttribute("aria-expanded", "false");
+  } else {
+    details.classList.add("open");
+    button.textContent = "SCORECARD −";
+    button.setAttribute("aria-expanded", "true");
+  }
+}
+</script>
+
+
+<section id="npl-ticket-zone">
+<style>
+#npl-ticket-zone{background:#050b16;color:#fff;padding:0 14px 35px;font-family:Arial,sans-serif;overflow:hidden}
+#npl-ticket-zone *{box-sizing:border-box}
+#npl-ticket-zone .nt-wrap{max-width:1200px;margin:auto}
+#npl-ticket-zone .nt-hero{
+ position:relative;text-align:center;padding:42px 12px 35px;
+ background:
+ radial-gradient(ellipse at 50% 100%,#80500d66,transparent 65%),
+ linear-gradient(180deg,#030812,#101b2a 70%,#050b16);
+ border-bottom:2px solid #b98730;overflow:hidden;
+}
+#npl-ticket-zone .nt-hero:before{
+ content:"";position:absolute;inset:0;
+ background:repeating-linear-gradient(115deg,transparent 0 75px,#dca83b0b 76px 78px);
+ pointer-events:none
+}
+#npl-ticket-zone .nt-crown{font-size:45px;color:#f5ca64}
+#npl-ticket-zone .nt-hero h2{
+ position:relative;margin:5px 0;color:#f8d77e;
+ font-size:clamp(35px,7vw,68px);font-weight:1000;
+ letter-spacing:4px;text-shadow:0 0 20px #d69b35;
+}
+#npl-ticket-zone .nt-hero h3{
+ position:relative;margin:0;color:#fff;font-size:clamp(17px,3vw,27px);
+ font-style:italic;letter-spacing:2px
+}
+#npl-ticket-zone .nt-hero p{color:#e6c67c;letter-spacing:3px;font-size:12px}
+#npl-ticket-zone .nt-live{
+ display:inline-block;margin-top:17px;padding:11px 23px;
+ color:#06110d;background:linear-gradient(90deg,#40e69b,#a4ffbd);
+ border-radius:30px;font-size:13px;font-weight:900;
+ box-shadow:0 0 22px #36e99877;animation:ntPulse 2s infinite
+}
+@keyframes ntPulse{50%{box-shadow:0 0 30px #36e998}}
+#npl-ticket-zone .nt-layout{
+ display:grid;grid-template-columns:minmax(0,2.1fr) minmax(250px,.9fr);
+ gap:16px;margin-top:22px
+}
+#npl-ticket-zone .nt-panel{
+ background:linear-gradient(145deg,#101c2d,#070e19);
+ border:1px solid #a87c2e;border-radius:14px;padding:17px;
+ box-shadow:0 8px 25px #0008
+}
+#npl-ticket-zone .nt-title{
+ color:#f5cd70;font-size:18px;font-weight:900;margin:0 0 5px
+}
+#npl-ticket-zone .nt-sub{color:#aab8cc;font-size:12px;margin:0 0 17px}
+#npl-ticket-zone .nt-cards{
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px
+}
+#npl-ticket-zone .nt-card{
+ background:linear-gradient(155deg,#182337,#070d17);
+ border:1px solid #b7862e;border-radius:11px;
+ padding:15px 8px;text-align:center;display:flex;flex-direction:column
+}
+#npl-ticket-zone .nt-icon{font-size:28px;color:#edc365}
+#npl-ticket-zone .nt-card h4{font-size:13px;color:#ffdc8c;margin:10px 0}
+#npl-ticket-zone .nt-card small{color:#b9c6d7;font-size:10px}
+#npl-ticket-zone .nt-price-row{
+ display:flex;justify-content:space-between;gap:4px;
+ margin-top:13px;padding-top:10px;border-top:1px solid #5a4727
+}
+#npl-ticket-zone .nt-price-row span{font-size:10px;color:#d0d8e5}
+#npl-ticket-zone .nt-price-row b{display:block;color:#fff;font-size:12px;margin-top:5px}
+#npl-ticket-zone .nt-select{
+ border:0;border-radius:8px;padding:10px 4px;margin-top:14px;
+ background:linear-gradient(90deg,#b77e24,#f9d77a);
+ color:#101010;font-weight:900;font-size:11px;cursor:pointer
+}
+#npl-ticket-zone .nt-match-list{list-style:none;padding:0;margin:0}
+#npl-ticket-zone .nt-match-list li{
+ padding:8px 3px;border-bottom:1px solid #28364a;
+ font-size:12px;color:#e4eaf4;display:flex;gap:9px
+}
+#npl-ticket-zone .nt-match-list li span:first-child{color:#edc365;font-weight:bold}
+#npl-ticket-zone .nt-match-list li span:last-child{margin-left:auto;color:#edc365}
+#npl-ticket-zone .nt-form{margin-top:16px}
+#npl-ticket-zone .nt-fields{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px
+}
+#npl-ticket-zone label{font-size:12px;color:#dce5f3}
+#npl-ticket-zone input,#npl-ticket-zone select{
+ width:100%;margin-top:7px;padding:13px;
+ border:1px solid #344d68;border-radius:7px;
+ background:#060e19;color:#fff;font-size:13px
+}
+#npl-ticket-zone input:focus,#npl-ticket-zone select:focus{outline:1px solid #edc365}
+#npl-ticket-zone .nt-price-display{
+ margin-top:14px;padding:13px;border:1px solid #9b742f;
+ border-radius:8px;background:#090f19;display:flex;
+ justify-content:space-between;align-items:center
+}
+#npl-ticket-zone .nt-price-display strong{color:#f5ce71;font-size:21px}
+#npl-ticket-zone .nt-submit{
+ width:100%;margin-top:15px;padding:15px;border:0;border-radius:9px;
+ background:linear-gradient(90deg,#b87c20,#ffdc7b);
+ color:#090d13;font-size:15px;font-weight:1000;cursor:pointer
+}
+#npl-ticket-zone .nt-whatsapp{
+ margin-top:15px;padding:15px;border:1px solid #28cf83;
+ border-radius:10px;background:#06251e;display:flex;
+ align-items:center;gap:13px;flex-wrap:wrap
+}
+#npl-ticket-zone .nt-whatsapp a{color:#45efa0;font-size:21px;font-weight:900;text-decoration:none}
+#npl-ticket-zone .nt-whatsapp p{font-size:12px;color:#e1f5eb;margin:0}
+#npl-ticket-zone .nt-bookings{margin-top:16px}
+#npl-ticket-zone .nt-bookings table{width:100%;border-collapse:collapse;font-size:11px}
+#npl-ticket-zone .nt-bookings th,#npl-ticket-zone .nt-bookings td{
+ padding:10px 5px;text-align:left;border-bottom:1px solid #29374a
+}
+#npl-ticket-zone .nt-bookings th{color:#edc365}
+#npl-ticket-zone .nt-empty{color:#9aa9be;font-size:12px;padding:15px 0}
+#npl-ticket-zone .nt-footer{text-align:center;color:#eac56b;letter-spacing:3px;margin-top:28px;font-size:12px}
+#npl-ticket-zone .nt-success{
+ display:none;text-align:center;padding:24px 10px;
+ background:#08251c;border:1px solid #36db8b;border-radius:12px;margin-top:15px
+}
+#npl-ticket-zone .nt-tick{
+ width:65px;height:65px;border:4px solid #3ee995;border-radius:50%;
+ color:#3ee995;font-size:40px;display:grid;place-items:center;margin:auto;
+ animation:ntPop .45s ease-out
+}
+@keyframes ntPop{from{transform:scale(.1)}to{transform:scale(1)}}
+#npl-ticket-zone .nt-success h3{color:#4cf0a1}
+#npl-ticket-zone .nt-download{
+ display:inline-block;margin-top:12px;padding:12px 20px;
+ border-radius:7px;background:#f2ca6b;color:#080e17;
+ font-weight:900;text-decoration:none
+}
+#npl-ticket-zone .nt-demo-note{font-size:9px;color:#8793a6}
+#npl-ticket-zone .nt-ticket{display:none;text-align:center;margin-top:20px}
+#npl-ticket-zone .nt-ticket canvas{width:100%;max-width:650px;border-radius:10px}
+@media(max-width:850px){
+ #npl-ticket-zone .nt-layout{grid-template-columns:1fr}
+ #npl-ticket-zone .nt-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #npl-ticket-zone .nt-card:last-child{grid-column:span 2}
+}
+@media(max-width:420px){
+ #npl-ticket-zone .nt-fields{grid-template-columns:1fr}
+ #npl-ticket-zone .nt-panel{padding:12px}
+}
+</style>
+
+<div class="nt-hero">
+ <div class="nt-crown">♛</div>
+ <h2>NPL TICKETS</h2>
+ <h3>BOOKING IS LIVE</h3>
+ <p>NAHRIKHERA PREMIER LEAGUE</p>
+ <div class="nt-live">● TICKETS BOOKING IS NOW LIVE</div>
+</div>
+
+<div class="nt-wrap">
+ <div class="nt-layout">
+  <div>
+   <div class="nt-panel">
+    <h3 class="nt-title">🎟 SELECT YOUR TICKET</h3>
+    <p class="nt-sub">Choose your match and preferred ticket category</p>
+    <div class="nt-cards">
+     <div class="nt-card">
+      <div class="nt-icon">🏏</div>
+      <h4>LEAGUE MATCHES</h4>
+      <small>6 MATCHES</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹1,000</b></span>
+       <span>VIP<b>₹25,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('league')">SELECT</button>
+     </div>
+     <div class="nt-card">
+      <div class="nt-icon">🏆</div>
+      <h4>QUALIFIER 1</h4>
+      <small>1 MATCH</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹1,000</b></span>
+       <span>VIP<b>₹50,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('q1')">SELECT</button>
+     </div>
+     <div class="nt-card">
+      <div class="nt-icon">⚔️</div>
+      <h4>ELIMINATOR</h4>
+      <small>1 MATCH</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹1,000</b></span>
+       <span>VIP<b>₹50,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('eliminator')">SELECT</button>
+     </div>
+     <div class="nt-card">
+      <div class="nt-icon">🏆</div>
+      <h4>QUALIFIER 2</h4>
+      <small>1 MATCH</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹1,000</b></span>
+       <span>VIP<b>₹50,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('q2')">SELECT</button>
+     </div>
+     <div class="nt-card">
+      <div class="nt-icon">👑</div>
+      <h4>GRAND FINAL</h4>
+      <small>1 MATCH</small>
+      <div class="nt-price-row">
+       <span>GENERAL<b>₹5,000</b></span>
+       <span>VIP<b>₹1,00,000</b></span>
+      </div>
+      <button class="nt-select" onclick="nplPreset('final')">SELECT</button>
+     </div>
+    </div>
+   </div>
+
+   <div class="nt-panel nt-form" id="npl-book-form">
+    <h3 class="nt-title">🎟 BOOK YOUR TICKET</h3>
+    <p class="nt-sub">Enter your details to generate your personalised NPL ticket</p>
+    <form id="npl-form">
+     <div class="nt-fields">
+      <label>Full Name *
+       <input id="npl-b-name" required maxlength="60" placeholder="Enter your full name">
+      </label>
+      <label>Select Match *
+       <select id="npl-b-match" required>
+        <option value="">Choose a match</option>
+        <option value="League Match 01">League Match 01</option>
+        <option value="League Match 02">League Match 02</option>
+        <option value="League Match 03">League Match 03</option>
+        <option value="League Match 04">League Match 04</option>
+        <option value="League Match 05">League Match 05</option>
+        <option value="League Match 06">League Match 06</option>
+        <option value="Qualifier 1">Qualifier 1</option>
+        <option value="Eliminator">Eliminator</option>
+        <option value="Qualifier 2">Qualifier 2</option>
+        <option value="Grand Final">Grand Final</option>
+       </select>
+      </label>
+      <label>Mobile Number *
+       <input id="npl-b-phone" type="tel" pattern="[0-9]{10}" maxlength="10" required placeholder="10-digit mobile number">
+      </label>
+      <label>Ticket Category *
+       <select id="npl-b-category" required>
+        <option value="">Select category</option>
+        <option value="GENERAL">GENERAL</option>
+        <option value="VIP">VIP</option>
+       </select>
+      </label>
+      <label>Age (Optional)
+       <input id="npl-b-age" type="number" min="1" max="120" placeholder="Enter age">
+      </label>
+     </div>
+     <div class="nt-price-display">
+      <span>YOUR TICKET PRICE</span>
+      <strong id="npl-live-price">₹0</strong>
+     </div>
+     <button type="submit" class="nt-submit">BOOK NOW →</button>
+     <p class="nt-demo-note" style="text-align:right">DEMO • NO PAYMENT TAKEN</p>
+    </form>
+
+    <div class="nt-success" id="npl-success">
+     <div class="nt-tick">✓</div>
+     <h3>DEMO BOOKING SUCCESSFUL!</h3>
+     <p>Your personalised NPL demo ticket is ready.</p>
+     <p class="nt-demo-note">No payment has been made or collected.</p>
+    </div>
+    <div class="nt-ticket" id="npl-ticket">
+     <h3 style="color:#f2ca6b">YOUR PERSONAL NPL TICKET</h3>
+     <canvas id="npl-ticket-canvas" width="1000" height="570"></canvas><br>
+     <a id="npl-download" class="nt-download" download="NPL-Demo-Ticket.png">DOWNLOAD TICKET ↓</a>
+    </div>
+   </div>
+
+   <div class="nt-whatsapp">
+    <div style="font-size:35px">☘</div>
+    <div>
+     <p>After booking your ticket, please WhatsApp us for confirmation:</p>
+     <a href="https://wa.me/919352483580?text=Hello%20NPL%2C%20I%20have%20booked%20a%20demo%20ticket." target="_blank" rel="noopener">9352483580</a>
+    </div>
+   </div>
+  </div>
+
+  <aside>
+   <div class="nt-panel">
+    <h3 class="nt-title">📅 MATCHES LIST (10)</h3>
+    <ul class="nt-match-list">
+     <li><span>01.</span> League Match 01 <span>→</span></li>
+     <li><span>02.</span> League Match 02 <span>→</span></li>
+     <li><span>03.</span> League Match 03 <span>→</span></li>
+     <li><span>04.</span> League Match 04 <span>→</span></li>
+     <li><span>05.</span> League Match 05 <span>→</span></li>
+     <li><span>06.</span> League Match 06 <span>→</span></li>
+     <li><span>07.</span> Qualifier 1 <span>→</span></li>
+     <li><span>08.</span> Eliminator <span>→</span></li>
+     <li><span>09.</span> Qualifier 2 <span>→</span></li>
+     <li><span>10.</span> Grand Final <span>→</span></li>
+    </ul>
+   </div>
+
+   <div class="nt-panel nt-bookings">
+    <h3 class="nt-title">👥 TICKET BOOKED BY</h3>
+    <p class="nt-sub">Public demo booking directory</p>
+    <div id="npl-booking-list">
+     <p class="nt-empty">No demo bookings yet.</p>
+    </div>
+    <p class="nt-demo-note">Only names, category and match are displayed.</p>
+   </div>
+  </aside>
+ </div>
+ <div class="nt-footer">♛ &nbsp; NAHRIKHERA PREMIER LEAGUE &nbsp; ♛</div>
+</div>
+
+<script>
+(function(){
+ const $=id=>document.getElementById(id);
+ const match=$("npl-b-match"),category=$("npl-b-category");
+ let bookings=[];
+
+ function stage(m){
+  if(m==="Grand Final")return "final";
+  if(["Qualifier 1","Qualifier 2","Eliminator"].includes(m))return "playoff";
+  return "league";
+ }
+ function price(m,c){
+  if(!m||!c)return 0;
+  const s=stage(m);
+  if(s==="final")return c==="VIP"?100000:5000;
+  if(s==="playoff")return c==="VIP"?50000:1000;
+  return c==="VIP"?25000:1000;
+ }
+ function updatePrice(){
+  $("npl-live-price").textContent="₹"+price(match.value,category.value).toLocaleString("en-IN");
+ }
+ match.addEventListener("change",updatePrice);
+ category.addEventListener("change",updatePrice);
+
+ window.nplPreset=function(key){
+  const map={
+   league:"League Match 01",
+   q1:"Qualifier 1",
+   eliminator:"Eliminator",
+   q2:"Qualifier 2",
+   final:"Grand Final"
+  };
+  match.value=map[key];
+  category.value="";
+  updatePrice();
+  $("npl-book-form").scrollIntoView({behavior:"smooth",block:"start"});
+ };
+
+ function renderBookings(){
+  const box=$("npl-booking-list");
+  if(!bookings.length){
+   box.innerHTML='<p class="nt-empty">No demo bookings yet.</p>';
+   return;
+  }
+  let html='<table><thead><tr><th>Name</th><th>Category</th><th>Match</th></tr></thead><tbody>';
+  bookings.forEach(b=>{
+   html+='<tr><td>'+escapeText(b.name)+'</td><td>'+b.category+'</td><td>'+escapeText(b.match)+'</td></tr>';
+  });
+  box.innerHTML=html+'</tbody></table>';
+ }
+ function escapeText(s){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ }
+
+ $("npl-form").addEventListener("submit",function(e){
+  e.preventDefault();
+  const name=$("npl-b-name").value.trim();
+  const phone=$("npl-b-phone").value.trim();
+  const age=$("npl-b-age").value;
+  const m=match.value,c=category.value;
+  if(!/^[0-9]{10}$/.test(phone)){
+   alert("Please enter a valid 10-digit mobile number.");return;
+  }
+  const amount=price(m,c);
+  const id="NPL-"+Math.random().toString(36).slice(2,9).toUpperCase();
+  const record={name,category:c,match:m,id,amount};
+  bookings.unshift(record);
+  renderBookings();
+
+  const cv=$("npl-ticket-canvas"),ctx=cv.getContext("2d");
+  ctx.fillStyle="#070e1b";ctx.fillRect(0,0,1000,570);
+  ctx.strokeStyle="#d5a447";ctx.lineWidth=8;ctx.strokeRect(15,15,970,540);
+  ctx.strokeStyle="#725323";ctx.lineWidth=2;ctx.strokeRect(32,32,936,506);
+  ctx.textAlign="center";
+  ctx.fillStyle="#f5ce72";ctx.font="bold 65px Arial";
+  ctx.fillText("♛ NPL ♛",500,112);
+  ctx.fillStyle="#fff";ctx.font="bold 27px Arial";
+  ctx.fillText("NAHRIKHERA PREMIER LEAGUE",500,158);
+  ctx.strokeStyle="#c3933e";ctx.beginPath();ctx.moveTo(100,190);ctx.lineTo(900,190);ctx.stroke();
+  ctx.fillStyle="#f5ce72";ctx.font="bold 36px Arial";
+  ctx.fillText(c+" ENTRY TICKET",500,250);
+  ctx.textAlign="left";ctx.fillStyle="#fff";ctx.font="bold 28px Arial";
+  ctx.fillText("NAME: "+name.toUpperCase().slice(0,35),100,320);
+  ctx.font="24px Arial";
+  ctx.fillText("MATCH: "+m,100,375);
+  ctx.fillText("CATEGORY: "+c,100,420);
+  ctx.fillText("PRICE: Rs. "+amount.toLocaleString("en-IN"),100,465);
+  ctx.fillStyle="#f5ce72";ctx.font="bold 21px Arial";
+  ctx.fillText("BOOKING ID: "+id,100,510);
+  ctx.textAlign="right";ctx.fillStyle="#9da8ba";ctx.font="14px Arial";
+  ctx.fillText("DEMO • NO PAYMENT TAKEN",950,530);
+
+  $("npl-download").href=cv.toDataURL("image/png");
+  $("npl-download").download=id+".png";
+  $("npl-success").style.display="block";
+  $("npl-ticket").style.display="block";
+  $("npl-success").scrollIntoView({behavior:"smooth",block:"center"});
+ });
+})();
+</script>
+</section>
+
+
+</body>
+</html>
