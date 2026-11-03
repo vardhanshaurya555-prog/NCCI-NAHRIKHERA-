@@ -1209,372 +1209,303 @@ footer {
   </div>
 </div>
 
-<!-- NCCI PREMIUM MATCH SCORECARD -->
+
+<!-- NCCI NAVY BLUE COLLAPSIBLE SCORECARD -->
 <section class="ncci-match-card">
 
-  <style>
-    .ncci-match-card {
-      background: linear-gradient(145deg, #090b10, #171923);
-      color: #f5f5f5;
-      border: 1px solid #34343c;
-      border-radius: 18px;
-      padding: 18px;
-      margin: 22px 0;
-      font-family: Arial, sans-serif;
-      box-shadow: 0 10px 30px #0008;
-      overflow: hidden;
-    }
+<style>
+.ncci-match-card {
+  background: #101b2e;
+  color: #f2f6ff;
+  border: 1px solid #293b56;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 22px 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  box-shadow: 0 8px 24px #0004;
+}
+.ncci-match-card * { box-sizing: border-box; }
 
-    .ncci-match-card * { box-sizing: border-box; }
+.ncci-match-card .nc-head {
+  text-align: center;
+  padding: 10px 0 20px;
+  border-bottom: 1px solid #293b56;
+}
+.ncci-match-card .nc-brand {
+  color: #ff555f;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+.ncci-match-card .nc-head h2 {
+  color: #f3c969;
+  font-size: 25px;
+  margin: 12px 0;
+}
+.ncci-match-card .nc-head p {
+  color: #aab8cc;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 4px 0;
+}
+.ncci-match-card .nc-result {
+  margin: 18px 0;
+  padding: 18px 10px;
+  text-align: center;
+  border-radius: 14px;
+  background: linear-gradient(110deg,#102b3b,#101b2e);
+  border: 1px solid #34516b;
+}
+.ncci-match-card .nc-result small {
+  color: #70e5b0;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.ncci-match-card .nc-result h3 {
+  color: #70e5b0;
+  font-size: 18px;
+  margin: 12px 0;
+}
+.ncci-match-card .nc-result p {
+  color: #bdc8da;
+  font-size: 13px;
+  margin: 5px 0;
+}
 
-    .ncci-header {
-      text-align: center;
-      padding: 8px 0 18px;
-      border-bottom: 1px solid #373741;
-    }
+/* ACTUAL SCORECARD BUTTON */
+.ncci-match-card details { margin-top: 18px; }
 
-    .ncci-header .brand {
-      color: #ff4545;
-      font-weight: 900;
-      letter-spacing: 3px;
-      font-size: 12px;
-    }
+.ncci-match-card summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #202f49;
+  border: 1px solid #435a7c;
+  border-radius: 15px;
+  padding: 17px 23px;
+  color: #dceaff;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+.ncci-match-card summary::-webkit-details-marker {
+  display: none;
+}
+.ncci-match-card summary::after {
+  content: "+";
+  font-size: 23px;
+  color: #71d9ff;
+}
+.ncci-match-card details[open] summary::after {
+  content: "−";
+}
+.ncci-match-card .nc-content {
+  margin-top: 20px;
+  animation: ncReveal .25s ease;
+}
+@keyframes ncReveal {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ncci-match-card .nc-innings {
+  margin: 20px 0;
+  border: 1px solid #293b56;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.ncci-match-card .nc-inn-head {
+  padding: 15px;
+  background: #192941;
+  border-left: 4px solid #63d8ff;
+}
+.ncci-match-card .nc-inn-head h3 {
+  font-size: 14px;
+  margin: 0;
+}
+.ncci-match-card .nc-total {
+  color: #70e5b0;
+  font-size: 28px;
+  font-weight: 900;
+  margin-top: 8px;
+}
+.ncci-match-card .nc-total span {
+  color: #aab8cc;
+  font-size: 13px;
+  font-weight: normal;
+}
+.ncci-match-card .nc-table-wrap {
+  overflow-x: auto;
+}
+.ncci-match-card table {
+  width: 100%;
+  min-width: 330px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.ncci-match-card th {
+  color: #70dfff;
+  background: #0c1525;
+  padding: 12px 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+.ncci-match-card td {
+  padding: 12px 8px;
+  text-align: center;
+  border-bottom: 1px solid #29364c;
+}
+.ncci-match-card th:first-child,
+.ncci-match-card td:first-child {
+  text-align: left;
+}
+.ncci-match-card .nc-extras {
+  background: #0c1525;
+  padding: 13px;
+  font-size: 13px;
+  color: #c9d5e8;
+}
+.ncci-match-card .nc-label {
+  color: #71d9ff;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin: 22px 0 10px;
+}
+.ncci-match-card .nc-fow {
+  padding: 14px;
+  background: #0c1525;
+  border: 1px solid #293b56;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 2;
+  color: #d2dced;
+}
+.ncci-match-card .nc-footer {
+  text-align: center;
+  border-top: 1px solid #293b56;
+  padding-top: 17px;
+  margin-top: 22px;
+  color: #91a4bd;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+.ncci-match-card .nc-footer strong {
+  color: #70dfff;
+}
+</style>
 
-    .ncci-header h2 {
-      font-size: 24px;
-      margin: 9px 0;
-      color: #f3c969;
-    }
+<div class="nc-head">
+  <div class="nc-brand">NCCI • NAHRIKHERA CRICKET COUNCIL</div>
+  <h2>MATCH SCORECARD</h2>
+  <p>03 NOVEMBER 2026 • NBG</p>
+  <p>SHAURYA'S FIGHTERS vs YASH'S LIONS</p>
+</div>
 
-    .ncci-header p {
-      margin: 5px 0;
-      font-size: 12px;
-      color: #b8bac5;
-    }
+<div class="nc-result">
+  <small>MATCH COMPLETED</small>
+  <h3>YASH'S LIONS WON</h3>
+  <p>Target: 24 runs</p>
+  <p>Chase completed in 2.1 overs</p>
+</div>
 
-    .ncci-result {
-      margin: 16px 0;
-      padding: 15px 10px;
-      text-align: center;
-      border-radius: 12px;
-      background: linear-gradient(100deg, #321313, #171923, #30230b);
-      border: 1px solid #72512b;
-    }
+<!-- BUTTON CLICK KARNE PAR HI SCORECARD KHULEGA -->
+<details>
+  <summary>SCORECARD</summary>
 
-    .ncci-result .status {
-      font-size: 10px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      color: #f3c969;
-    }
+  <div class="nc-content">
 
-    .ncci-result h3 {
-      font-size: 17px;
-      margin: 8px 0;
-      color: #ff6464;
-    }
-
-    .ncci-result p {
-      margin: 0;
-      color: #ddd;
-      font-size: 12px;
-    }
-
-    .ncci-innings {
-      margin-top: 20px;
-      border: 1px solid #34343c;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .ncci-innings-title {
-      padding: 13px;
-      background: #20212a;
-      border-left: 4px solid #ed4242;
-    }
-
-    .ncci-innings-title h3 {
-      margin: 0;
-      font-size: 15px;
-    }
-
-    .ncci-total {
-      margin-top: 7px;
-      font-size: 25px;
-      font-weight: 900;
-      color: #f3c969;
-    }
-
-    .ncci-total small {
-      font-size: 12px;
-      font-weight: normal;
-      color: #c6c6ce;
-    }
-
-    .ncci-table-wrap { overflow-x: auto; }
-
-    .ncci-table {
-      width: 100%;
-      min-width: 340px;
-      border-collapse: collapse;
-      font-size: 12px;
-    }
-
-    .ncci-table th {
-      background: #11131a;
-      color: #f3c969;
-      padding: 11px 7px;
-      text-align: left;
-      white-space: nowrap;
-    }
-
-    .ncci-table td {
-      padding: 11px 7px;
-      border-bottom: 1px solid #2e3039;
-      color: #ececf1;
-    }
-
-    .ncci-table th:not(:first-child),
-    .ncci-table td:not(:first-child) {
-      text-align: center;
-    }
-
-    .ncci-table tr:last-child td { border-bottom: none; }
-
-    .ncci-extras {
-      padding: 11px;
-      background: #11131a;
-      font-size: 12px;
-      color: #dedee5;
-    }
-
-    .ncci-extras strong { color: #f3c969; }
-
-    .ncci-section-label {
-      margin: 18px 0 9px;
-      font-size: 13px;
-      font-weight: 800;
-      color: #ff6666;
-      letter-spacing: 1px;
-    }
-
-    .ncci-fow {
-      background: #11131a;
-      border: 1px solid #30313a;
-      border-radius: 10px;
-      padding: 12px;
-      font-size: 12px;
-      line-height: 1.9;
-      color: #dddde5;
-    }
-
-    .ncci-footer {
-      margin-top: 20px;
-      text-align: center;
-      padding-top: 13px;
-      border-top: 1px solid #34343c;
-      color: #a6a7b2;
-      font-size: 10px;
-      letter-spacing: 2px;
-    }
-
-    .ncci-footer strong { color: #f3c969; }
-  </style>
-
-  <header class="ncci-header">
-    <div class="brand">NCCI • NAHRIKHERA CRICKET COUNCIL</div>
-    <h2>MATCH SCORECARD</h2>
-    <p>03 NOVEMBER 2026 • NBG</p>
-    <p>SHAURYA'S FIGHTERS vs YASH'S LIONS</p>
-  </header>
-
-  <div class="ncci-result">
-    <div class="status">MATCH COMPLETED</div>
-    <h3>YASH'S LIONS WON</h3>
-    <p>Target: 24 runs</p>
-    <p>Chase completed in 2.1 overs</p>
-  </div>
-
-  <!-- FIRST INNINGS -->
-  <div class="ncci-innings">
-    <div class="ncci-innings-title">
-      <h3>1ST INNINGS • SHAURYA'S FIGHTERS</h3>
-      <div class="ncci-total">23/3 <small>(3.3 overs)</small></div>
+    <div class="nc-innings">
+      <div class="nc-inn-head">
+        <h3>1ST INNINGS • SHAURYA'S FIGHTERS</h3>
+        <div class="nc-total">23/3 <span>(3.3 overs)</span></div>
+      </div>
+      <div class="nc-table-wrap">
+        <table>
+          <thead>
+            <tr><th>Batter</th><th>R</th><th>B</th><th>4s</th><th>6s</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Shaurya</td><td>20</td><td>13</td><td>2</td><td>1</td></tr>
+            <tr><td>Piyush</td><td>0</td><td>5</td><td>—</td><td>—</td></tr>
+            <tr><td>Yogesh</td><td>1</td><td>3</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nc-extras"><b>Extras:</b> 2 wides</div>
     </div>
 
-    <div class="ncci-table-wrap">
-      <table class="ncci-table">
+    <div class="nc-label">BOWLING • YASH'S LIONS</div>
+    <div class="nc-table-wrap">
+      <table>
         <thead>
-          <tr>
-            <th>Batter</th>
-            <th>R</th>
-            <th>B</th>
-            <th>4s</th>
-            <th>6s</th>
-          </tr>
+          <tr><th>Bowler</th><th>O</th><th>M</th><th>R</th><th>W</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Shaurya</td>
-            <td>20</td>
-            <td>13</td>
-            <td>2</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>Piyush</td>
-            <td>0</td>
-            <td>5</td>
-            <td>—</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>Yogesh</td>
-            <td>1</td>
-            <td>3</td>
-            <td>—</td>
-            <td>—</td>
-          </tr>
+          <tr><td>Yash</td><td>1.3</td><td>—</td><td>2</td><td>2</td></tr>
+          <tr><td>Ashutosh</td><td>2</td><td>1</td><td>21</td><td>0</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="ncci-extras">
-      <strong>Extras:</strong> 2 (wides)
-    </div>
-  </div>
-
-  <div class="ncci-section-label">BOWLING • YASH'S LIONS</div>
-
-  <div class="ncci-table-wrap">
-    <table class="ncci-table">
-      <thead>
-        <tr>
-          <th>Bowler</th>
-          <th>O</th>
-          <th>M</th>
-          <th>R</th>
-          <th>W</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Yash</td>
-          <td>1.3</td>
-          <td>—</td>
-          <td>2</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>Ashutosh</td>
-          <td>2</td>
-          <td>1</td>
-          <td>21</td>
-          <td>0</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="ncci-section-label">FALL OF WICKETS</div>
-  <div class="ncci-fow">
-    22/1 (2.1 overs) — Shaurya<br>
-    22/2 (3.0 overs) — Piyush<br>
-    23/3 (3.3 overs) — Yogesh
-  </div>
-
-  <!-- SECOND INNINGS -->
-  <div class="ncci-innings">
-    <div class="ncci-innings-title">
-      <h3>2ND INNINGS • YASH'S LIONS</h3>
-      <div class="ncci-total">24/2 <small>(2.1 overs)</small></div>
+    <div class="nc-label">FALL OF WICKETS</div>
+    <div class="nc-fow">
+      22/1 (2.1 overs) — Shaurya<br>
+      22/2 (3.0 overs) — Piyush<br>
+      23/3 (3.3 overs) — Yogesh
     </div>
 
-    <div class="ncci-table-wrap">
-      <table class="ncci-table">
+    <div class="nc-innings">
+      <div class="nc-inn-head">
+        <h3>2ND INNINGS • YASH'S LIONS</h3>
+        <div class="nc-total">24/2 <span>(2.1 overs)</span></div>
+      </div>
+      <div class="nc-table-wrap">
+        <table>
+          <thead>
+            <tr><th>Batter</th><th>R</th><th>B</th><th>4s</th><th>6s</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Ashutosh</td><td>2</td><td>4</td><td>—</td><td>—</td></tr>
+            <tr><td>Yash</td><td>15</td><td>7</td><td>2</td><td>0</td></tr>
+            <tr><td>Keshav</td><td>2</td><td>2</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nc-extras"><b>Extras:</b> 5 wides</div>
+    </div>
+
+    <div class="nc-label">BOWLING • SHAURYA'S FIGHTERS</div>
+    <div class="nc-table-wrap">
+      <table>
         <thead>
-          <tr>
-            <th>Batter</th>
-            <th>R</th>
-            <th>B</th>
-            <th>4s</th>
-            <th>6s</th>
-          </tr>
+          <tr><th>Bowler</th><th>O</th><th>M</th><th>R</th><th>W</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Ashutosh</td>
-            <td>2</td>
-            <td>4</td>
-            <td>—</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>Yash</td>
-            <td>15</td>
-            <td>7</td>
-            <td>2</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>Keshav</td>
-            <td>2</td>
-            <td>2</td>
-            <td>—</td>
-            <td>—</td>
-          </tr>
+          <tr><td>Piyush</td><td>2</td><td>0</td><td>23</td><td>0</td></tr>
+          <tr><td>Shaurya</td><td>0.1</td><td>—</td><td>1</td><td>0</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="ncci-extras">
-      <strong>Extras:</strong> 5 (wides)
+    <div class="nc-label">FALL OF WICKETS</div>
+    <div class="nc-fow">
+      2/1 (0.4 overs) — Ashutosh<br>
+      4/2 (1.0 over) — Keshav
     </div>
+
   </div>
+</details>
 
-  <div class="ncci-section-label">BOWLING • SHAURYA'S FIGHTERS</div>
-
-  <div class="ncci-table-wrap">
-    <table class="ncci-table">
-      <thead>
-        <tr>
-          <th>Bowler</th>
-          <th>O</th>
-          <th>M</th>
-          <th>R</th>
-          <th>W</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Piyush</td>
-          <td>2</td>
-          <td>0</td>
-          <td>23</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>Shaurya</td>
-          <td>0.1</td>
-          <td>—</td>
-          <td>1</td>
-          <td>0</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="ncci-section-label">FALL OF WICKETS</div>
-  <div class="ncci-fow">
-    2/1 (0.4 overs) — Ashutosh<br>
-    4/2 (1.0 over) — Keshav
-  </div>
-
-  <footer class="ncci-footer">
-    <strong>NCCI</strong> • OFFICIAL MATCH RECORD
-  </footer>
+<div class="nc-footer">
+  <strong>NCCI</strong> • OFFICIAL MATCH RECORD
+</div>
 
 </section>
+
+          
 
 
 
