@@ -2471,6 +2471,240 @@ renderPointsTable();
   </script>
 </section>
 
+<style>
+/* NCCI PLAYER COMPARISON */
+.ncci-compare {
+  background: linear-gradient(145deg,#090d16,#171b26);
+  border: 1px solid #343b49;
+  border-radius: 18px;
+  padding: 22px 16px;
+  margin: 25px 0;
+  color: #fff;
+  font-family: Arial,sans-serif;
+}
+
+.ncci-compare h2 {
+  text-align:center;
+  color:#ff4545;
+  font-size:25px;
+  margin:0 0 6px;
+  letter-spacing:1px;
+}
+
+.ncci-compare .subtitle {
+  text-align:center;
+  color:#aeb7c6;
+  font-size:12px;
+  margin-bottom:22px;
+}
+
+.nc-selectors {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.nc-selectors label {
+  display:block;
+  color:#ff7777;
+  font-size:11px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.nc-selectors select {
+  width:100%;
+  min-width:0;
+  background:#202735;
+  color:white;
+  border:1px solid #4a5364;
+  border-radius:9px;
+  padding:12px 5px;
+  font-size:12px;
+}
+
+.nc-vs {
+  text-align:center;
+  color:#ff4444;
+  font-weight:900;
+  font-size:20px;
+  margin:17px 0;
+}
+
+.nc-stats {
+  display:grid;
+  gap:12px;
+}
+
+.nc-stat {
+  background:#151c29;
+  border:1px solid #343e50;
+  border-radius:12px;
+  padding:14px;
+}
+
+.nc-stat-title {
+  text-align:center;
+  color:#aeb8c8;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:13px;
+}
+
+.nc-stat-values {
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  text-align:center;
+  gap:8px;
+}
+
+.nc-stat-values strong {
+  font-size:23px;
+  display:block;
+}
+
+.nc-stat-values small {
+  color:#aab4c5;
+  font-size:10px;
+  display:block;
+  margin-top:5px;
+  overflow-wrap:anywhere;
+}
+
+.nc-stat-values .nc-mid {
+  color:#ff5555;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.nc-winner {
+  color:#65e6a4;
+}
+
+.nc-rank-note {
+  color:#aeb8c8;
+  font-size:11px;
+  text-align:center;
+  margin-top:17px;
+}
+
+@media(max-width:380px) {
+  .nc-stat-values strong {font-size:19px;}
+}
+</style>
+
+<section class="ncci-compare">
+
+  <h2>PLAYER COMPARISON</h2>
+  <div class="subtitle">
+    NCCI • HEAD TO HEAD • PLAYER STATISTICS
+  </div>
+
+  <div class="nc-selectors">
+    <div>
+      <label>PLAYER 01</label>
+      <select id="ncPlayer1"></select>
+    </div>
+    <div>
+      <label>PLAYER 02</label>
+      <select id="ncPlayer2"></select>
+    </div>
+  </div>
+
+  <div class="nc-vs">VS</div>
+
+  <div class="nc-stats" id="ncStats"></div>
+
+  <div class="nc-rank-note">
+    Rankings are based on NCCI Overall Rankings.
+  </div>
+
+</section>
+
+<script>
+(function(){
+
+const players = [
+ {name:"Yash Vardhan Singh Naruka",runs:4436,fifties:11,wickets:137,rank:2},
+ {name:"Shaurya Vardhan Singh Naruka",runs:3840,fifties:6,wickets:161,rank:1},
+ {name:"Kishan Yadav",runs:2579,fifties:5,wickets:102,rank:3},
+ {name:"Balveer Singh Rathore",runs:2265,fifties:1,wickets:76,rank:7},
+ {name:"Ashutosh Yadav",runs:1943,fifties:2,wickets:88,rank:4},
+ {name:"Kuldeep Singh Naruka",runs:1811,fifties:1,wickets:64,rank:null},
+ {name:"Mahendra Singh Rathore",runs:1426,fifties:0,wickets:80,rank:9},
+ {name:"Piyush Yadav",runs:1251,fifties:0,wickets:44,rank:null},
+ {name:"Vishnu Yadav",runs:1211,fifties:1,wickets:65,rank:8},
+ {name:"Yuvraj Singh Rathore",runs:994,fifties:2,wickets:51,rank:6},
+ {name:"Yogendra Singh Bhati",runs:318,fifties:1,wickets:30,rank:5},
+ {name:"Keshav Singh",runs:125,fifties:0,wickets:1,rank:null}
+];
+
+const p1=document.getElementById("ncPlayer1");
+const p2=document.getElementById("ncPlayer2");
+const output=document.getElementById("ncStats");
+
+players.forEach((p,i)=>{
+  p1.add(new Option(p.name,i));
+  p2.add(new Option(p.name,i));
+});
+
+p1.value="0";
+p2.value="1";
+
+function compare(){
+
+ const a=players[Number(p1.value)];
+ const b=players[Number(p2.value)];
+
+ const categories=[
+  {title:"TOTAL 50s",key:"fifties"},
+  {title:"TOTAL RUNS",key:"runs"},
+  {title:"TOTAL WICKETS",key:"wickets"},
+  {title:"CURRENT OVERALL RANKING",key:"rank",ranking:true}
+ ];
+
+ output.innerHTML=categories.map(item=>{
+
+  const x=a[item.key];
+  const y=b[item.key];
+
+  let left=x===null?"N/A":item.ranking?"#"+x:x;
+  let right=y===null?"N/A":item.ranking?"#"+y:y;
+
+  let winner="";
+  if(x!==null && y!==null && x!==y){
+    winner=item.ranking?(x<y?"left":"right"):(x>y?"left":"right");
+  }
+
+  return `
+   <div class="nc-stat">
+    <div class="nc-stat-title">${item.title}</div>
+    <div class="nc-stat-values">
+      <div>
+        <strong class="${winner==="left"?"nc-winner":""}">${left}</strong>
+        <small>${a.name}</small>
+      </div>
+      <div class="nc-mid">VS</div>
+      <div>
+        <strong class="${winner==="right"?"nc-winner":""}">${right}</strong>
+        <small>${b.name}</small>
+      </div>
+    </div>
+   </div>
+  `;
+ }).join("");
+}
+
+p1.addEventListener("change",compare);
+p2.addEventListener("change",compare);
+
+compare();
+
+})();
+</script>
+
 <!-- ========== NCCI NEWS SECTION START ========== -->
 <section id="ncci-news">
   <style>
