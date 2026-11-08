@@ -1506,15 +1506,16 @@ footer {
 </div>
 
 
+
 <div class="npl-featured">
-  <div class="npl-score-card">
+  <div class="npl-score-card" style="width:100%;max-width:100%;box-sizing:border-box">
 
     <div class="npl-score-top">
       <small>NCC MATCH SCORECARD</small>
       <strong style="color:#65c9ff">RAIN DELAY</strong>
     </div>
 
-    <div style="font-size:11px;color:#9cabc4;margin-bottom:10px">
+    <div style="font-size:11px;color:#9cabc4;margin-bottom:12px">
       08 NOV 2026 · LEAGUE STAGE · VENUE: NBG
     </div>
 
@@ -1523,7 +1524,7 @@ footer {
         <div class="npl-team">NKR</div>
         <div style="font-size:12px;color:#9cabc4">NKR</div>
         <div class="npl-runs">-</div>
-        <small>- Overs</small>
+        <small>Yet to bat</small>
       </div>
 
       <div class="npl-vs">VS</div>
@@ -1537,7 +1538,7 @@ footer {
     </div>
 
     <div style="margin-top:12px;font-size:12px;font-weight:800;color:#65c9ff">
-      MATCH INTERRUPTED DUE TO RAIN!!
+      MATCH INTERRUPTED DUE TO RAIN
     </div>
 
     <button class="npl-score-btn"
@@ -1547,133 +1548,122 @@ footer {
     </button>
 
     <div class="npl-score-details">
-      <div class="npl-score-inner" style="padding:10px">
+      <div class="npl-score-inner" style="padding:12px;width:100%;box-sizing:border-box">
 
-        <div class="npl-score-info" style="font-size:11px;line-height:1.8">
+        <div class="npl-score-info" style="font-size:12px;line-height:1.9">
           <strong>MATCH INFORMATION</strong>
-          <div>Date: 08 November 2026</div>
-          <div>Match: NKR vs NSC</div>
-          <div>Format: 15 Overs per side</div>
-          <div>Venue: NBG</div>
-          <div>Toss: NSC won and elected to bat first</div>
-          <div>Result: Rain interrupted</div>
+          <div>DATE: 08 NOVEMBER 2026</div>
+          <div>MATCH: NKR vs NSC</div>
+          <div>FORMAT: 15 OVERS PER SIDE</div>
+          <div>VENUE: NBG</div>
+          <div>TOSS: NSC WON AND ELECTED TO BAT FIRST</div>
+          <div>STATUS: RAIN INTERRUPTED</div>
         </div>
 
-        <!-- NSC BATTING -->
+        <!-- FIRST INNINGS BATTING -->
 
-        <div style="margin-top:12px;padding:10px;background:#101e35;border:1px solid #304563;border-radius:7px">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <strong style="color:#65c9ff;font-size:13px">NSC - 1ST INNINGS</strong>
-            <strong style="font-size:19px">43/0 <small style="font-size:11px;color:#9cabc4">(6.3)</small></strong>
+        <div style="margin-top:14px;padding:13px;background:#101e35;border:1px solid #304563;border-radius:8px;width:100%;box-sizing:border-box">
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <strong style="font-size:14px;color:#65c9ff">NSC BATTING</strong>
+            <strong style="font-size:21px">43/0 <small style="font-size:12px;color:#9cabc4">(6.3)</small></strong>
           </div>
 
-          <div style="overflow-x:auto">
-            <table style="width:100%;border-collapse:collapse;font-size:10px;text-align:center;white-space:nowrap">
-              <tr style="color:#65c9ff;border-bottom:1px solid #354563">
-                <th style="text-align:left;padding:7px 3px">BATTER</th>
-                <th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Shaurya</td>
-                <td>39*</td><td>33</td><td>5</td><td>2</td><td>118.18</td>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Ashutosh</td>
-                <td>4*</td><td>6</td><td>1</td><td>0</td><td>66.67</td>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Piyush</td>
-                <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-              </tr>
-            </table>
-          </div>
-          <div style="font-size:9px;color:#9cabc4;margin-top:5px">* Not Out · Piyush yet to bat if available</div>
+          <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:12px;text-align:center;color:#dce6f5">
+            <tr style="color:#65c9ff;border-bottom:1px solid #354563">
+              <th style="width:28%;text-align:left;padding:12px 4px">BATTER</th>
+              <th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th>
+            </tr>
+            <tr style="border-bottom:1px solid #263750">
+              <td style="text-align:left;padding:13px 4px">Shaurya*</td>
+              <td>39</td><td>33</td><td>5</td><td>2</td><td>118.18</td>
+            </tr>
+            <tr style="border-bottom:1px solid #263750">
+              <td style="text-align:left;padding:13px 4px">Ashutosh</td>
+              <td>4</td><td>6</td><td>1</td><td>0</td><td>66.67</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;padding:13px 4px">Piyush</td>
+              <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+            </tr>
+          </table>
+          <div style="font-size:10px;color:#9cabc4;margin-top:7px">* Not Out · Piyush yet to bat if available</div>
         </div>
 
-        <!-- NKR BOWLING -->
+        <!-- FIRST INNINGS BOWLING -->
 
-        <div style="margin-top:10px;padding:10px;background:#101e35;border:1px solid #304563;border-radius:7px">
-          <strong style="font-size:12px;color:#65c9ff">NKR BOWLING</strong>
-          <div style="overflow-x:auto">
-            <table style="width:100%;border-collapse:collapse;font-size:10px;text-align:center;white-space:nowrap">
-              <tr style="color:#65c9ff;border-bottom:1px solid #354563">
-                <th style="text-align:left;padding:7px 3px">BOWLER</th>
-                <th>O</th><th>M</th><th>R</th><th>W</th><th>ECON</th>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Kishan</td>
-                <td>5.3</td><td>0</td><td>37</td><td>0</td><td>6.73</td>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Yash</td>
-                <td>1.0</td><td>0</td><td>6</td><td>0</td><td>6.00</td>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Shaurya</td>
-                <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Ashutosh</td>
-                <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-              </tr>
-            </table>
-          </div>
+        <div style="margin-top:12px;padding:13px;background:#101e35;border:1px solid #304563;border-radius:8px;width:100%;box-sizing:border-box">
+          <strong style="font-size:14px;color:#65c9ff">NKR BOWLING</strong>
+
+          <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:12px;text-align:center;color:#dce6f5;margin-top:8px">
+            <tr style="color:#65c9ff;border-bottom:1px solid #354563">
+              <th style="width:28%;text-align:left;padding:12px 4px">BOWLER</th>
+              <th>O</th><th>M</th><th>R</th><th>W</th><th>ECON</th>
+            </tr>
+            <tr style="border-bottom:1px solid #263750">
+              <td style="text-align:left;padding:13px 4px">Kishan</td>
+              <td>5.3</td><td>0</td><td>37</td><td>0</td><td>6.73</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;padding:13px 4px">Yash</td>
+              <td>1.0</td><td>0</td><td>6</td><td>0</td><td>6.00</td>
+            </tr>
+          </table>
         </div>
 
-        <!-- NKR SECOND INNINGS -->
+        <!-- SECOND INNINGS BATTING -->
 
-        <div style="margin-top:10px;padding:10px;background:#101e35;border:1px solid #304563;border-radius:7px">
-          <div style="display:flex;justify-content:space-between">
-            <strong style="font-size:12px;color:#65c9ff">NKR - 2ND INNINGS</strong>
-            <strong style="font-size:10px;color:#9cabc4">YET TO BAT</strong>
+        <div style="margin-top:12px;padding:13px;background:#101e35;border:1px solid #304563;border-radius:8px;width:100%;box-sizing:border-box">
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <strong style="font-size:14px;color:#65c9ff">NKR BATTING</strong>
+            <strong style="font-size:11px;color:#9cabc4">YET TO START</strong>
           </div>
 
-          <div style="overflow-x:auto">
-            <table style="width:100%;border-collapse:collapse;font-size:10px;text-align:center;white-space:nowrap">
-              <tr style="color:#65c9ff;border-bottom:1px solid #354563">
-                <th style="text-align:left;padding:7px 3px">BATTER</th>
-                <th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Yash</td>
-                <td>0</td><td>0</td><td>-</td><td>-</td><td>-</td>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Kishan</td>
-                <td>0</td><td>0</td><td>-</td><td>-</td><td>-</td>
-              </tr>
-              <tr>
-                <td style="text-align:left;padding:7px 3px">Keshav / Piyush</td>
-                <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-              </tr>
-            </table>
-          </div>
-           
-<div style="margin-top:10px;padding:10px;background:#101e35;border:1px solid #304563;border-radius:7px">
-  <strong style="font-size:12px;color:#65c9ff">NSC BOWLING</strong>
-
-  <div style="overflow-x:auto">
-    <table style="width:100%;border-collapse:collapse;font-size:10px;text-align:center;white-space:nowrap">
-      <tr style="color:#65c9ff;border-bottom:1px solid #354563">
-        <th style="text-align:left;padding:7px 3px">BOWLER</th>
-        <th>O</th><th>M</th><th>R</th><th>W</th><th>ECON</th>
-      </tr>
-      <tr>
-        <td style="text-align:left;padding:7px 3px">Shaurya</td>
-        <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-      </tr>
-      <tr>
-        <td style="text-align:left;padding:7px 3px">Ashutosh</td>
-        <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-          <div style="font-size:9px;color:#9cabc4;margin-top:5px">Keshav / Piyush if available</div>
+          <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:12px;text-align:center;color:#dce6f5">
+            <tr style="color:#65c9ff;border-bottom:1px solid #354563">
+              <th style="width:28%;text-align:left;padding:12px 4px">BATTER</th>
+              <th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th>
+            </tr>
+            <tr style="border-bottom:1px solid #263750">
+              <td style="text-align:left;padding:13px 4px">Yash</td>
+              <td>0</td><td>0</td><td>-</td><td>-</td><td>-</td>
+            </tr>
+            <tr style="border-bottom:1px solid #263750">
+              <td style="text-align:left;padding:13px 4px">Kishan</td>
+              <td>0</td><td>0</td><td>-</td><td>-</td><td>-</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;padding:13px 4px">Keshav / Piyush</td>
+              <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+            </tr>
+          </table>
+          <div style="font-size:10px;color:#9cabc4;margin-top:7px">Keshav / Piyush to bat if available</div>
         </div>
 
-        <div style="margin-top:10px;text-align:center;font-size:10px;font-weight:800;color:#65c9ff">
+        <!-- SECOND INNINGS BOWLING -->
+
+        <div style="margin-top:12px;padding:13px;background:#101e35;border:1px solid #304563;border-radius:8px;width:100%;box-sizing:border-box">
+
+          <strong style="font-size:14px;color:#65c9ff">NSC BOWLING</strong>
+
+          <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:12px;text-align:center;color:#dce6f5;margin-top:8px">
+            <tr style="color:#65c9ff;border-bottom:1px solid #354563">
+              <th style="width:28%;text-align:left;padding:12px 4px">BOWLER</th>
+              <th>O</th><th>M</th><th>R</th><th>W</th><th>ECON</th>
+            </tr>
+            <tr style="border-bottom:1px solid #263750">
+              <td style="text-align:left;padding:13px 4px">Shaurya</td>
+              <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;padding:13px 4px">Ashutosh</td>
+              <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="margin-top:13px;padding:12px;text-align:center;border:1px solid #304563;border-radius:8px;color:#65c9ff;font-size:12px;font-weight:800">
           RAIN INTERRUPTION · MATCH INCOMPLETE
         </div>
 
@@ -1682,6 +1672,7 @@ footer {
 
   </div>
 </div>
+
 
 
 
