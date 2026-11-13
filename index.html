@@ -2500,40 +2500,164 @@ renderPointsTable();
 </div>
 <section class="ncci-grand-wide">
 
-  <!-- LEFT: NPP -->
-<div class="ncci-gw-side">
-  <div class="ncci-gw-side-label">
-    <div class="finalist-name">NPP</div>
+  <!-- NCCI GOLDEN BRACKET SCORECARDS -->
+<section class="ncci-golden-scorecards" style="margin:24px 0;padding:18px;border:1px solid #b8860b;border-radius:16px;background:linear-gradient(145deg,#171205,#090806);color:#f5edcf;">
+
+  <div style="text-align:center;margin-bottom:18px;">
+    <div style="color:#ffd700;font-size:11px;font-weight:900;letter-spacing:2px;">NCCI CHAMPIONSHIP</div>
+    <h2 style="margin:6px 0;color:#ffd700;font-family:Georgia,serif;letter-spacing:2px;">GOLDEN BRACKET</h2>
+    <div style="font-size:11px;color:#c9b982;">SEMI FINALS & GRAND FINAL</div>
   </div>
-</div>
 
-<!-- CENTER: CINEMATIC GRAND FINAL -->
-<div class="ncci-gw-center">
-  <p class="ncci-gw-eyebrow">
-    NCCI Championship
-  </p>
+  <!-- SEMI FINAL 1 -->
+  <article style="margin:14px 0;padding:14px;border:1px solid #8f6b1a;border-radius:12px;background:#100d07;">
+    <div style="color:#ffd700;font-size:12px;font-weight:900;">SEMI FINAL 1 · NSC vs NPP</div>
+    <div style="font-size:10px;color:#c9b982;margin:7px 0 12px;">11 NOVEMBER 2026 · VENUE: NBG</div>
 
-  <h2 class="ncci-gw-title">
-    GRAND<br>FINAL
-  </h2>
+    <div style="display:flex;align-items:center;justify-content:space-around;text-align:center;">
+      <div><b style="color:#ffd700;">NSC</b><div style="font-size:22px;font-weight:900;">38/3</div><small>8.3 overs</small></div>
+      <b style="color:#b8860b;">VS</b>
+      <div><b style="color:#ffd700;">NPP</b><div style="font-size:22px;font-weight:900;">41/0</div><small>11.4 overs</small></div>
+    </div>
 
-  <div class="ncci-gw-divider"></div>
+    <div style="margin:12px 0;padding:9px;text-align:center;border:1px solid #7b6429;border-radius:8px;color:#ffe28a;font-weight:900;">NPP WON BY 10 WICKETS</div>
 
-  <p class="ncci-gw-tagline">
-    The Ultimate Showdown
-     
-      <p class="ncci-gw-tagline">
-     <span style="color:#FFD700; font-weight:900;">☆《SCORECARD COMING SOON》☆</span>
-  </p>
-</div>
+    <button class="npl-score-btn" onclick="toggleNPLScorecard(this)" aria-expanded="false" style="width:100%;border:1px solid #b8860b;color:#ffd700;background:#171106;">GOLDEN SCORECARD +</button>
 
-<!-- RIGHT: NSC -->
-<div class="ncci-gw-side">
-  <div class="ncci-gw-side-label">
-    <div class="finalist-name">NSC</div>
-  </div>
-</div>
-  
+    <div class="npl-score-details">
+      <div class="npl-score-inner" style="padding:12px;color:#f5edcf;">
+
+        <b style="color:#ffd700;">NSC · 1ST INNINGS · 38/3</b>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;min-width:350px;color:#f5edcf;">
+            <tr><th>BATTER</th><th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th></tr>
+            <tr><td>Shaurya</td><td>22</td><td>19</td><td>3</td><td>1</td><td>115.79</td></tr>
+            <tr><td>Piyush</td><td>0</td><td>7</td><td>0</td><td>0</td><td>0.00</td></tr>
+            <tr><td>Ashutosh</td><td>16</td><td>25</td><td>3</td><td>0</td><td>64.00</td></tr>
+          </table>
+        </div>
+
+        <div style="margin-top:7px;font-size:11px;">Bowling — NPP: Yash 3.0-0-9-0; Kishan 5.3-0-29-3</div>
+
+        <b style="display:block;color:#ffd700;margin-top:16px;">NPP · 2ND INNINGS · 41/0</b>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;min-width:350px;color:#f5edcf;">
+            <tr><th>BATTER</th><th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th></tr>
+            <tr><td>Yash*</td><td>32</td><td>42</td><td>5</td><td>1</td><td>76.19</td></tr>
+            <tr><td>Kishan</td><td>6</td><td>14</td><td>1</td><td>0</td><td>42.86</td></tr>
+            <tr><td>Keshav</td><td>3</td><td>8</td><td>0</td><td>0</td><td>37.50</td></tr>
+          </table>
+        </div>
+
+        <div style="margin-top:7px;font-size:11px;">Bowling — NSC: Piyush 7.0-0-25-0; Ashutosh 4.4-0-16-0</div>
+        <small style="color:#c9b982;">Player of the Match: Yash</small>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- SEMI FINAL 2 -->
+  <article style="margin:14px 0;padding:14px;border:1px solid #8f6b1a;border-radius:12px;background:#100d07;">
+    <div style="color:#ffd700;font-size:12px;font-weight:900;">SEMI FINAL 2 · NPP vs NKR</div>
+    <div style="font-size:10px;color:#c9b982;margin:7px 0 12px;">NPL 2026</div>
+
+    <div style="display:flex;align-items:center;justify-content:space-around;text-align:center;">
+      <div><b style="color:#ffd700;">NPP</b><div style="font-size:22px;font-weight:900;">90/3</div><small>20 overs</small></div>
+      <b style="color:#b8860b;">VS</b>
+      <div><b style="color:#ffd700;">NKR</b><div style="font-size:22px;font-weight:900;">38/4</div><small>8.5 overs</small></div>
+    </div>
+
+    <div style="margin:12px 0;padding:9px;text-align:center;border:1px solid #7b6429;border-radius:8px;color:#ffe28a;font-weight:900;">NPP WON BY 52 RUNS</div>
+
+    <div style="font-size:11px;color:#c9b982;margin-bottom:8px;">Toss: NPP won and elected to bat.</div>
+    <div style="font-size:11px;line-height:1.7;margin-bottom:12px;">
+      <b style="color:#ffd700;">NPP:</b> Yash, Kishan (C), Ashutosh, Yogesh<br>
+      <b style="color:#ffd700;">NKR:</b> Shaurya (C), Kuldeep, Piyush, Keshav
+    </div>
+
+    <button class="npl-score-btn" onclick="toggleNPLScorecard(this)" aria-expanded="false" style="width:100%;border:1px solid #b8860b;color:#ffd700;background:#171106;">GOLDEN SCORECARD +</button>
+
+    <div class="npl-score-details">
+      <div class="npl-score-inner" style="padding:12px;color:#f5edcf;">
+
+        <b style="color:#ffd700;">NPP · 1ST INNINGS · 90/3 (20 OVERS)</b>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;min-width:350px;color:#f5edcf;">
+            <tr><th>BATTER</th><th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th></tr>
+            <tr><td>Yash</td><td>33</td><td>36</td><td>4</td><td>2</td><td>91.67</td></tr>
+            <tr><td>Kishan (C)</td><td>32</td><td>54</td><td>4</td><td>2</td><td>59.26</td></tr>
+            <tr><td>Ashutosh</td><td>17</td><td>24</td><td>3</td><td>0</td><td>70.83</td></tr>
+            <tr><td>Yogesh*</td><td>4</td><td>6</td><td>0</td><td>0</td><td>66.67</td></tr>
+          </table>
+        </div>
+        <div style="font-size:11px;margin-top:7px;">Extras: 4 · Total: 90/3 · RR: 4.50</div>
+
+        <b style="display:block;color:#ffd700;margin-top:16px;">NKR · 2ND INNINGS · 38/4 (8.5 OVERS)</b>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;min-width:350px;color:#f5edcf;">
+            <tr><th>BATTER</th><th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th></tr>
+            <tr><td>Kuldeep</td><td>9</td><td>18</td><td>2</td><td>0</td><td>50.00</td></tr>
+            <tr><td>Piyush</td><td>7</td><td>12</td><td>1</td><td>0</td><td>58.33</td></tr>
+            <tr><td>Shaurya (C)</td><td>10</td><td>9</td><td>2</td><td>0</td><td>111.11</td></tr>
+            <tr><td>Keshav</td><td>6</td><td>12</td><td>0</td><td>0</td><td>50.00</td></tr>
+          </table>
+        </div>
+        <div style="font-size:11px;margin-top:7px;">Extras: 6 · Total: 38/4 · RR: 4.47</div>
+        <small style="color:#c9b982;">Bowling figures and fall of wickets not provided.</small>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- GRAND FINAL -->
+  <article style="margin:14px 0;padding:14px;border:1px solid #d4a017;border-radius:12px;background:linear-gradient(145deg,#211806,#090806);">
+    <div style="color:#ffd700;font-size:12px;font-weight:900;">GRAND FINAL · NSC vs NPP</div>
+    <div style="font-size:10px;color:#c9b982;margin:7px 0 12px;">MATCH RESUMES TODAY · 4:00 PM</div>
+
+    <div style="display:flex;align-items:center;justify-content:space-around;text-align:center;">
+      <div><b style="color:#ffd700;">NSC</b><div style="font-size:22px;font-weight:900;">78/3</div><small>1st innings</small></div>
+      <b style="color:#b8860b;">VS</b>
+      <div><b style="color:#ffd700;">NPP</b><div style="font-size:22px;font-weight:900;">10/0</div><small>2nd innings</small></div>
+    </div>
+
+    <div style="font-size:11px;color:#c9b982;margin:12px 0;">Toss: NSC won and chose to bat.</div>
+
+    <button class="npl-score-btn" onclick="toggleNPLScorecard(this)" aria-expanded="false" style="width:100%;border:1px solid #d4a017;color:#ffd700;background:#171106;">GOLDEN SCORECARD +</button>
+
+    <div class="npl-score-details">
+      <div class="npl-score-inner" style="padding:12px;color:#f5edcf;">
+
+        <b style="color:#ffd700;">NSC SQUAD</b><br>
+        Shaurya (C), Piyush, Ashutosh, Yogesh<br><br>
+        <b style="color:#ffd700;">NPP SQUAD</b><br>
+        Yash, Kishan (C), Keshav, Lokesh
+
+        <b style="display:block;color:#ffd700;margin-top:16px;">NSC · 1ST INNINGS · 78/3</b>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;min-width:330px;color:#f5edcf;">
+            <tr><th>BATTER</th><th>R</th><th>B</th><th>4s</th><th>6s</th></tr>
+            <tr><td>Shaurya (C)</td><td>16</td><td>12</td><td>3</td><td>0</td></tr>
+            <tr><td>Piyush*</td><td>50*</td><td>54</td><td>6</td><td>2</td></tr>
+            <tr><td>Ashutosh</td><td>5</td><td>12</td><td>0</td><td>0</td></tr>
+            <tr><td>Yogesh</td><td>3</td><td>12</td><td>0</td><td>0</td></tr>
+          </table>
+        </div>
+        <div style="font-size:11px;margin-top:7px;">Extras: 4 · Total: 78/3</div>
+
+        <b style="display:block;color:#ffd700;margin-top:16px;">NPP · 2ND INNINGS · 10/0</b>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;min-width:330px;color:#f5edcf;">
+            <tr><th>BATTER</th><th>R</th><th>B</th><th>4s</th><th>6s</th></tr>
+            <tr><td>Yash*</td><td>10*</td><td>3</td><td>1</td><td>1</td></tr>
+            <tr><td>Kishan (C)*</td><td>0*</td><td>0</td><td>0</td><td>0</td></tr>
+          </table>
+        </div>
+
+        <small style="color:#c9b982;">Match resumes today at 4:00 PM. Remaining match details will be updated after play resumes.</small>
+
+      </div>
+    </div>
+  </article>
 
 </section>
 
